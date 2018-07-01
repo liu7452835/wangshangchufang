@@ -1,0 +1,22 @@
+//
+//  LTYTeachNetManager.h
+//  网上厨房
+//
+//  Created by 刘天宇 on 2018/6/26.
+//  Copyright © 2018年 刘天宇. All rights reserved.
+//
+
+#import "BaseNetManager.h"
+
+@interface LTYTeachNetManager : BaseNetManager
+
+
+/** 从网络上获得课堂页tag信息  */
+//URL https://api.ecook.cn/public/getOnlineTeachTags.shtml
++(id) postTeachTagCompletionHandle:(void(^)(id responseObject,NSError *error))completed;
+
+/** 从网络上获得课堂页推荐栏信息  */
+//URL https://api.ecook.cn/public/getOnlineTeachList.shtml
++(id) postTeachRecommendCompletionHandle:(void(^)(id responseObject,NSError *error))completed;
+
+@end

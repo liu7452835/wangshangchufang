@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "LTYTabBarViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,16 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    LTYTabBarViewController *tabVC = [[LTYTabBarViewController alloc] init];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = tabVC;
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    [self.window makeKeyAndVisible];
+    
+    
     return YES;
 }
 
