@@ -20,13 +20,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [MBProgressHUD showMessage:@"正在努力加载中..."];
+    self.collectionView.backgroundColor = [UIColor whiteColor];
     
+    [MBProgressHUD showMessage:@"正在努力加载中..."];
     [self.teachVC getMultipleDataCompletionHandle:^(NSError *error0, NSError *error1) {
         [MBProgressHUD hideHUD];
     }];
     
 }
+
+- (instancetype)init{
+    self = [super init];
+    
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    
+    return [self initWithCollectionViewLayout:layout];
+}
+
 
 #pragma mark - 懒加载
 

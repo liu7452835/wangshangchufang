@@ -15,6 +15,8 @@
 		091233F420C82205001A80D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 091233F320C82205001A80D6 /* Assets.xcassets */; };
 		091233F720C82205001A80D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 091233F520C82205001A80D6 /* LaunchScreen.storyboard */; };
 		091233FA20C82205001A80D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 091233F920C82205001A80D6 /* main.m */; };
+		09136DDF20EBBC59007E3F93 /* LTYTagColumnCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09136DDE20EBBC59007E3F93 /* LTYTagColumnCell.xib */; };
+		09136DE220EBBEDE007E3F93 /* LTYTagColumnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09136DE120EBBEDE007E3F93 /* LTYTagColumnCell.m */; };
 		09173AA420CB683100246B8D /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09173AA320CB683100246B8D /* BaseViewModel.m */; };
 		09173AA820CB716800246B8D /* LTYSortModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09173AA720CB716800246B8D /* LTYSortModel.m */; };
 		09173AAC20CB891300246B8D /* LTYSortNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 09173AAB20CB891300246B8D /* LTYSortNetManager.m */; };
@@ -93,6 +95,9 @@
 		091233F620C82205001A80D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		091233F820C82205001A80D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		091233F920C82205001A80D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		09136DDE20EBBC59007E3F93 /* LTYTagColumnCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LTYTagColumnCell.xib; sourceTree = "<group>"; };
+		09136DE020EBBEDE007E3F93 /* LTYTagColumnCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYTagColumnCell.h; sourceTree = "<group>"; };
+		09136DE120EBBEDE007E3F93 /* LTYTagColumnCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYTagColumnCell.m; sourceTree = "<group>"; };
 		09173AA220CB683100246B8D /* BaseViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
 		09173AA320CB683100246B8D /* BaseViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
 		09173AA620CB716800246B8D /* LTYSortModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYSortModel.h; sourceTree = "<group>"; };
@@ -293,6 +298,16 @@
 			path = "网上厨房";
 			sourceTree = "<group>";
 		};
+		09136DE320EBBEE5007E3F93 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09136DDE20EBBC59007E3F93 /* LTYTagColumnCell.xib */,
+				09136DE020EBBEDE007E3F93 /* LTYTagColumnCell.h */,
+				09136DE120EBBEDE007E3F93 /* LTYTagColumnCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		09173AA520CB6AF600246B8D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +456,7 @@
 		094073D320C8402B00D93ECA /* 课堂 */ = {
 			isa = PBXGroup;
 			children = (
+				09136DE320EBBEE5007E3F93 /* View */,
 				096896F720E1444F00CF39FA /* controller */,
 				096896F020E134D900CF39FA /* model */,
 				09EA955F20E27BFE0071345E /* NetManager */,
@@ -723,6 +739,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09136DDF20EBBC59007E3F93 /* LTYTagColumnCell.xib in Resources */,
 				09012E6020D162C700D8BE68 /* PersonalSetting.storyboard in Resources */,
 				091233F720C82205001A80D6 /* LaunchScreen.storyboard in Resources */,
 				091233F420C82205001A80D6 /* Assets.xcassets in Resources */,
@@ -755,6 +772,7 @@
 				094A9FB620CD208500BFC13A /* CommonContentShow.m in Sources */,
 				09173AA420CB683100246B8D /* BaseViewModel.m in Sources */,
 				09173AA820CB716800246B8D /* LTYSortModel.m in Sources */,
+				09136DE220EBBEDE007E3F93 /* LTYTagColumnCell.m in Sources */,
 				09117D1E20D01CEA006E6E19 /* FirstViewShow.m in Sources */,
 				0948505E20CAC38400492EEF /* AFHTTPRequestOperation.m in Sources */,
 				0970092820C9869100461468 /* NSObject+MJClass.m in Sources */,
