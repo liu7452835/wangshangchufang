@@ -8,8 +8,16 @@
 
 #import "BaseViewModel.h"
 
+@class LTYTeachTagModel;
+@class LTYTeachRecommendModel;
+
 @interface LTYTeachViewModel : BaseViewModel
 
+@property(nonatomic,strong) LTYTeachTagModel *tagModel;
+@property(nonatomic,strong) LTYTeachRecommendModel *recommendModel;
+
+
+- (NSString *)titleForTag:(NSInteger)index;
 
 
 @end

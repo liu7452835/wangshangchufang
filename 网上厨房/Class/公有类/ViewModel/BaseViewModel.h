@@ -19,8 +19,6 @@
 
 /**获取数据*/
 -(void)getDataCompletionHandle:(void(^)(NSError *error))completed;
-/**获取多项数据*/
-- (void)getMultipleDataCompletionHandle:(void (^)(NSError *error0,NSError *error1))completed;
 
 @end
 
@@ -28,8 +26,6 @@
 @interface BaseViewModel : NSObject<BaseViewModelDelegate>
 
 @property(nonatomic,strong) NSURLSessionDataTask *dataTask;
-@property(nonatomic,strong) NSURLSessionDataTask *dataTask1;
-@property(nonatomic,strong) NSURLSessionDataTask *dataTask2;
 
 //取消任务
 -(void)cancelTask;

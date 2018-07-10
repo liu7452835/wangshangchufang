@@ -11,4 +11,5 @@
 
 #define kCCSWidth ([UIScreen mainScreen].bounds.size.width - 50)/4
 
+#define kScreenWidth ([UIScreen mainScreen].bounds.size.width)
 #endif /* Constants_h */

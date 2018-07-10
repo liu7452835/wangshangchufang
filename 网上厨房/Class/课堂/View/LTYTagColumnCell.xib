@@ -19,9 +19,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="108" height="105"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fv8-5s-Yet">
-                        <rect key="frame" x="0.0" y="0.0" width="30" height="105"/>
-                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w6q-Lm-kLH">
                         <rect key="frame" x="37.5" y="36" width="33" height="33"/>
                         <constraints>
@@ -30,10 +27,10 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mW-sM-53z">
-                        <rect key="frame" x="35" y="79" width="38" height="17"/>
+                        <rect key="frame" x="29" y="77" width="50" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="38" id="zNI-9A-ZhF"/>
-                            <constraint firstAttribute="height" constant="17" id="zYE-qV-B8I"/>
+                            <constraint firstAttribute="width" constant="50" id="zNI-9A-ZhF"/>
+                            <constraint firstAttribute="height" constant="15" id="zYE-qV-B8I"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
@@ -42,17 +39,18 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="Fv8-5s-Yet" firstAttribute="leading" secondItem="vo1-5x-jlW" secondAttribute="leading" id="52Q-TE-TJ1"/>
                 <constraint firstItem="0mW-sM-53z" firstAttribute="centerX" secondItem="vo1-5x-jlW" secondAttribute="centerX" id="Cv6-wW-5W1"/>
-                <constraint firstItem="Fv8-5s-Yet" firstAttribute="top" secondItem="vo1-5x-jlW" secondAttribute="top" id="HXT-Xc-PXr"/>
-                <constraint firstItem="0mW-sM-53z" firstAttribute="top" secondItem="w6q-Lm-kLH" secondAttribute="bottom" constant="10" id="IHL-ys-5BK"/>
-                <constraint firstAttribute="bottom" secondItem="Fv8-5s-Yet" secondAttribute="bottom" id="Q0x-b4-7Hi"/>
+                <constraint firstItem="0mW-sM-53z" firstAttribute="top" secondItem="w6q-Lm-kLH" secondAttribute="bottom" constant="8" id="IHL-ys-5BK"/>
                 <constraint firstItem="w6q-Lm-kLH" firstAttribute="centerX" secondItem="vo1-5x-jlW" secondAttribute="centerX" id="hJy-3n-6QC"/>
                 <constraint firstItem="w6q-Lm-kLH" firstAttribute="centerY" secondItem="vo1-5x-jlW" secondAttribute="centerY" id="quV-MV-OnD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="hyX-kB-N9m"/>
             <size key="customSize" width="108" height="185"/>
-            <point key="canvasLocation" x="-451" y="-207"/>
+            <connections>
+                <outlet property="contentLabel" destination="0mW-sM-53z" id="r1A-wJ-KKt"/>
+                <outlet property="contentPic" destination="w6q-Lm-kLH" id="ugc-hw-0wN"/>
+            </connections>
+            <point key="canvasLocation" x="-451" y="-207.5"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -13,27 +13,23 @@
 
 @interface LTYTeachViewModel()
 
-@property(nonatomic,strong) LTYTeachTagModel *tagModel;
-@property(nonatomic,strong) LTYTeachRecommendModel *recommendModel;
-
 @end
 
 @implementation LTYTeachViewModel
 
-- (void) getMultipleDataCompletionHandle:(void (^)(NSError *,NSError *))completed{
-    __block NSError *error0,*error1;
+- (void)getDataCompletionHandle:(void (^)(NSError *))completed{
     self.dataTask =[LTYTeachNetManager postTeachTagCompletionHandle:^(id responseObject, NSError *error) {
         self.tagModel = responseObject;
-        error0 = error;
+        
+        completed(error);
     }];
-
-    self.dataTask1 = [LTYTeachNetManager postTeachRecommendCompletionHandle:^(id responseObject, NSError *error) {
-        self.recommendModel = responseObject;
-        error1 = error;
-        //completed(error);
-    }];
-    completed(error0,error1);
 }
+
+- (NSString *)titleForTag:(NSInteger)index{
+    
+        return self.tagModel.data[index].title;
+}
+
 
 
 #pragma mark - 懒加载

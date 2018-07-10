@@ -12,20 +12,14 @@
 
 - (void)cancelTask{
     [self.dataTask cancel];
-    [self.dataTask1 cancel];
-    [self.dataTask2 cancel];
 }
 
 - (void)resumeTask{
     [self.dataTask resume];
-    [self.dataTask1 resume];
-    [self.dataTask2 resume];
 }
 
 - (void)suspendTask{
     [self.dataTask suspend];
-    [self.dataTask1 suspend];
-    [self.dataTask2 suspend];
 }
 
 @end

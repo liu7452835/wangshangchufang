@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LTYTagColumnCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *contentPic;
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
 @end
