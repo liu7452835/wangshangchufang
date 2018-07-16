@@ -25,11 +25,19 @@
     }];
 }
 
+- (void)getMoreDateCompletionHandle:(void (^)(NSError *))completed{
+    self.dataTask = [LTYTeachNetManager postTeachRecommendCompletionHandle:^(id responseObject, NSError *error) {
+        self.recommendModel = responseObject;
+        
+        completed(error);
+    }];
+}
+
 - (NSString *)titleForTag:(NSInteger)index{
     
         return self.tagModel.data[index].title;
-}
 
+}
 
 
 #pragma mark - 懒加载

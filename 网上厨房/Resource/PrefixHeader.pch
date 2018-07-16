@@ -15,6 +15,8 @@
 
 #import "AFNetworking.h"//Github排名第一的第三方网络请求类库，封装了系统的NSURLSession+NSOperation
 
+#import "UIKit+AFNetworking.h"//对UIKit类添加类拓展，让诸如UIButton, UIImageView等拥有了网络加载图片的功能
+
 #import "MBProgressHUD.h"//进度条
 
 #import "MBProgressHUD+LTY.h"

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LTYTeachViewController : UICollectionViewController//UITableViewController 
+@interface LTYTeachViewController : UIViewController//UICollectionViewController
 
 @end

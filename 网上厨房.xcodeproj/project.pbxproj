@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0900BB3520C82F9D0034525C /* LTYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0900BB3420C82F9D0034525C /* LTYTabBarViewController.m */; };
 		09012E6020D162C700D8BE68 /* PersonalSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09012E5F20D162C700D8BE68 /* PersonalSetting.storyboard */; };
+		090EF22220F7991D00CB1C9D /* LTYRecommendViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 090EF22120F7991D00CB1C9D /* LTYRecommendViewCell.m */; };
+		090EF22420F7995B00CB1C9D /* LTYRecommendViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 090EF22320F7995B00CB1C9D /* LTYRecommendViewCell.xib */; };
 		09117D1E20D01CEA006E6E19 /* FirstViewShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 09117D1D20D01CEA006E6E19 /* FirstViewShow.m */; };
 		091233EC20C82205001A80D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 091233EB20C82205001A80D6 /* AppDelegate.m */; };
 		091233EF20C82205001A80D6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 091233EE20C82205001A80D6 /* ViewController.m */; };
@@ -38,6 +40,7 @@
 		094073CD20C83FAC00D93ECA /* LTYSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 094073CC20C83FAC00D93ECA /* LTYSortViewController.m */; };
 		094073D220C8402700D93ECA /* LTYTeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 094073D120C8402700D93ECA /* LTYTeachViewController.m */; };
 		094073D620C8405000D93ECA /* LTYTalkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 094073D520C8405000D93ECA /* LTYTalkViewController.m */; };
+		0945C8AA20F8EBB000BE5318 /* LTYRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0945C8A920F8EBB000BE5318 /* LTYRecommendView.m */; };
 		0948505020CAC38400492EEF /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948502820CAC38400492EEF /* UIAlertView+AFNetworking.m */; };
 		0948505120CAC38400492EEF /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948502920CAC38400492EEF /* UIProgressView+AFNetworking.m */; };
 		0948505220CAC38400492EEF /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948502B20CAC38400492EEF /* UIRefreshControl+AFNetworking.m */; };
@@ -84,6 +87,9 @@
 		0900BB3320C82F9D0034525C /* LTYTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYTabBarViewController.h; sourceTree = "<group>"; };
 		0900BB3420C82F9D0034525C /* LTYTabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYTabBarViewController.m; sourceTree = "<group>"; };
 		09012E5F20D162C700D8BE68 /* PersonalSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PersonalSetting.storyboard; sourceTree = "<group>"; };
+		090EF22020F7991D00CB1C9D /* LTYRecommendViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYRecommendViewCell.h; sourceTree = "<group>"; };
+		090EF22120F7991D00CB1C9D /* LTYRecommendViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYRecommendViewCell.m; sourceTree = "<group>"; };
+		090EF22320F7995B00CB1C9D /* LTYRecommendViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LTYRecommendViewCell.xib; sourceTree = "<group>"; };
 		09117D1C20D01CEA006E6E19 /* FirstViewShow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewShow.h; sourceTree = "<group>"; };
 		09117D1D20D01CEA006E6E19 /* FirstViewShow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewShow.m; sourceTree = "<group>"; };
 		091233E720C82205001A80D6 /* 网上厨房.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "网上厨房.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +151,8 @@
 		094073D120C8402700D93ECA /* LTYTeachViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYTeachViewController.m; sourceTree = "<group>"; };
 		094073D420C8405000D93ECA /* LTYTalkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYTalkViewController.h; sourceTree = "<group>"; };
 		094073D520C8405000D93ECA /* LTYTalkViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYTalkViewController.m; sourceTree = "<group>"; };
+		0945C8A820F8EBB000BE5318 /* LTYRecommendView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYRecommendView.h; sourceTree = "<group>"; };
+		0945C8A920F8EBB000BE5318 /* LTYRecommendView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYRecommendView.m; sourceTree = "<group>"; };
 		0948502820CAC38400492EEF /* UIAlertView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+AFNetworking.m"; sourceTree = "<group>"; };
 		0948502920CAC38400492EEF /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		0948502A20CAC38400492EEF /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AFNetworking.h"; sourceTree = "<group>"; };
@@ -304,6 +312,11 @@
 				09136DDE20EBBC59007E3F93 /* LTYTagColumnCell.xib */,
 				09136DE020EBBEDE007E3F93 /* LTYTagColumnCell.h */,
 				09136DE120EBBEDE007E3F93 /* LTYTagColumnCell.m */,
+				090EF22020F7991D00CB1C9D /* LTYRecommendViewCell.h */,
+				090EF22120F7991D00CB1C9D /* LTYRecommendViewCell.m */,
+				090EF22320F7995B00CB1C9D /* LTYRecommendViewCell.xib */,
+				0945C8A820F8EBB000BE5318 /* LTYRecommendView.h */,
+				0945C8A920F8EBB000BE5318 /* LTYRecommendView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -741,6 +754,7 @@
 			files = (
 				09136DDF20EBBC59007E3F93 /* LTYTagColumnCell.xib in Resources */,
 				09012E6020D162C700D8BE68 /* PersonalSetting.storyboard in Resources */,
+				090EF22420F7995B00CB1C9D /* LTYRecommendViewCell.xib in Resources */,
 				091233F720C82205001A80D6 /* LaunchScreen.storyboard in Resources */,
 				091233F420C82205001A80D6 /* Assets.xcassets in Resources */,
 			);
@@ -753,6 +767,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0945C8AA20F8EBB000BE5318 /* LTYRecommendView.m in Sources */,
 				09173AB020CB9F3600246B8D /* LTYSortViewModel.m in Sources */,
 				094A9FB020CCF6B600BFC13A /* RecommendContentShow.m in Sources */,
 				09EA955E20E27BF70071345E /* LTYTeachNetManager.m in Sources */,
@@ -796,6 +811,7 @@
 				09173ADA20CC0CA400246B8D /* MASConstraintMaker.m in Sources */,
 				09173ADC20CC0CA400246B8D /* NSArray+MASAdditions.m in Sources */,
 				09173AD920CC0CA400246B8D /* MASCompositeConstraint.m in Sources */,
+				090EF22220F7991D00CB1C9D /* LTYRecommendViewCell.m in Sources */,
 				0948506020CAC38400492EEF /* AFSecurityPolicy.m in Sources */,
 				0948505120CAC38400492EEF /* UIProgressView+AFNetworking.m in Sources */,
 				0970092C20C9869100461468 /* MJFoundation.m in Sources */,
