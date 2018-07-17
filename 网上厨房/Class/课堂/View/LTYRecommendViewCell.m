@@ -38,7 +38,7 @@
         
         NSString *backgroudImagePath = [NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",[array[i] valueForKey:@"himg"]];
         NSURL *backgroundURL = [NSURL URLWithString:backgroudImagePath];
-        [recommendView.recommendBackgroundImageView setImageWithURL:backgroundURL placeholderImage:[UIImage imageNamed:@"service_close"]];
+        [recommendView.recommendBackgroundImageView setImageWithURL:backgroundURL];
         //[recommendView.recommendBackgroundImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:backgroundURL]]];
         //NSLog(@"%@",backgroundURL);
         
@@ -47,7 +47,7 @@
         
         NSString *idImagePath = [NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",[array[i] valueForKeyPath:@"teacher.imageid"]];
         NSURL *idIamgeURL = [NSURL URLWithString:idImagePath];
-        [recommendView.idImageView setImageWithURL:idIamgeURL placeholderImage:[UIImage imageNamed:@"service_close"]];
+        [recommendView.idImageView setImageWithURL:idIamgeURL];
         //[recommendView.idImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:idIamgeURL]]];
        // NSLog(@"%@",idIamgeURL);
         
@@ -59,7 +59,7 @@
         
         [self.scrollView addSubview:recommendView];
       
-        [recommendView setFrame:CGRectMake(xbase, 7, width, 300)];
+        [recommendView setFrame:CGRectMake(xbase, 5, width, kScreenWidth *5/6)];
         
         // NSLog(@"%f",xbase);
         

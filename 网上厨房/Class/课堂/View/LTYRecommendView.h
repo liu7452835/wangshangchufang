@@ -16,4 +16,6 @@
 @property(nonatomic,strong) UILabel *nickName;
 @property(nonatomic,strong) UIImageView *starImageView;
 
+@property(nonatomic,assign) NSUInteger backgroundWidth;
+
 @end

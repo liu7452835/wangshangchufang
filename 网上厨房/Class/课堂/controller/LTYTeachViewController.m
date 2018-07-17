@@ -17,7 +17,9 @@ static NSString * const tagColumnId = @"TagColumnCell";
 static NSString * const recommendColumnID = @"RecommendViewCell";
 static NSString * const defaultId = @"CollectionViewCell";
 
-@interface LTYTeachViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+#define ksectiontHeadId @"SectionHeadCell"
+
+@interface LTYTeachViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic,strong) LTYTeachViewModel *teachVC;
 @property(nonatomic,strong) UICollectionView *collectionView;
@@ -49,14 +51,20 @@ static NSString * const defaultId = @"CollectionViewCell";
 -(void)registeCell{
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([LTYTagColumnCell class]) bundle:nil] forCellWithReuseIdentifier:tagColumnId];
     [self.collectionView registerNib:[UINib nibWithNibName:@"LTYRecommendViewCell" bundle:nil] forCellWithReuseIdentifier:recommendColumnID];
-    
     [self.collectionView registerClass:[UICollectionViewCell class]     forCellWithReuseIdentifier:defaultId];
+    
+    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ksectiontHeadId];
 }
 
 #pragma mark - delegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"%ld",(long)indexPath.row);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    return section == 1?CGSizeMake(kScreenWidth, 30):CGSizeMake(0, 0);
 }
 
 #pragma mark - dataSource
@@ -105,8 +113,25 @@ static NSString * const defaultId = @"CollectionViewCell";
     }
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section ==1) {
+        UICollectionReusableView *headView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ksectiontHeadId forIndexPath:indexPath];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, kScreenWidth, 20)];
+        label.text = @"推荐课程";
+        label.font = [UIFont systemFontOfSize:17];
+        label.textAlignment = NSTextAlignmentLeft;
+        [headView addSubview:label];
+        return headView;
+    } else{
+        UICollectionReusableView *emptyView = [[UICollectionReusableView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
+        return emptyView;
+    }
+    
+}
+
 
 #pragma mark - UICollectionView布局
+
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -119,15 +144,16 @@ static NSString * const defaultId = @"CollectionViewCell";
         return size;
     } else if(indexPath.section == 1){
         W = kScreenWidth;
-        size = CGSizeMake(kScreenWidth, 300);
+        size = CGSizeMake(kScreenWidth, kScreenWidth*5/6);
     } else{
         size = CGSizeMake(kScreenWidth, 10);
     }
     return size;
 }
 
+
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(5, 0, 5, 0);
+    return UIEdgeInsetsMake(5, 0, -5, 0);
 }
 
 #pragma mark - 懒加载
@@ -143,15 +169,17 @@ static NSString * const defaultId = @"CollectionViewCell";
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         
+        //layout.headerReferenceSize = CGSizeMake(kScreenWidth, 30);
         
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         
         [self.view addSubview:_collectionView];
         [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(0);
+            make.bottom.left.right.mas_equalTo(0);
+            make.top.mas_equalTo(20);
         }];
         _collectionView.backgroundColor = [UIColor whiteColor];
-        _collectionView.contentInset = UIEdgeInsetsMake(20, 0, 80, 0);//滚动视图的尺寸
+        _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);//滚动视图的尺寸
         
         _collectionView.delegate = self;
         _collectionView.dataSource = self;

@@ -15,7 +15,7 @@
         self.starImageView.hidden = NO;
         self.nickName.font = [UIFont systemFontOfSize:10];
         self.nickName.textColor = [UIColor lightGrayColor];
-        self.title.font = [UIFont systemFontOfSize:15];
+        self.title.font = [UIFont systemFontOfSize:12];
         self.title.textAlignment = NSTextAlignmentCenter;
         self.starImageView.contentMode = UIViewContentModeLeft;
     }
@@ -25,11 +25,13 @@
 - (UIImageView *)recommendBackgroundImageView{
     if (!_recommendBackgroundImageView) {
         _recommendBackgroundImageView = [UIImageView new];
+       
         [self addSubview:_recommendBackgroundImageView];
         [_recommendBackgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.mas_equalTo(0);
-            make.height.mas_equalTo(218);
+            //make.height.mas_equalTo(self.backgroundWidth);
         }];
+        
     }
     return _recommendBackgroundImageView;
 }
@@ -40,7 +42,7 @@
         [self addSubview:_title];
         [_title mas_makeConstraints:^(MASConstraintMaker *make) {
             make.leftMargin.rightMargin.mas_equalTo(self.recommendBackgroundImageView);
-            make.top.mas_equalTo(self.recommendBackgroundImageView.mas_bottom).mas_equalTo(15);
+            make.top.mas_equalTo(self.recommendBackgroundImageView.mas_bottom).mas_equalTo(5);
         }];
     }
     return _title;
@@ -52,7 +54,7 @@
         [self addSubview:_idImageView];
         [_idImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(30, 30));
-            make.top.mas_equalTo(self.title.mas_bottom).mas_equalTo(15);
+            make.top.mas_equalTo(self.title.mas_bottom).mas_equalTo(5);
             make.bottom.mas_equalTo(-10);
             make.leftMargin.mas_equalTo(self.title.mas_leftMargin).mas_equalTo(40);
         }];
@@ -84,10 +86,17 @@
             //make.bottom.mas_equalTo(0);
             make.rightMargin.mas_equalTo(self.title);
             make.top.mas_equalTo(self.nickName.mas_bottom).mas_equalTo(4);
-            make.height.mas_equalTo(15);
+            //make.height.mas_equalTo(15);
         }];
     }
     return _starImageView;
+}
+
+- (NSUInteger)backgroundWidth{
+    if(!_backgroundWidth){
+        _backgroundWidth = 230;
+    }
+    return _backgroundWidth;
 }
 
 @end

@@ -81,6 +81,7 @@
 		09E06A5620D79FDA00C21F8E /* LTYPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E06A5520D79FDA00C21F8E /* LTYPersonalViewController.m */; };
 		09E06A5920D7BAB400C21F8E /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E06A5820D7BAB400C21F8E /* SettingViewController.m */; };
 		09EA955E20E27BF70071345E /* LTYTeachNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EA955D20E27BF70071345E /* LTYTeachNetManager.m */; };
+		09FCDD6E20FE108C007BC7F0 /* LTYFreeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FCDD6D20FE108C007BC7F0 /* LTYFreeViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -239,6 +240,8 @@
 		09E06A5820D7BAB400C21F8E /* SettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		09EA955C20E27BF70071345E /* LTYTeachNetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYTeachNetManager.h; sourceTree = "<group>"; };
 		09EA955D20E27BF70071345E /* LTYTeachNetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYTeachNetManager.m; sourceTree = "<group>"; };
+		09FCDD6C20FE108C007BC7F0 /* LTYFreeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYFreeViewCell.h; sourceTree = "<group>"; };
+		09FCDD6D20FE108C007BC7F0 /* LTYFreeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYFreeViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +320,8 @@
 				090EF22320F7995B00CB1C9D /* LTYRecommendViewCell.xib */,
 				0945C8A820F8EBB000BE5318 /* LTYRecommendView.h */,
 				0945C8A920F8EBB000BE5318 /* LTYRecommendView.m */,
+				09FCDD6C20FE108C007BC7F0 /* LTYFreeViewCell.h */,
+				09FCDD6D20FE108C007BC7F0 /* LTYFreeViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -809,6 +814,7 @@
 				09173AAC20CB891300246B8D /* LTYSortNetManager.m in Sources */,
 				0948505420CAC38400492EEF /* UIImageView+AFNetworking.m in Sources */,
 				09173ADA20CC0CA400246B8D /* MASConstraintMaker.m in Sources */,
+				09FCDD6E20FE108C007BC7F0 /* LTYFreeViewCell.m in Sources */,
 				09173ADC20CC0CA400246B8D /* NSArray+MASAdditions.m in Sources */,
 				09173AD920CC0CA400246B8D /* MASCompositeConstraint.m in Sources */,
 				090EF22220F7991D00CB1C9D /* LTYRecommendViewCell.m in Sources */,
