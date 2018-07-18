@@ -10,7 +10,6 @@
 
 @interface LTYFreeViewCell : UICollectionViewCell
 
-@property(nonatomic,strong) UIImageView *backgroundImageView;
-@property(nonatomic,strong) UILabel *label;
+- (void) setUpCellWithArray:(NSArray *)array withItemRow:(NSUInteger) itemRow;
 
 @end

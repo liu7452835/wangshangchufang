@@ -33,6 +33,14 @@
     }];
 }
 
+- (void)getTeachFreeDateCompletionHandle:(void (^)(NSError *))completed{
+    self.dataTask = [LTYTeachNetManager postTeachFreeCompletionHandle:^(id responseObject, NSError *error) {
+        self.freeTeachModel = responseObject;
+        
+        completed(error);
+    }];
+}
+
 - (NSString *)titleForTag:(NSInteger)index{
     
         return self.tagModel.data[index].title;
@@ -56,4 +64,10 @@
     return _recommendModel;
 }
 
+- (LTYTeachRecommendModel *)freeTeachModel{
+    if (!_freeTeachModel) {
+        _freeTeachModel = [[LTYTeachRecommendModel alloc] init];
+    }
+    return _freeTeachModel;
+}
 @end

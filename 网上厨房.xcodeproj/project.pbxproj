@@ -82,6 +82,7 @@
 		09E06A5920D7BAB400C21F8E /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E06A5820D7BAB400C21F8E /* SettingViewController.m */; };
 		09EA955E20E27BF70071345E /* LTYTeachNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EA955D20E27BF70071345E /* LTYTeachNetManager.m */; };
 		09FCDD6E20FE108C007BC7F0 /* LTYFreeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FCDD6D20FE108C007BC7F0 /* LTYFreeViewCell.m */; };
+		09FCDD7320FE3660007BC7F0 /* LTYFreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FCDD7220FE3660007BC7F0 /* LTYFreeView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -242,6 +243,9 @@
 		09EA955D20E27BF70071345E /* LTYTeachNetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYTeachNetManager.m; sourceTree = "<group>"; };
 		09FCDD6C20FE108C007BC7F0 /* LTYFreeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYFreeViewCell.h; sourceTree = "<group>"; };
 		09FCDD6D20FE108C007BC7F0 /* LTYFreeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYFreeViewCell.m; sourceTree = "<group>"; };
+		09FCDD7120FE3660007BC7F0 /* LTYFreeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYFreeView.h; sourceTree = "<group>"; };
+		09FCDD7220FE3660007BC7F0 /* LTYFreeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYFreeView.m; sourceTree = "<group>"; };
+		09FCDD7420FE3CE9007BC7F0 /* File.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = File.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +282,7 @@
 		091233DE20C82205001A80D6 = {
 			isa = PBXGroup;
 			children = (
+				09FCDD7420FE3CE9007BC7F0 /* File.rtf */,
 				091233E920C82205001A80D6 /* 网上厨房 */,
 				091233E820C82205001A80D6 /* Products */,
 			);
@@ -322,6 +327,8 @@
 				0945C8A920F8EBB000BE5318 /* LTYRecommendView.m */,
 				09FCDD6C20FE108C007BC7F0 /* LTYFreeViewCell.h */,
 				09FCDD6D20FE108C007BC7F0 /* LTYFreeViewCell.m */,
+				09FCDD7120FE3660007BC7F0 /* LTYFreeView.h */,
+				09FCDD7220FE3660007BC7F0 /* LTYFreeView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -819,6 +826,7 @@
 				09173AD920CC0CA400246B8D /* MASCompositeConstraint.m in Sources */,
 				090EF22220F7991D00CB1C9D /* LTYRecommendViewCell.m in Sources */,
 				0948506020CAC38400492EEF /* AFSecurityPolicy.m in Sources */,
+				09FCDD7320FE3660007BC7F0 /* LTYFreeView.m in Sources */,
 				0948505120CAC38400492EEF /* UIProgressView+AFNetworking.m in Sources */,
 				0970092C20C9869100461468 /* MJFoundation.m in Sources */,
 				0948505F20CAC38400492EEF /* AFNetworkReachabilityManager.m in Sources */,

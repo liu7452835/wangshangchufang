@@ -19,4 +19,10 @@
 //URL https://api.ecook.cn/public/getOnlineTeachList.shtml
 +(id) postTeachRecommendCompletionHandle:(void(^)(id responseObject,NSError *error))completed;
 
+/** 从网络上获得课堂页免费课堂信息  */
+//URL https://api.ecook.cn/public/getOnlineTeachList.shtml
++(id) postTeachFreeCompletionHandle:(void (^)(id responseObject,NSError *error))completed;
+
+
+
 @end

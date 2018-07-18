@@ -14,7 +14,7 @@
 #define kTeachListURLPath @"https://api.ecook.cn/public/getOnlineTeachList.shtml"
 
 #define kURLTerminal @"terminal":@"3"
-#define kURLVersion @"version":@"13.9.3"
+#define kURLVersion @"version":@"13.9.4"
 #define kURLLiveType @"type":@"live"
 #define kURLRecommendType @"type":@"recommend"
 #define kURLOrder @"order": @"latest"
@@ -32,6 +32,12 @@
 
 +(id)postTeachRecommendCompletionHandle:(void (^)(id, NSError *))completed{
     return [self POST:kTeachListURLPath parameters:@{kURLTerminal,kURLRecommendType,kURLVersion} completionHandle:^(id responseObject, NSError *error) {
+        completed([LTYTeachRecommendModel mj_objectWithKeyValues:responseObject],error);
+    }];
+}
+
++ (id)postTeachFreeCompletionHandle:(void (^)(id, NSError *))completed{
+    return [self POST:kTeachListURLPath parameters:@{kURLTerminal,kURLLiveType,kURLVersion} completionHandle:^(id responseObject, NSError *error) {
         completed([LTYTeachRecommendModel mj_objectWithKeyValues:responseObject],error);
     }];
 }

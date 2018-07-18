@@ -12,9 +12,12 @@
 #import "LTYTeachTagModel.h"
 #import "LTYTeachRecommendModel.h"
 #import "LTYRecommendViewCell.h"
+#import "LTYFreeViewCell.h"
+
 
 static NSString * const tagColumnId = @"TagColumnCell";
 static NSString * const recommendColumnID = @"RecommendViewCell";
+static NSString * const freeViewID = @"FreeViewCell";
 static NSString * const defaultId = @"CollectionViewCell";
 
 #define ksectiontHeadId @"SectionHeadCell"
@@ -28,22 +31,30 @@ static NSString * const defaultId = @"CollectionViewCell";
 
 @implementation LTYTeachViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self registeCell];
     
     [MBProgressHUD showMessage:@"正在努力加载中..."];
-    [self.teachVC getDataCompletionHandle:^(NSError *error) {
-        
-    }];
     
+    [self.teachVC getDataCompletionHandle:^(NSError *error) {
+        [MBProgressHUD hideHUD];
+        [self.collectionView reloadData];
+    }];
     [self.teachVC getMoreDateCompletionHandle:^(NSError *error) {
         [MBProgressHUD hideHUD];
         [self.collectionView reloadData];
-       // NSLog(@"2");
     }];
-   
+    
+    [self.teachVC getTeachFreeDateCompletionHandle:^(NSError *error) {
+        [MBProgressHUD hideHUD];
+        [self.collectionView reloadData];
+        // NSLog(@"2");
+    }];
+    
+    
 }
 
 #pragma mark - 初始化方法
@@ -51,6 +62,7 @@ static NSString * const defaultId = @"CollectionViewCell";
 -(void)registeCell{
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([LTYTagColumnCell class]) bundle:nil] forCellWithReuseIdentifier:tagColumnId];
     [self.collectionView registerNib:[UINib nibWithNibName:@"LTYRecommendViewCell" bundle:nil] forCellWithReuseIdentifier:recommendColumnID];
+    [self.collectionView registerClass:[LTYFreeViewCell class] forCellWithReuseIdentifier:freeViewID];
     [self.collectionView registerClass:[UICollectionViewCell class]     forCellWithReuseIdentifier:defaultId];
     
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ksectiontHeadId];
@@ -77,8 +89,10 @@ static NSString * const defaultId = @"CollectionViewCell";
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if (section == 0) {
         return 8;
-    } else{
+    } else if(section == 1){
         return 1;
+    } else{
+        return 2;
     }
 }
 
@@ -102,13 +116,11 @@ static NSString * const defaultId = @"CollectionViewCell";
         [cell.scrollView setFrame:CGRectMake(cell.scrollView.frame.origin.x, cell.scrollView.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
         return cell;
     } else{
-        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:defaultId forIndexPath:indexPath];
-        UILabel *label = [UILabel new];
-        label.text = @"ok";
-        [cell.contentView addSubview:label];
-        [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(0);
-        }];
+        //UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:defaultId forIndexPath:indexPath];
+        LTYFreeViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:freeViewID forIndexPath:indexPath];
+       
+        [cell setUpCellWithArray:self.teachVC.freeTeachModel.list withItemRow:indexPath.row];
+        
         return cell;
     }
 }
@@ -146,14 +158,20 @@ static NSString * const defaultId = @"CollectionViewCell";
         W = kScreenWidth;
         size = CGSizeMake(kScreenWidth, kScreenWidth*5/6);
     } else{
-        size = CGSizeMake(kScreenWidth, 10);
+        size = CGSizeMake((kScreenWidth-30)/2, (kScreenWidth-30)*2/3);
     }
     return size;
 }
 
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(5, 0, -5, 0);
+    
+    if (section == 0 || section == 1) {
+        return UIEdgeInsetsMake(5, 0, -5, 0);
+    } else {
+        return UIEdgeInsetsMake(5, 10, -5, 10);
+    }
+    
 }
 
 #pragma mark - 懒加载
