@@ -17,7 +17,6 @@
 @property(nonatomic,strong) LTYTeachRecommendModel *recommendModel;
 @property(nonatomic,strong) LTYTeachRecommendModel *freeTeachModel;
 
-- (NSString *)titleForTag:(NSInteger)index;
 
 - (void)getTeachFreeDateCompletionHandle:(void (^)(NSError *error))completed;
 

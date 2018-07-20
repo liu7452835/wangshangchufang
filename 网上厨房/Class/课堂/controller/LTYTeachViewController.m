@@ -26,7 +26,7 @@ static NSString * const defaultId = @"CollectionViewCell";
 
 @property(nonatomic,strong) LTYTeachViewModel *teachVC;
 @property(nonatomic,strong) UICollectionView *collectionView;
-
+@property(nonatomic,assign) __block int count;
 @end
 
 @implementation LTYTeachViewController
@@ -39,6 +39,10 @@ static NSString * const defaultId = @"CollectionViewCell";
     
     [MBProgressHUD showMessage:@"正在努力加载中..."];
     
+    [self getData];
+    
+    NSLog(@"5");
+   /*
     [self.teachVC getDataCompletionHandle:^(NSError *error) {
         [MBProgressHUD hideHUD];
         [self.collectionView reloadData];
@@ -53,9 +57,43 @@ static NSString * const defaultId = @"CollectionViewCell";
         [self.collectionView reloadData];
         // NSLog(@"2");
     }];
-    
-    
+    */
 }
+
+
+- (void) getData{
+    
+    self.count = 3;
+    
+    [self.teachVC getDataCompletionHandle:^(NSError *error) {
+        NSLog(@"0");
+        self.count--;
+        [self performSelector:@selector(updateUI) withObject:nil];
+    }];
+    
+    [self.teachVC getMoreDateCompletionHandle:^(NSError *error) {
+        NSLog(@"1");
+        self.count--;
+        [self performSelector:@selector(updateUI) withObject:nil];
+    }];
+    
+    [self.teachVC getTeachFreeDateCompletionHandle:^(NSError *error) {
+        NSLog(@"2");
+        self.count--;
+        [self performSelector:@selector(updateUI) withObject:nil];
+    }];
+    
+    NSLog(@"4");
+}
+
+- (void)updateUI{
+    if (!self.count) {
+        [MBProgressHUD hideHUD];
+        [self.collectionView reloadData];
+        NSLog(@"3");
+    }
+}
+    
 
 #pragma mark - 初始化方法
 
@@ -100,11 +138,7 @@ static NSString * const defaultId = @"CollectionViewCell";
     if (indexPath.section == 0) {
         LTYTagColumnCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:tagColumnId forIndexPath:indexPath];
         
-        NSURL *picURL = [NSURL URLWithString:[NSString stringWithFormat: @"http://pic.ecook.cn/web/%@.jpg!s4",self.teachVC.tagModel.data[indexPath.row].imageid]];
-        
-        [cell.contentPic setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:picURL]]];
-        
-        cell.contentLabel.text = [self.teachVC titleForTag:indexPath.row];
+        [cell setUpCellWithArray:self.teachVC.tagModel.data withItemRow:indexPath.row];
         //NSLog(@"1");
         return cell;
     } else if(indexPath.section == 1){

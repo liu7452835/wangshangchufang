@@ -41,12 +41,6 @@
     }];
 }
 
-- (NSString *)titleForTag:(NSInteger)index{
-    
-        return self.tagModel.data[index].title;
-
-}
-
 
 #pragma mark - 懒加载
 

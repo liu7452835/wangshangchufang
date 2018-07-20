@@ -21,6 +21,10 @@
 - (void)setUpCellWithArray:(NSArray *)array withItemRow:(NSUInteger)itemRow{
     LTYFreeView *freeView = [[LTYFreeView alloc] init];
     
+    if (freeView.title.text) {
+        return;
+    }
+    
     NSString *backgroudImagePath = [NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",[array[itemRow] valueForKey:@"himg"]];
     NSURL *backgroundURL = [NSURL URLWithString:backgroudImagePath];
     [freeView.recommendBackgroundImageView setImageWithURL:backgroundURL];
