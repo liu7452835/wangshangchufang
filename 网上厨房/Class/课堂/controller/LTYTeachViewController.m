@@ -41,7 +41,7 @@ static NSString * const defaultId = @"CollectionViewCell";
     
     [self getData];
     
-    NSLog(@"5");
+    //NSLog(@"5");
    /*
     [self.teachVC getDataCompletionHandle:^(NSError *error) {
         [MBProgressHUD hideHUD];
@@ -66,31 +66,31 @@ static NSString * const defaultId = @"CollectionViewCell";
     self.count = 3;
     
     [self.teachVC getDataCompletionHandle:^(NSError *error) {
-        NSLog(@"0");
+        //NSLog(@"0");
         self.count--;
         [self performSelector:@selector(updateUI) withObject:nil];
     }];
     
     [self.teachVC getMoreDateCompletionHandle:^(NSError *error) {
-        NSLog(@"1");
+       // NSLog(@"1");
         self.count--;
         [self performSelector:@selector(updateUI) withObject:nil];
     }];
     
     [self.teachVC getTeachFreeDateCompletionHandle:^(NSError *error) {
-        NSLog(@"2");
+       // NSLog(@"2");
         self.count--;
         [self performSelector:@selector(updateUI) withObject:nil];
     }];
     
-    NSLog(@"4");
+    //NSLog(@"4");
 }
 
 - (void)updateUI{
     if (!self.count) {
         [MBProgressHUD hideHUD];
         [self.collectionView reloadData];
-        NSLog(@"3");
+       // NSLog(@"3");
     }
 }
     
@@ -114,7 +114,7 @@ static NSString * const defaultId = @"CollectionViewCell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    return section == 1?CGSizeMake(kScreenWidth, 30):CGSizeMake(0, 0);
+    return section == 0 ? CGSizeMake(0, 0) : CGSizeMake(kScreenWidth, 30);
 }
 
 #pragma mark - dataSource
@@ -160,19 +160,66 @@ static NSString * const defaultId = @"CollectionViewCell";
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section ==1) {
+    
+    if (indexPath.section >=1) {
         UICollectionReusableView *headView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ksectiontHeadId forIndexPath:indexPath];
+        
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, kScreenWidth, 20)];
-        label.text = @"推荐课程";
         label.font = [UIFont systemFontOfSize:17];
         label.textAlignment = NSTextAlignmentLeft;
+        
+        for (UIView *view in headView.subviews) {
+            [view removeFromSuperview];
+        }// 解决复用bug
+        
         [headView addSubview:label];
+        
+        if (indexPath.section == 1) {
+            
+            label.text = @"推荐课程";
+            NSLog(@"1111");
+            NSLog(@"%@",label.text);
+
+        } else{
+        
+            label.text = @"免费课程";
+            NSLog(@"1111");
+            NSLog(@"%@",label.text);
+            
+        }
         return headView;
+        
     } else{
         UICollectionReusableView *emptyView = [[UICollectionReusableView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
         return emptyView;
     }
     
+    
+    
+    /*
+    
+   // UICollectionReusableView *headView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ksectiontHeadId forIndexPath:indexPath];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, kScreenWidth, 20)];
+    label.font = [UIFont systemFontOfSize:17];
+    label.textAlignment = NSTextAlignmentLeft;
+    [headView addSubview:label];
+    
+        if (indexPath.section == 1) {
+            
+            label.text = @"推荐课程";
+            NSLog(@"1111");
+            NSLog(@"%@",label.text);
+            return headView;
+        } else if(indexPath.section == 2){
+            label.text = @"免费课程";
+            NSLog(@"2222");
+            NSLog(@"%@",label.text);
+            return headView;
+        } else{
+        UICollectionReusableView *emptyView = [[UICollectionReusableView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
+        return emptyView;
+    }
+    */
 }
 
 

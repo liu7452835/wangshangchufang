@@ -36,10 +36,6 @@
         
         LTYRecommendView *recommendView = [[LTYRecommendView alloc] init];
         
-        if (recommendView.title.text) {
-            return;
-        }
-        
         NSString *backgroudImagePath = [NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",[array[i] valueForKey:@"himg"]];
         NSURL *backgroundURL = [NSURL URLWithString:backgroudImagePath];
         [recommendView.recommendBackgroundImageView setImageWithURL:backgroundURL];

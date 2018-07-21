@@ -38,11 +38,11 @@
 
 @property(nonatomic,assign) NSInteger price;
 
-@property(nonatomic,assign) NSUInteger startTime;
+@property(nonatomic,assign) NSInteger startTime;
 
 @property(nonatomic,strong) NSString *vimg;
 
-@property(nonatomic,assign) NSUInteger endTime;
+@property(nonatomic,assign) NSInteger endTime;
 
 @property(nonatomic,assign) NSInteger ID;
 

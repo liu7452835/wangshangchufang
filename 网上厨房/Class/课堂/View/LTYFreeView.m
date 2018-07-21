@@ -12,7 +12,8 @@
 
 - (instancetype)init{
     if (self = [super init]) {
-        self.timeLabel.font = [UIFont systemFontOfSize:8];
+        self.timeLabel.font = [UIFont systemFontOfSize:10];
+    
         self.timeLabel.textColor = [UIColor lightGrayColor];
         self.timeLabel.textAlignment = NSTextAlignmentCenter;
     }

@@ -245,7 +245,6 @@
 		09FCDD6D20FE108C007BC7F0 /* LTYFreeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYFreeViewCell.m; sourceTree = "<group>"; };
 		09FCDD7120FE3660007BC7F0 /* LTYFreeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYFreeView.h; sourceTree = "<group>"; };
 		09FCDD7220FE3660007BC7F0 /* LTYFreeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYFreeView.m; sourceTree = "<group>"; };
-		09FCDD7420FE3CE9007BC7F0 /* File.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = File.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,7 +281,6 @@
 		091233DE20C82205001A80D6 = {
 			isa = PBXGroup;
 			children = (
-				09FCDD7420FE3CE9007BC7F0 /* File.rtf */,
 				091233E920C82205001A80D6 /* 网上厨房 */,
 				091233E820C82205001A80D6 /* Products */,
 			);
