@@ -93,7 +93,53 @@ static NSString * const defaultId = @"CollectionViewCell";
        // NSLog(@"3");
     }
 }
+
+
+- (NSString *)convertStarNumber:(NSNumber *)starNum{
+    NSArray *starArray = @[@"white",@"talent_one_star",@"talent_two_star",@"talent_three_star",@"talent_four_star",@"talent_five_star"];
+    return starArray[starNum.intValue];
+}
+
+- (NSString *)timestampSwitchTime:(NSNumber *)timestamp{
     
+    //NSString *string = @"1532160000000,";
+    NSInteger timestampNumber = [timestamp integerValue];
+    NSTimeInterval second = timestampNumber / 1000.0;
+    
+    // 时间戳 -> NSDate *
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:second];
+    //NSLog(@"%@", date);
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+    [formatter setDateFormat:@"M月dd日"];
+    
+    NSString *stringDate = [formatter stringFromDate:date];
+    
+    [formatter setDateFormat:@"HH:mm"];
+    NSString *stringTime = [formatter stringFromDate:date];
+    
+    //NSLog(@"%@",stringDate);
+    
+    //NSLog(@"%@",stringTime);
+    
+    NSDateComponents *components = [[NSCalendar autoupdatingCurrentCalendar] components:NSCalendarUnitWeekday fromDate:date];
+    NSInteger weekday = [components weekday];
+    
+    //NSLog(@"%ld",weekday);
+    
+    NSArray *weekdays = [NSArray arrayWithObjects: [NSNull null], @"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六", nil];
+    
+    //NSLog(@"%@",weekdays[weekday]);
+    
+    NSString *timeDate = [stringDate stringByAppendingFormat:@" %@ %@开始",weekdays[weekday],stringTime];
+    
+    //NSLog(@"%@",timeDate);
+    
+    return timeDate;
+    
+}
+
 
 #pragma mark - 初始化方法
 
@@ -138,23 +184,94 @@ static NSString * const defaultId = @"CollectionViewCell";
     if (indexPath.section == 0) {
         LTYTagColumnCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:tagColumnId forIndexPath:indexPath];
         
-        [cell setUpCellWithArray:self.teachVC.tagModel.data withItemRow:indexPath.row];
+        NSURL *picURL = [NSURL URLWithString:[NSString stringWithFormat: @"http://pic.ecook.cn/web/%@.jpg!s4",[self.teachVC.tagModel.data[indexPath.row] valueForKey: @"imageid"]]];
+        
+        [cell.contentPic setImageWithURL:picURL];
+        
+        cell.contentLabel.text = [self.teachVC.tagModel.data[indexPath.row] valueForKey:@"title"];
+        
         //NSLog(@"1");
         return cell;
-    } else if(indexPath.section == 1){
-        LTYRecommendViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:recommendColumnID forIndexPath:indexPath];
-        
-        
-        [cell setUpCellWithArray:self.teachVC.recommendModel.list];
-        
-        [cell.scrollView setFrame:CGRectMake(cell.scrollView.frame.origin.x, cell.scrollView.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
-        return cell;
-    } else{
-        //UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:defaultId forIndexPath:indexPath];
+    } else if(indexPath.section == 2){
+ 
         LTYFreeViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:freeViewID forIndexPath:indexPath];
        
-        [cell setUpCellWithArray:self.teachVC.freeTeachModel.list withItemRow:indexPath.row];
+        NSArray *array = self.teachVC.freeTeachModel.list;
         
+        NSString *backgroudImagePath = [NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",[array[indexPath.row] valueForKey:@"himg"]];
+        NSURL *backgroundURL = [NSURL URLWithString:backgroudImagePath];
+        [cell.freeView.recommendBackgroundImageView setImageWithURL:backgroundURL];
+        //[recommendView.recommendBackgroundImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:backgroundURL]]];
+        //NSLog(@"%@",backgroundURL);
+        
+        cell.freeView.title.text = [array[indexPath.row] valueForKey:@"title"];
+        // NSLog(@"%@",recommendView.title.text);
+        
+        NSString *idImagePath = [NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",[array[indexPath.row] valueForKeyPath:@"teacher.imageid"]];
+        NSURL *idIamgeURL = [NSURL URLWithString:idImagePath];
+        [cell.freeView.idImageView setImageWithURL:idIamgeURL];
+        //[recommendView.idImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:idIamgeURL]]];
+        // NSLog(@"%@",idIamgeURL);
+        
+        cell.freeView.nickName.text = [array[indexPath.row] valueForKeyPath:@"teacher.nickname"];
+        //NSLog(@"%@",recommendView.nickName.text);
+        
+        [cell.freeView.starImageView setImage:[UIImage imageNamed:[self convertStarNumber:[array[indexPath.row] valueForKeyPath:@"teacher.star"]]]];
+        // NSLog(@"%@",[self convertStarNumber:[array[i] valueForKeyPath:@"teacher.star"]]);
+        
+        [cell.freeView.timeLabel setText: [array[indexPath.row] valueForKey:@"startTime"] ? [self timestampSwitchTime:[array[indexPath.row] valueForKey:@"startTime"]] : nil];
+        //NSLog(@"%@",[array[itemRow] valueForKey:@"startTime"]);
+        [cell.freeView.timeLabel setText:[self timestampSwitchTime:[array[indexPath.row] valueForKey:@"startTime"]]];
+        
+        return cell;
+    } else{
+        LTYRecommendViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:recommendColumnID forIndexPath:indexPath];
+        
+        [cell.scrollView setFrame:CGRectMake(cell.scrollView.frame.origin.x, cell.scrollView.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
+        
+        NSArray *array = self.teachVC.recommendModel.list;
+        
+            CGFloat xbase = 10;
+            CGFloat width = (kScreenWidth - 30)/2;
+            
+            for (int i = 0; i < krecommendCount; i++) {
+                
+                LTYRecommendView *recommendView = [[LTYRecommendView alloc] init];
+                
+                NSString *backgroudImagePath = [NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",[array[i] valueForKey:@"himg"]];
+                NSURL *backgroundURL = [NSURL URLWithString:backgroudImagePath];
+                [recommendView.recommendBackgroundImageView setImageWithURL:backgroundURL];
+                //[recommendView.recommendBackgroundImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:backgroundURL]]];
+                //NSLog(@"%@",backgroundURL);
+                
+                recommendView.title.text = [array[i] valueForKey:@"title"];
+                // NSLog(@"%@",recommendView.title.text);
+                
+                NSString *idImagePath = [NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",[array[i] valueForKeyPath:@"teacher.imageid"]];
+                NSURL *idIamgeURL = [NSURL URLWithString:idImagePath];
+                [recommendView.idImageView setImageWithURL:idIamgeURL];
+                //[recommendView.idImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:idIamgeURL]]];
+                // NSLog(@"%@",idIamgeURL);
+                
+                recommendView.nickName.text = [array[i] valueForKeyPath:@"teacher.nickname"];
+                //NSLog(@"%@",recommendView.nickName.text);
+                
+                [recommendView.starImageView setImage:[UIImage imageNamed:[self convertStarNumber:[array[i] valueForKeyPath:@"teacher.star"]]]];
+                // NSLog(@"%@",[self convertStarNumber:[array[i] valueForKeyPath:@"teacher.star"]]);
+                
+                [cell.scrollView addSubview:recommendView];
+                
+                [recommendView setFrame:CGRectMake(xbase, 5, width, kScreenWidth *5/6)];
+                
+                // NSLog(@"%f",xbase);
+                
+                xbase = xbase + 10 +width;
+                
+            }
+            [cell.scrollView setContentSize:CGSizeMake(xbase, cell.scrollView.frame.size.height)];
+        
+        
+       
         return cell;
     }
 }
@@ -280,6 +397,7 @@ static NSString * const defaultId = @"CollectionViewCell";
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);//滚动视图的尺寸
         
+        _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         //NSLog(@"ceshi");

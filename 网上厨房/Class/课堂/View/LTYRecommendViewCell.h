@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+//#import "LTYRecommendView.h"
 
 @protocol LTYRecommendViewCellDelegate<NSObject>
 -(void)cellSelected;
@@ -16,7 +17,7 @@
 @interface LTYRecommendViewCell : UICollectionViewCell<UIScrollViewDelegate>
 @property(nonatomic,strong) id<LTYRecommendViewCellDelegate> delegate;
 
-- (void) setUpCellWithArray:(NSArray *)array;
+//- (void) setUpCellWithArray:(NSArray *)array;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
+//@property(nonatomic,strong) LTYRecommendView *recommendView;
 @end

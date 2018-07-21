@@ -12,4 +12,7 @@
 #define kCCSWidth ([UIScreen mainScreen].bounds.size.width - 50)/4
 
 #define kScreenWidth ([UIScreen mainScreen].bounds.size.width)
+
+#define krecommendCount 8
+
 #endif /* Constants_h */

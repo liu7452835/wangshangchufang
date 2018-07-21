@@ -12,6 +12,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *contentPic;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
-- (void) setUpCellWithArray:(NSArray *)array withItemRow:(NSUInteger) itemRow;
 
 @end

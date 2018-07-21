@@ -8,6 +8,13 @@
 
 #import "LTYFreeView.h"
 
+@interface LTYFreeView()
+
+@property(nonatomic,strong) UIImageView *timeImageView;
+
+@end
+
+
 @implementation LTYFreeView
 
 - (instancetype)init{
@@ -16,6 +23,8 @@
     
         self.timeLabel.textColor = [UIColor lightGrayColor];
         self.timeLabel.textAlignment = NSTextAlignmentCenter;
+        
+        self.timeImageView.hidden = NO;
     }
     return self;
 }
@@ -37,6 +46,18 @@
         }];
     }
     return _timeLabel;
+}
+
+- (UIImageView *)timeImageView{
+    if (!_timeImageView) {
+        _timeImageView = [[UIImageView alloc] init];
+        [self.recommendBackgroundImageView addSubview:_timeImageView];
+        [_timeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.centerY.mas_equalTo(0);
+        }];
+        [_timeImageView setImage:[UIImage imageNamed:@"begin"]];
+    }
+    return _timeImageView;
 }
 
 @end

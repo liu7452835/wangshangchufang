@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LTYFreeView.h"
 
 @interface LTYFreeViewCell : UICollectionViewCell
 
-- (void) setUpCellWithArray:(NSArray *)array withItemRow:(NSUInteger) itemRow;
+@property(nonatomic,strong) LTYFreeView *freeView;
 
 @end

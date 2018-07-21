@@ -8,27 +8,10 @@
 
 #import "LTYTagColumnCell.h"
 
-@interface LTYTagColumnCell()
-
-@end
-
 @implementation LTYTagColumnCell
 
 - (void)awakeFromNib{
     [super awakeFromNib];
-}
-- (void) setUpCellWithArray:(NSArray *)array withItemRow:(NSUInteger)itemRow{
-    
-    if (self.contentPic.image) {
-        return;
-    }
-    
-    NSURL *picURL = [NSURL URLWithString:[NSString stringWithFormat: @"http://pic.ecook.cn/web/%@.jpg!s4",[array[itemRow] valueForKey: @"imageid"]]];
-    
-    [self.contentPic setImageWithURL:picURL];
-    
-    self.contentLabel.text = [array[itemRow] valueForKey:@"title"];
-    //NSLog(@"1");
 }
 
 
