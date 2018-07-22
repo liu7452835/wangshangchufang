@@ -23,6 +23,9 @@
 //URL https://api.ecook.cn/public/getOnlineTeachList.shtml
 +(id) postTeachFreeCompletionHandle:(void (^)(id responseObject,NSError *error))completed;
 
+/** 从网络上获得课堂页全部（最新）课堂信息  */
+//URL https://api.ecook.cn/public/getOnlineTeachList.shtml
++(id) postTeachNewAllCompletionHandle:(void (^)(id responseObject,NSError *error))completed;
 
 
 @end

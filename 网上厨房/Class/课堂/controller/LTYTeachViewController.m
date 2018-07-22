@@ -42,22 +42,22 @@ static NSString * const defaultId = @"CollectionViewCell";
     [self getData];
     
     //NSLog(@"5");
-   /*
-    [self.teachVC getDataCompletionHandle:^(NSError *error) {
-        [MBProgressHUD hideHUD];
-        [self.collectionView reloadData];
-    }];
-    [self.teachVC getMoreDateCompletionHandle:^(NSError *error) {
-        [MBProgressHUD hideHUD];
-        [self.collectionView reloadData];
-    }];
-    
-    [self.teachVC getTeachFreeDateCompletionHandle:^(NSError *error) {
-        [MBProgressHUD hideHUD];
-        [self.collectionView reloadData];
-        // NSLog(@"2");
-    }];
-    */
+    /*
+     [self.teachVC getDataCompletionHandle:^(NSError *error) {
+     [MBProgressHUD hideHUD];
+     [self.collectionView reloadData];
+     }];
+     [self.teachVC getMoreDateCompletionHandle:^(NSError *error) {
+     [MBProgressHUD hideHUD];
+     [self.collectionView reloadData];
+     }];
+     
+     [self.teachVC getTeachFreeDateCompletionHandle:^(NSError *error) {
+     [MBProgressHUD hideHUD];
+     [self.collectionView reloadData];
+     // NSLog(@"2");
+     }];
+     */
 }
 
 
@@ -72,13 +72,13 @@ static NSString * const defaultId = @"CollectionViewCell";
     }];
     
     [self.teachVC getMoreDateCompletionHandle:^(NSError *error) {
-       // NSLog(@"1");
+        // NSLog(@"1");
         self.count--;
         [self performSelector:@selector(updateUI) withObject:nil];
     }];
     
     [self.teachVC getTeachFreeDateCompletionHandle:^(NSError *error) {
-       // NSLog(@"2");
+        // NSLog(@"2");
         self.count--;
         [self performSelector:@selector(updateUI) withObject:nil];
     }];
@@ -90,7 +90,7 @@ static NSString * const defaultId = @"CollectionViewCell";
     if (!self.count) {
         [MBProgressHUD hideHUD];
         [self.collectionView reloadData];
-       // NSLog(@"3");
+        // NSLog(@"3");
     }
 }
 
@@ -104,6 +104,7 @@ static NSString * const defaultId = @"CollectionViewCell";
     
     //NSString *string = @"1532160000000,";
     NSInteger timestampNumber = [timestamp integerValue];
+    NSLog(@"%ld",timestampNumber);
     NSTimeInterval second = timestampNumber / 1000.0;
     
     // 时间戳 -> NSDate *
@@ -138,6 +139,22 @@ static NSString * const defaultId = @"CollectionViewCell";
     
     return timeDate;
     
+}
+
+- (BOOL) isWaitToPlayWithIndexPath:(NSIndexPath *)indexPath{
+    NSArray *array = self.teachVC.freeTeachModel.list;
+    NSInteger plyaTimeStamp = [[array[indexPath.row] valueForKey:@"startTime"] integerValue]/1000;
+    
+    NSInteger nowTimeStamp = [[NSDate date] timeIntervalSince1970];
+    
+    // NSLog(@"%ld",plyaTimeStamp);
+    //  NSLog(@"%ld",nowTimeStamp);
+    //  NSLog(@"%ld",plyaTimeStamp - nowTimeStamp);
+    if ((plyaTimeStamp - nowTimeStamp) > 0) {
+        return YES;
+    } else{
+        return NO;
+    }
 }
 
 
@@ -193,9 +210,9 @@ static NSString * const defaultId = @"CollectionViewCell";
         //NSLog(@"1");
         return cell;
     } else if(indexPath.section == 2){
- 
+        
         LTYFreeViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:freeViewID forIndexPath:indexPath];
-       
+        
         NSArray *array = self.teachVC.freeTeachModel.list;
         
         NSString *backgroudImagePath = [NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",[array[indexPath.row] valueForKey:@"himg"]];
@@ -221,9 +238,69 @@ static NSString * const defaultId = @"CollectionViewCell";
         
         [cell.freeView.timeLabel setText: [array[indexPath.row] valueForKey:@"startTime"] ? [self timestampSwitchTime:[array[indexPath.row] valueForKey:@"startTime"]] : nil];
         //NSLog(@"%@",[array[itemRow] valueForKey:@"startTime"]);
-        [cell.freeView.timeLabel setText:[self timestampSwitchTime:[array[indexPath.row] valueForKey:@"startTime"]]];
         
+        
+        
+        if ([array[indexPath.row] valueForKey:@"startTime"]) {
+            
+            if ([self isWaitToPlayWithIndexPath:indexPath]) {
+                [cell.freeView.timeImageView setImage:[UIImage imageNamed:@"begin"]];
+                NSLog(@"777");
+                
+                for (CAReplicatorLayer *layer in cell.freeView.timeImageView.layer.sublayers)
+                {
+                    [layer removeFromSuperlayer];
+                }//去除添加的复制层（播放动画）
+                
+                return cell;
+            } else {
+                NSLog(@"888");
+                [cell.freeView.timeImageView setImage:[UIImage imageNamed:@"live"]];
+                
+                
+                
+                CAReplicatorLayer *replicatorLayer = [[CAReplicatorLayer alloc] init];
+                replicatorLayer.frame = CGRectMake(0, 0, cell.freeView.timeImageView.image.size.width, cell.freeView.timeImageView.image.size.height *3/5);
+                replicatorLayer.instanceCount = 5;
+                replicatorLayer.instanceTransform  = CATransform3DMakeTranslation(10, 0, 0);
+                replicatorLayer.instanceDelay = 0.2;
+                replicatorLayer.masksToBounds = YES;
+                // replicatorLayer.backgroundColor = [UIColor blackColor].CGColor;
+                
+                CALayer *layer = [CALayer layer];
+                layer.frame = CGRectMake(5, replicatorLayer.bounds.size.height/2, 5, cell.freeView.timeImageView.image.size.height/2);
+                layer.backgroundColor = [UIColor yellowColor].CGColor;
+                
+                [replicatorLayer addSublayer:layer];
+                
+                [cell.freeView.timeImageView.layer addSublayer:replicatorLayer];
+                
+                
+                layer.anchorPoint = CGPointMake(0, 1);
+                
+                CABasicAnimation *animation = [CABasicAnimation animation];
+                animation.duration = 0.5;
+                /*  animation.keyPath = @"position.y";
+                 
+                 animation.fromValue = @200;
+                 animation.toValue = @150;
+                 */
+                animation.keyPath = @"transform.scale.y";
+                animation.toValue = @0.1;
+                
+                animation.autoreverses = YES;
+                animation.repeatCount = MAXFLOAT;
+                [layer addAnimation:animation forKey:nil];
+                NSLog(@"666");
+                
+                
+                
+                
+                return cell;
+            }
+        }
         return cell;
+        
     } else{
         LTYRecommendViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:recommendColumnID forIndexPath:indexPath];
         
@@ -231,47 +308,47 @@ static NSString * const defaultId = @"CollectionViewCell";
         
         NSArray *array = self.teachVC.recommendModel.list;
         
-            CGFloat xbase = 10;
-            CGFloat width = (kScreenWidth - 30)/2;
+        CGFloat xbase = 10;
+        CGFloat width = (kScreenWidth - 30)/2;
+        
+        for (int i = 0; i < krecommendCount; i++) {
             
-            for (int i = 0; i < krecommendCount; i++) {
-                
-                LTYRecommendView *recommendView = [[LTYRecommendView alloc] init];
-                
-                NSString *backgroudImagePath = [NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",[array[i] valueForKey:@"himg"]];
-                NSURL *backgroundURL = [NSURL URLWithString:backgroudImagePath];
-                [recommendView.recommendBackgroundImageView setImageWithURL:backgroundURL];
-                //[recommendView.recommendBackgroundImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:backgroundURL]]];
-                //NSLog(@"%@",backgroundURL);
-                
-                recommendView.title.text = [array[i] valueForKey:@"title"];
-                // NSLog(@"%@",recommendView.title.text);
-                
-                NSString *idImagePath = [NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",[array[i] valueForKeyPath:@"teacher.imageid"]];
-                NSURL *idIamgeURL = [NSURL URLWithString:idImagePath];
-                [recommendView.idImageView setImageWithURL:idIamgeURL];
-                //[recommendView.idImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:idIamgeURL]]];
-                // NSLog(@"%@",idIamgeURL);
-                
-                recommendView.nickName.text = [array[i] valueForKeyPath:@"teacher.nickname"];
-                //NSLog(@"%@",recommendView.nickName.text);
-                
-                [recommendView.starImageView setImage:[UIImage imageNamed:[self convertStarNumber:[array[i] valueForKeyPath:@"teacher.star"]]]];
-                // NSLog(@"%@",[self convertStarNumber:[array[i] valueForKeyPath:@"teacher.star"]]);
-                
-                [cell.scrollView addSubview:recommendView];
-                
-                [recommendView setFrame:CGRectMake(xbase, 5, width, kScreenWidth *5/6)];
-                
-                // NSLog(@"%f",xbase);
-                
-                xbase = xbase + 10 +width;
-                
-            }
-            [cell.scrollView setContentSize:CGSizeMake(xbase, cell.scrollView.frame.size.height)];
+            LTYRecommendView *recommendView = [[LTYRecommendView alloc] init];
+            
+            NSString *backgroudImagePath = [NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",[array[i] valueForKey:@"himg"]];
+            NSURL *backgroundURL = [NSURL URLWithString:backgroudImagePath];
+            [recommendView.recommendBackgroundImageView setImageWithURL:backgroundURL];
+            //[recommendView.recommendBackgroundImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:backgroundURL]]];
+            //NSLog(@"%@",backgroundURL);
+            
+            recommendView.title.text = [array[i] valueForKey:@"title"];
+            // NSLog(@"%@",recommendView.title.text);
+            
+            NSString *idImagePath = [NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",[array[i] valueForKeyPath:@"teacher.imageid"]];
+            NSURL *idIamgeURL = [NSURL URLWithString:idImagePath];
+            [recommendView.idImageView setImageWithURL:idIamgeURL];
+            //[recommendView.idImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:idIamgeURL]]];
+            // NSLog(@"%@",idIamgeURL);
+            
+            recommendView.nickName.text = [array[i] valueForKeyPath:@"teacher.nickname"];
+            //NSLog(@"%@",recommendView.nickName.text);
+            
+            [recommendView.starImageView setImage:[UIImage imageNamed:[self convertStarNumber:[array[i] valueForKeyPath:@"teacher.star"]]]];
+            // NSLog(@"%@",[self convertStarNumber:[array[i] valueForKeyPath:@"teacher.star"]]);
+            
+            [cell.scrollView addSubview:recommendView];
+            
+            [recommendView setFrame:CGRectMake(xbase, 5, width, kScreenWidth *5/6)];
+            
+            // NSLog(@"%f",xbase);
+            
+            xbase = xbase + 10 +width;
+            
+        }
+        [cell.scrollView setContentSize:CGSizeMake(xbase, cell.scrollView.frame.size.height)];
         
         
-       
+        
         return cell;
     }
 }
@@ -294,14 +371,14 @@ static NSString * const defaultId = @"CollectionViewCell";
         if (indexPath.section == 1) {
             
             label.text = @"推荐课程";
-            NSLog(@"1111");
-            NSLog(@"%@",label.text);
-
+            // NSLog(@"1111");
+            // NSLog(@"%@",label.text);
+            
         } else{
-        
+            
             label.text = @"免费课程";
-            NSLog(@"1111");
-            NSLog(@"%@",label.text);
+            //  NSLog(@"1111");
+            //  NSLog(@"%@",label.text);
             
         }
         return headView;
@@ -314,29 +391,29 @@ static NSString * const defaultId = @"CollectionViewCell";
     
     
     /*
-    
-   // UICollectionReusableView *headView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ksectiontHeadId forIndexPath:indexPath];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, kScreenWidth, 20)];
-    label.font = [UIFont systemFontOfSize:17];
-    label.textAlignment = NSTextAlignmentLeft;
-    [headView addSubview:label];
-    
-        if (indexPath.section == 1) {
-            
-            label.text = @"推荐课程";
-            NSLog(@"1111");
-            NSLog(@"%@",label.text);
-            return headView;
-        } else if(indexPath.section == 2){
-            label.text = @"免费课程";
-            NSLog(@"2222");
-            NSLog(@"%@",label.text);
-            return headView;
-        } else{
-        UICollectionReusableView *emptyView = [[UICollectionReusableView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
-        return emptyView;
-    }
-    */
+     
+     // UICollectionReusableView *headView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ksectiontHeadId forIndexPath:indexPath];
+     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, kScreenWidth, 20)];
+     label.font = [UIFont systemFontOfSize:17];
+     label.textAlignment = NSTextAlignmentLeft;
+     [headView addSubview:label];
+     
+     if (indexPath.section == 1) {
+     
+     label.text = @"推荐课程";
+     NSLog(@"1111");
+     NSLog(@"%@",label.text);
+     return headView;
+     } else if(indexPath.section == 2){
+     label.text = @"免费课程";
+     NSLog(@"2222");
+     NSLog(@"%@",label.text);
+     return headView;
+     } else{
+     UICollectionReusableView *emptyView = [[UICollectionReusableView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
+     return emptyView;
+     }
+     */
 }
 
 

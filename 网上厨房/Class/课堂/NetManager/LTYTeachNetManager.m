@@ -21,8 +21,8 @@
 #define kURLPage @"page":@"0"
 #define kURLVideoType @"type":@"video"
 
-
 @implementation LTYTeachNetManager
+
 
 +(id)postTeachTagCompletionHandle:(void (^)(id, NSError *))completed{
     return [self POST:kTeachTagURLPath parameters:@{kURLTerminal,kURLVersion} completionHandle:^(id responseObject, NSError *error) {
@@ -38,6 +38,14 @@
 
 + (id)postTeachFreeCompletionHandle:(void (^)(id, NSError *))completed{
     return [self POST:kTeachListURLPath parameters:@{kURLTerminal,kURLLiveType,kURLVersion} completionHandle:^(id responseObject, NSError *error) {
+        completed([LTYTeachRecommendModel mj_objectWithKeyValues:responseObject],error);
+    }];
+}
+
++ (id)postTeachNewAllCompletionHandle:(void (^)(id, NSError *))completed{
+  
+    return [self POST:kTeachListURLPath parameters:@{@"page" : @"0"} completionHandle:^(id responseObject, NSError *error) {
+        
         completed([LTYTeachRecommendModel mj_objectWithKeyValues:responseObject],error);
     }];
 }

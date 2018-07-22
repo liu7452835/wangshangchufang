@@ -8,12 +8,6 @@
 
 #import "LTYFreeView.h"
 
-@interface LTYFreeView()
-
-@property(nonatomic,strong) UIImageView *timeImageView;
-
-@end
-
 
 @implementation LTYFreeView
 
@@ -55,9 +49,9 @@
         [_timeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.centerY.mas_equalTo(0);
         }];
-        [_timeImageView setImage:[UIImage imageNamed:@"begin"]];
     }
     return _timeImageView;
 }
+
 
 @end
