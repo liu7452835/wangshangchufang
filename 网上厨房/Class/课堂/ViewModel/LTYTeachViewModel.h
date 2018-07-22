@@ -16,8 +16,10 @@
 @property(nonatomic,strong) LTYTeachTagModel *tagModel;
 @property(nonatomic,strong) LTYTeachRecommendModel *recommendModel;
 @property(nonatomic,strong) LTYTeachRecommendModel *freeTeachModel;
-
+@property(nonatomic,strong) LTYTeachRecommendModel *latestAllModel;
 
 - (void)getTeachFreeDateCompletionHandle:(void (^)(NSError *error))completed;
+
+- (void)getTeachLatestAllCompletionHandle:(void(^)(NSError *error))completed;
 
 @end

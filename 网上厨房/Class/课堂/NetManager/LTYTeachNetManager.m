@@ -42,9 +42,9 @@
     }];
 }
 
-+ (id)postTeachNewAllCompletionHandle:(void (^)(id, NSError *))completed{
++ (id)postTeachLatestAllCompletionHandle:(void (^)(id, NSError *))completed{
   
-    return [self POST:kTeachListURLPath parameters:@{@"page" : @"0"} completionHandle:^(id responseObject, NSError *error) {
+    return [self POST:kTeachListURLPath parameters:@{kURLOrder,kURLPage,kURLTerminal,kURLVideoType,kURLVersion} completionHandle:^(id responseObject, NSError *error) {
         
         completed([LTYTeachRecommendModel mj_objectWithKeyValues:responseObject],error);
     }];

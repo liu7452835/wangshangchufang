@@ -7,7 +7,7 @@
 //
 
 #import "LTYRecommendViewCell.h"
-#import "LTYRecommendView.h"
+
 
 @implementation LTYRecommendViewCell
 
@@ -20,5 +20,15 @@
     
 }
 
+- (LTYRecommendView *)allListView{
+    if (!_allListView) {
+        _allListView = [LTYRecommendView new];
+        [self.contentView addSubview:_allListView];
+        [_allListView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(0);
+        }];
+    }
+    return _allListView;
+}
 
 @end

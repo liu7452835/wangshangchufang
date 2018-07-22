@@ -19,6 +19,7 @@ static NSString * const tagColumnId = @"TagColumnCell";
 static NSString * const recommendColumnID = @"RecommendViewCell";
 static NSString * const freeViewID = @"FreeViewCell";
 static NSString * const defaultId = @"CollectionViewCell";
+static NSString * const allListViewID = @"AllListViewCell";
 
 #define ksectiontHeadId @"SectionHeadCell"
 
@@ -63,7 +64,7 @@ static NSString * const defaultId = @"CollectionViewCell";
 
 - (void) getData{
     
-    self.count = 3;
+    self.count = 4;
     
     [self.teachVC getDataCompletionHandle:^(NSError *error) {
         //NSLog(@"0");
@@ -82,6 +83,12 @@ static NSString * const defaultId = @"CollectionViewCell";
         self.count--;
         [self performSelector:@selector(updateUI) withObject:nil];
     }];
+    
+    [self.teachVC getTeachLatestAllCompletionHandle:^(NSError *error) {
+        self.count--;
+        [self performSelector:@selector(updateUI) withObject:nil];
+    }];
+    
     
     //NSLog(@"4");
 }
@@ -165,6 +172,8 @@ static NSString * const defaultId = @"CollectionViewCell";
     [self.collectionView registerNib:[UINib nibWithNibName:@"LTYRecommendViewCell" bundle:nil] forCellWithReuseIdentifier:recommendColumnID];
     [self.collectionView registerClass:[LTYFreeViewCell class] forCellWithReuseIdentifier:freeViewID];
     [self.collectionView registerClass:[UICollectionViewCell class]     forCellWithReuseIdentifier:defaultId];
+     [self.collectionView registerNib:[UINib nibWithNibName:@"LTYRecommendViewCell" bundle:nil] forCellWithReuseIdentifier:allListViewID];
+    
     
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ksectiontHeadId];
 }
@@ -184,7 +193,7 @@ static NSString * const defaultId = @"CollectionViewCell";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
-    return 3;
+    return 4;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -192,8 +201,10 @@ static NSString * const defaultId = @"CollectionViewCell";
         return 8;
     } else if(section == 1){
         return 1;
-    } else{
+    } else if(section == 2){
         return 2;
+    } else{
+        return 10;
     }
 }
 
@@ -301,7 +312,7 @@ static NSString * const defaultId = @"CollectionViewCell";
         }
         return cell;
         
-    } else{
+    } else if(indexPath.section == 1){
         LTYRecommendViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:recommendColumnID forIndexPath:indexPath];
         
         [cell.scrollView setFrame:CGRectMake(cell.scrollView.frame.origin.x, cell.scrollView.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
@@ -350,6 +361,33 @@ static NSString * const defaultId = @"CollectionViewCell";
         
         
         return cell;
+    } else{
+        LTYRecommendViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:allListViewID forIndexPath:indexPath];
+        
+        NSArray *array = self.teachVC.latestAllModel.list;
+        
+        NSString *backgroudImagePath = [NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",[array[indexPath.row] valueForKey:@"himg"]];
+        NSURL *backgroundURL = [NSURL URLWithString:backgroudImagePath];
+        [cell.allListView.recommendBackgroundImageView setImageWithURL:backgroundURL];
+        //[recommendView.recommendBackgroundImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:backgroundURL]]];
+        //NSLog(@"%@",backgroundURL);
+        
+        cell.allListView.title.text = [array[indexPath.row] valueForKey:@"title"];
+        // NSLog(@"%@",recommendView.title.text);
+        
+        NSString *idImagePath = [NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",[array[indexPath.row] valueForKeyPath:@"teacher.imageid"]];
+        NSURL *idIamgeURL = [NSURL URLWithString:idImagePath];
+        [cell.allListView.idImageView setImageWithURL:idIamgeURL];
+        //[recommendView.idImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:idIamgeURL]]];
+        // NSLog(@"%@",idIamgeURL);
+        
+        cell.allListView.nickName.text = [array[indexPath.row] valueForKeyPath:@"teacher.nickname"];
+        //NSLog(@"%@",recommendView.nickName.text);
+        
+        [cell.allListView.starImageView setImage:[UIImage imageNamed:[self convertStarNumber:[array[indexPath.row] valueForKeyPath:@"teacher.star"]]]];
+        // NSLog(@"%@",[self convertStarNumber:[array[i] valueForKeyPath:@"teacher.star"]]);
+        
+        return cell;
     }
 }
 
@@ -374,12 +412,14 @@ static NSString * const defaultId = @"CollectionViewCell";
             // NSLog(@"1111");
             // NSLog(@"%@",label.text);
             
-        } else{
+        } else if(indexPath.section == 2){
             
             label.text = @"免费课程";
             //  NSLog(@"1111");
             //  NSLog(@"%@",label.text);
             
+        } else{
+            label.text = @"全部课程";
         }
         return headView;
         
@@ -432,8 +472,10 @@ static NSString * const defaultId = @"CollectionViewCell";
     } else if(indexPath.section == 1){
         W = kScreenWidth;
         size = CGSizeMake(kScreenWidth, kScreenWidth*5/6);
-    } else{
+    } else if(indexPath.section == 2){
         size = CGSizeMake((kScreenWidth-30)/2, (kScreenWidth-30)*2/3);
+    } else{
+        size = CGSizeMake((kScreenWidth-30)/2, (kScreenWidth-30)/2);
     }
     return size;
 }

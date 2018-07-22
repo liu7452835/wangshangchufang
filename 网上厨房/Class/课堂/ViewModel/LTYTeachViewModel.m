@@ -41,6 +41,13 @@
     }];
 }
 
+- (void)getTeachLatestAllCompletionHandle:(void (^)(NSError *))completed{
+    self.dataTask = [LTYTeachNetManager postTeachLatestAllCompletionHandle:^(id responseObject, NSError *error) {
+        self.latestAllModel = responseObject;
+        completed(error);
+    }];
+}
+
 
 #pragma mark - 懒加载
 
@@ -64,4 +71,12 @@
     }
     return _freeTeachModel;
 }
+
+- (LTYTeachRecommendModel *)latestAllModel{
+    if (!_latestAllModel) {
+        _latestAllModel = [LTYTeachRecommendModel new];
+    }
+    return _latestAllModel;
+}
+
 @end

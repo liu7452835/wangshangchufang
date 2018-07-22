@@ -78,6 +78,7 @@
 		0970092B20C9869100461468 /* MJDictionaryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0970091E20C9869100461468 /* MJDictionaryCache.m */; };
 		0970092C20C9869100461468 /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0970092120C9869100461468 /* MJFoundation.m */; };
 		0970093420C9897500461468 /* BaseNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0970093320C9897500461468 /* BaseNetManager.m */; };
+		099CF53C2104BD1B00855CCC /* File.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 099CF53B2104BD1B00855CCC /* File.rtf */; };
 		09E06A5620D79FDA00C21F8E /* LTYPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E06A5520D79FDA00C21F8E /* LTYPersonalViewController.m */; };
 		09E06A5920D7BAB400C21F8E /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E06A5820D7BAB400C21F8E /* SettingViewController.m */; };
 		09EA955E20E27BF70071345E /* LTYTeachNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EA955D20E27BF70071345E /* LTYTeachNetManager.m */; };
@@ -235,6 +236,7 @@
 		0970092F20C9870E00461468 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		0970093220C9897500461468 /* BaseNetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNetManager.h; sourceTree = "<group>"; };
 		0970093320C9897500461468 /* BaseNetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNetManager.m; sourceTree = "<group>"; };
+		099CF53B2104BD1B00855CCC /* File.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = File.rtf; sourceTree = "<group>"; };
 		09E06A5420D79FDA00C21F8E /* LTYPersonalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYPersonalViewController.h; sourceTree = "<group>"; };
 		09E06A5520D79FDA00C21F8E /* LTYPersonalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYPersonalViewController.m; sourceTree = "<group>"; };
 		09E06A5720D7BAB400C21F8E /* SettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 		091233DE20C82205001A80D6 = {
 			isa = PBXGroup;
 			children = (
+				099CF53B2104BD1B00855CCC /* File.rtf */,
 				091233E920C82205001A80D6 /* 网上厨房 */,
 				091233E820C82205001A80D6 /* Products */,
 			);
@@ -764,6 +767,7 @@
 			files = (
 				09136DDF20EBBC59007E3F93 /* LTYTagColumnCell.xib in Resources */,
 				09012E6020D162C700D8BE68 /* PersonalSetting.storyboard in Resources */,
+				099CF53C2104BD1B00855CCC /* File.rtf in Resources */,
 				090EF22420F7995B00CB1C9D /* LTYRecommendViewCell.xib in Resources */,
 				091233F720C82205001A80D6 /* LaunchScreen.storyboard in Resources */,
 				091233F420C82205001A80D6 /* Assets.xcassets in Resources */,
