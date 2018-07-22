@@ -79,6 +79,8 @@
 		0970092C20C9869100461468 /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0970092120C9869100461468 /* MJFoundation.m */; };
 		0970093420C9897500461468 /* BaseNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0970093320C9897500461468 /* BaseNetManager.m */; };
 		099CF53C2104BD1B00855CCC /* File.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 099CF53B2104BD1B00855CCC /* File.rtf */; };
+		099CF5612104CBC400855CCC /* LTYBannerListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 099CF5602104CBC400855CCC /* LTYBannerListModel.m */; };
+		099CF5642104CF2700855CCC /* LTYTeachBannerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 099CF5632104CF2700855CCC /* LTYTeachBannerViewModel.m */; };
 		09E06A5620D79FDA00C21F8E /* LTYPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E06A5520D79FDA00C21F8E /* LTYPersonalViewController.m */; };
 		09E06A5920D7BAB400C21F8E /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E06A5820D7BAB400C21F8E /* SettingViewController.m */; };
 		09EA955E20E27BF70071345E /* LTYTeachNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EA955D20E27BF70071345E /* LTYTeachNetManager.m */; };
@@ -237,6 +239,10 @@
 		0970093220C9897500461468 /* BaseNetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNetManager.h; sourceTree = "<group>"; };
 		0970093320C9897500461468 /* BaseNetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNetManager.m; sourceTree = "<group>"; };
 		099CF53B2104BD1B00855CCC /* File.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = File.rtf; sourceTree = "<group>"; };
+		099CF55F2104CBC400855CCC /* LTYBannerListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYBannerListModel.h; sourceTree = "<group>"; };
+		099CF5602104CBC400855CCC /* LTYBannerListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYBannerListModel.m; sourceTree = "<group>"; };
+		099CF5622104CF2700855CCC /* LTYTeachBannerViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYTeachBannerViewModel.h; sourceTree = "<group>"; };
+		099CF5632104CF2700855CCC /* LTYTeachBannerViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYTeachBannerViewModel.m; sourceTree = "<group>"; };
 		09E06A5420D79FDA00C21F8E /* LTYPersonalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYPersonalViewController.h; sourceTree = "<group>"; };
 		09E06A5520D79FDA00C21F8E /* LTYPersonalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYPersonalViewController.m; sourceTree = "<group>"; };
 		09E06A5720D7BAB400C21F8E /* SettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
@@ -615,6 +621,8 @@
 			children = (
 				0954EEE720E2824700140DFB /* LTYTeachViewModel.h */,
 				0954EEE820E2824700140DFB /* LTYTeachViewModel.m */,
+				099CF5622104CF2700855CCC /* LTYTeachBannerViewModel.h */,
+				099CF5632104CF2700855CCC /* LTYTeachBannerViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -626,6 +634,8 @@
 				096896EE20E134D400CF39FA /* LTYTeachTagModel.m */,
 				096896F120E13A4F00CF39FA /* LTYTeachRecommendModel.h */,
 				096896F220E13A4F00CF39FA /* LTYTeachRecommendModel.m */,
+				099CF55F2104CBC400855CCC /* LTYBannerListModel.h */,
+				099CF5602104CBC400855CCC /* LTYBannerListModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -797,6 +807,7 @@
 				09173ADF20CC0CA400246B8D /* MASViewConstraint.m in Sources */,
 				091233EF20C82205001A80D6 /* ViewController.m in Sources */,
 				094073CD20C83FAC00D93ECA /* LTYSortViewController.m in Sources */,
+				099CF5642104CF2700855CCC /* LTYTeachBannerViewModel.m in Sources */,
 				094073D220C8402700D93ECA /* LTYTeachViewController.m in Sources */,
 				094A9FB620CD208500BFC13A /* CommonContentShow.m in Sources */,
 				09173AA420CB683100246B8D /* BaseViewModel.m in Sources */,
@@ -848,6 +859,7 @@
 				09173AB820CBFE5D00246B8D /* MBProgressHUD+LTY.m in Sources */,
 				09173AD820CC0CA400246B8D /* ViewController+MASAdditions.m in Sources */,
 				0948505C20CAC38400492EEF /* AFHTTPRequestOperationManager.m in Sources */,
+				099CF5612104CBC400855CCC /* LTYBannerListModel.m in Sources */,
 				0970092720C9869100461468 /* NSObject+MJProperty.m in Sources */,
 				09173ADE20CC0CA400246B8D /* MASConstraint.m in Sources */,
 				0954EEE920E2824700140DFB /* LTYTeachViewModel.m in Sources */,

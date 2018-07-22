@@ -13,6 +13,8 @@
 #import "LTYTeachRecommendModel.h"
 #import "LTYRecommendViewCell.h"
 #import "LTYFreeViewCell.h"
+#import "LTYTeachBannerViewModel.h"
+#import "LTYBannerListModel.h"
 
 
 static NSString * const tagColumnId = @"TagColumnCell";
@@ -21,11 +23,13 @@ static NSString * const freeViewID = @"FreeViewCell";
 static NSString * const defaultId = @"CollectionViewCell";
 static NSString * const allListViewID = @"AllListViewCell";
 
-#define ksectiontHeadId @"SectionHeadCell"
+#define ksectionHeadId @"SectionHeadCell"
+#define ksectionFootId @"SectionFootCell"
 
 @interface LTYTeachViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic,strong) LTYTeachViewModel *teachVC;
+@property(nonatomic,strong) LTYTeachBannerViewModel *bannerListVC;
 @property(nonatomic,strong) UICollectionView *collectionView;
 @property(nonatomic,assign) __block int count;
 @end
@@ -64,7 +68,7 @@ static NSString * const allListViewID = @"AllListViewCell";
 
 - (void) getData{
     
-    self.count = 4;
+    self.count = 5;
     
     [self.teachVC getDataCompletionHandle:^(NSError *error) {
         //NSLog(@"0");
@@ -89,6 +93,10 @@ static NSString * const allListViewID = @"AllListViewCell";
         [self performSelector:@selector(updateUI) withObject:nil];
     }];
     
+    [self.bannerListVC getDataCompletionHandle:^(NSError *error) {
+        self.count--;
+        [self performSelector:@selector(updateUI) withObject:nil];
+    }];
     
     //NSLog(@"4");
 }
@@ -175,7 +183,8 @@ static NSString * const allListViewID = @"AllListViewCell";
      [self.collectionView registerNib:[UINib nibWithNibName:@"LTYRecommendViewCell" bundle:nil] forCellWithReuseIdentifier:allListViewID];
     
     
-    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ksectiontHeadId];
+    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ksectionHeadId];
+    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:ksectionFootId];
 }
 
 #pragma mark - delegate
@@ -188,6 +197,11 @@ static NSString * const allListViewID = @"AllListViewCell";
 {
     return section == 0 ? CGSizeMake(0, 0) : CGSizeMake(kScreenWidth, 30);
 }
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
+    return (section <3 || section>7) ? CGSizeMake(0, 0) : CGSizeMake(kScreenWidth, 100);
+}
+
 
 #pragma mark - dataSource
 
@@ -392,68 +406,93 @@ static NSString * const allListViewID = @"AllListViewCell";
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
-    
-    if (indexPath.section >=1) {
-        UICollectionReusableView *headView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ksectiontHeadId forIndexPath:indexPath];
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, kScreenWidth, 20)];
-        label.font = [UIFont systemFontOfSize:17];
-        label.textAlignment = NSTextAlignmentLeft;
-        
-        for (UIView *view in headView.subviews) {
-            [view removeFromSuperview];
-        }// 解决复用bug
-        
-        [headView addSubview:label];
-        
-        if (indexPath.section == 1) {
+        if (indexPath.section >=1) {
+            UICollectionReusableView *headView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ksectionHeadId forIndexPath:indexPath];
             
-            label.text = @"推荐课程";
-            // NSLog(@"1111");
-            // NSLog(@"%@",label.text);
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, kScreenWidth, 20)];
+            label.font = [UIFont systemFontOfSize:17];
+            label.textAlignment = NSTextAlignmentLeft;
             
-        } else if(indexPath.section == 2){
+            for (UIView *view in headView.subviews) {
+                [view removeFromSuperview];
+            }// 解决复用bug
             
-            label.text = @"免费课程";
-            //  NSLog(@"1111");
-            //  NSLog(@"%@",label.text);
+            [headView addSubview:label];
+            
+            if (indexPath.section == 1) {
+                
+                label.text = @"推荐课程";
+                // NSLog(@"1111");
+                // NSLog(@"%@",label.text);
+                
+            } else if(indexPath.section == 2){
+                
+                label.text = @"免费课程";
+                //  NSLog(@"1111");
+                //  NSLog(@"%@",label.text);
+                
+            } else{
+                label.text = @"全部课程";
+            }
+            return headView;
             
         } else{
-            label.text = @"全部课程";
+            UICollectionReusableView *emptyView = [[UICollectionReusableView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
+            return emptyView;
         }
-        return headView;
         
+        
+        
+        /*
+         
+         // UICollectionReusableView *headView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ksectiontHeadId forIndexPath:indexPath];
+         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, kScreenWidth, 20)];
+         label.font = [UIFont systemFontOfSize:17];
+         label.textAlignment = NSTextAlignmentLeft;
+         [headView addSubview:label];
+         
+         if (indexPath.section == 1) {
+         
+         label.text = @"推荐课程";
+         NSLog(@"1111");
+         NSLog(@"%@",label.text);
+         return headView;
+         } else if(indexPath.section == 2){
+         label.text = @"免费课程";
+         NSLog(@"2222");
+         NSLog(@"%@",label.text);
+         return headView;
+         } else{
+         UICollectionReusableView *emptyView = [[UICollectionReusableView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
+         return emptyView;
+         }
+         */
     } else{
-        UICollectionReusableView *emptyView = [[UICollectionReusableView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
-        return emptyView;
+        if (indexPath.section >=3 ||indexPath.section<=7) {
+            UICollectionReusableView *footView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:ksectionFootId forIndexPath:indexPath];
+            
+            UIImageView *imageView = [[UIImageView alloc] init];
+            
+            NSString *imageURL = [NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg",[self.bannerListVC.bannerListModle.list[indexPath.section -3] valueForKey:@"imageId"]];
+            
+            [imageView setImageWithURL:[NSURL URLWithString:imageURL]];
+            
+            for (UIView *view in footView.subviews) {
+                [view removeFromSuperview];
+            }// 解决复用bug
+            footView.contentMode = UIViewContentModeScaleAspectFit;
+            [footView addSubview:imageView];
+            [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.edges.mas_equalTo(0);
+            }];
+            
+            return footView;
+        }
+        return nil;
     }
     
-    
-    
-    /*
-     
-     // UICollectionReusableView *headView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ksectiontHeadId forIndexPath:indexPath];
-     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, kScreenWidth, 20)];
-     label.font = [UIFont systemFontOfSize:17];
-     label.textAlignment = NSTextAlignmentLeft;
-     [headView addSubview:label];
-     
-     if (indexPath.section == 1) {
-     
-     label.text = @"推荐课程";
-     NSLog(@"1111");
-     NSLog(@"%@",label.text);
-     return headView;
-     } else if(indexPath.section == 2){
-     label.text = @"免费课程";
-     NSLog(@"2222");
-     NSLog(@"%@",label.text);
-     return headView;
-     } else{
-     UICollectionReusableView *emptyView = [[UICollectionReusableView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
-     return emptyView;
-     }
-     */
 }
 
 
@@ -495,9 +534,16 @@ static NSString * const allListViewID = @"AllListViewCell";
 
 - (LTYTeachViewModel *)teachVC{
     if (!_teachVC) {
-        _teachVC = [LTYTeachViewModel new];
+        _teachVC = [[LTYTeachViewModel alloc]init];
     }
     return _teachVC;
+}
+
+- (LTYTeachBannerViewModel *)bannerListVC{
+    if (!_bannerListVC) {
+        _bannerListVC = [[LTYTeachBannerViewModel alloc] init];
+    }
+    return _bannerListVC;
 }
 
 - (UICollectionView *)collectionView{
