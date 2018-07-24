@@ -23,6 +23,7 @@
 #define kURLPage @"page":@"0"
 #define kURLVideoType @"type":@"video"
 
+
 @implementation LTYTeachNetManager
 
 
@@ -43,15 +44,15 @@
         completed([LTYTeachRecommendModel mj_objectWithKeyValues:responseObject],error);
     }];
 }
-
+/*
 + (id)postTeachLatestAllCompletionHandle:(void (^)(id, NSError *))completed{
-  
+    
     return [self POST:kTeachListURLPath parameters:@{kURLOrder,kURLPage,kURLTerminal,kURLVideoType,kURLVersion} completionHandle:^(id responseObject, NSError *error) {
         
         completed([LTYTeachRecommendModel mj_objectWithKeyValues:responseObject],error);
     }];
 }
-
+*/
 + (id)postTeachBannerListCompletionHandle:(void (^)(id, NSError *))completed{
     return [self POST:kBannerListURLPath parameters:@{kURLTerminal,kURLVersion} completionHandle:^(id responseObject, NSError *error) {
         completed([LTYBannerListModel mj_objectWithKeyValues:responseObject],error);

@@ -11,7 +11,12 @@
 #import "LTYTeachNetManager.h"
 #import "LTYTeachRecommendModel.h"
 
+
+#define kTeachListURLPath @"https://api.ecook.cn/public/getOnlineTeachList.shtml"
+
 @interface LTYTeachViewModel()
+
+@property(nonatomic,assign) NSInteger page;
 
 @end
 
@@ -41,9 +46,26 @@
     }];
 }
 
+/*
 - (void)getTeachLatestAllCompletionHandle:(void (^)(NSError *))completed{
     self.dataTask = [LTYTeachNetManager postTeachLatestAllCompletionHandle:^(id responseObject, NSError *error) {
         self.latestAllModel = responseObject;
+        completed(error);
+    }];
+}
+*/
+- (void)getMoreTeachLatestAllCompletionHandle:(void (^)(NSError *))completed{
+    //添加参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"order"] = @"latest";
+    params[@"page"] = [NSString stringWithFormat:@"%ld",self.page];
+    params[@"terminal"] = @"3";
+    params[@"type"] = @"video";
+    params[@"version"] = @"13.9.4";
+    
+    self.dataTask = [LTYTeachNetManager POST:kTeachListURLPath parameters:params completionHandle:^(id responseObject, NSError *error) {
+        [self.teachListData addObject:[LTYTeachRecommendModel mj_objectWithKeyValues:responseObject]];
+        self.page++;
         completed(error);
     }];
 }
@@ -71,12 +93,19 @@
     }
     return _freeTeachModel;
 }
-
+/*
 - (LTYTeachRecommendModel *)latestAllModel{
     if (!_latestAllModel) {
         _latestAllModel = [LTYTeachRecommendModel new];
     }
     return _latestAllModel;
 }
+*/
 
+- (NSMutableArray<LTYTeachRecommendModel *> *)teachListData{
+    if (!_teachListData) {
+        _teachListData = [[NSMutableArray alloc] init];
+    }
+    return _teachListData;
+}
 @end

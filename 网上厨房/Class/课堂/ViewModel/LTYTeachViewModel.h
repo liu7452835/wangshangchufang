@@ -16,10 +16,12 @@
 @property(nonatomic,strong) LTYTeachTagModel *tagModel;
 @property(nonatomic,strong) LTYTeachRecommendModel *recommendModel;
 @property(nonatomic,strong) LTYTeachRecommendModel *freeTeachModel;
-@property(nonatomic,strong) LTYTeachRecommendModel *latestAllModel;
-
+//@property(nonatomic,strong) LTYTeachRecommendModel *latestAllModel;
+@property(nonatomic,strong) NSMutableArray<LTYTeachRecommendModel *> *teachListData;
 - (void)getTeachFreeDateCompletionHandle:(void (^)(NSError *error))completed;
 
-- (void)getTeachLatestAllCompletionHandle:(void(^)(NSError *error))completed;
+//- (void)getTeachLatestAllCompletionHandle:(void(^)(NSError *error))completed;
+
+- (void)getMoreTeachLatestAllCompletionHandle:(void(^)(NSError *error))completed;
 
 @end

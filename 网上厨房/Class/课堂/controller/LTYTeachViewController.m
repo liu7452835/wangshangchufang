@@ -46,6 +46,8 @@ static NSString * const allListViewID = @"AllListViewCell";
     
     [self getData];
     
+    [self loadData];
+    
     //NSLog(@"5");
     /*
      [self.teachVC getDataCompletionHandle:^(NSError *error) {
@@ -64,6 +66,22 @@ static NSString * const allListViewID = @"AllListViewCell";
      }];
      */
 }
+
+- (void) loadData{
+    //添加上拉刷新
+    self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    //添加下拉刷新
+    
+}
+
+- (void) loadMoreData{
+    //发起请求
+    [self.teachVC getMoreTeachLatestAllCompletionHandle:^(NSError *error) {
+        [self.collectionView reloadData];
+        [self.collectionView.mj_footer endRefreshing];
+    }];
+}
+
 
 
 - (void) getData{
@@ -87,8 +105,14 @@ static NSString * const allListViewID = @"AllListViewCell";
         self.count--;
         [self performSelector:@selector(updateUI) withObject:nil];
     }];
-    
+    /*
     [self.teachVC getTeachLatestAllCompletionHandle:^(NSError *error) {
+        self.count--;
+        [self performSelector:@selector(updateUI) withObject:nil];
+    }];
+    */
+    
+    [self.teachVC getMoreTeachLatestAllCompletionHandle:^(NSError *error) {
         self.count--;
         [self performSelector:@selector(updateUI) withObject:nil];
     }];
@@ -195,7 +219,7 @@ static NSString * const allListViewID = @"AllListViewCell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    return section == 0 ? CGSizeMake(0, 0) : CGSizeMake(kScreenWidth, 30);
+    return (section == 0 || section >3) ? CGSizeMake(0, 0) : CGSizeMake(kScreenWidth, 30);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
@@ -207,7 +231,7 @@ static NSString * const allListViewID = @"AllListViewCell";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
-    return 4;
+    return 3+self.teachVC.teachListData.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -377,8 +401,8 @@ static NSString * const allListViewID = @"AllListViewCell";
         return cell;
     } else{
         LTYRecommendViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:allListViewID forIndexPath:indexPath];
-        
-        NSArray *array = self.teachVC.latestAllModel.list;
+       
+        NSArray *array = self.teachVC.teachListData[indexPath.section - 3].list;
         
         NSString *backgroudImagePath = [NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",[array[indexPath.row] valueForKey:@"himg"]];
         NSURL *backgroundURL = [NSURL URLWithString:backgroudImagePath];
@@ -408,7 +432,7 @@ static NSString * const allListViewID = @"AllListViewCell";
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         
-        if (indexPath.section >=1) {
+        if (indexPath.section >=1 && indexPath.section<=3) {
             UICollectionReusableView *headView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ksectionHeadId forIndexPath:indexPath];
             
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, kScreenWidth, 20)];
@@ -470,7 +494,7 @@ static NSString * const allListViewID = @"AllListViewCell";
          }
          */
     } else{
-        if (indexPath.section >=3 ||indexPath.section<=7) {
+        if (indexPath.section >=3 && indexPath.section<=7) {
             UICollectionReusableView *footView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:ksectionFootId forIndexPath:indexPath];
             
             UIImageView *imageView = [[UIImageView alloc] init];
