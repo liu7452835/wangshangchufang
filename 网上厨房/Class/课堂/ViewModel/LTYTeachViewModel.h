@@ -18,6 +18,9 @@
 @property(nonatomic,strong) LTYTeachRecommendModel *freeTeachModel;
 //@property(nonatomic,strong) LTYTeachRecommendModel *latestAllModel;
 @property(nonatomic,strong) NSMutableArray<LTYTeachRecommendModel *> *teachListData;
+
+@property(nonatomic,assign) NSInteger page;
+
 - (void)getTeachFreeDateCompletionHandle:(void (^)(NSError *error))completed;
 
 //- (void)getTeachLatestAllCompletionHandle:(void(^)(NSError *error))completed;

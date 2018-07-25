@@ -71,8 +71,20 @@ static NSString * const allListViewID = @"AllListViewCell";
     //添加上拉刷新
     self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     //添加下拉刷新
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshData)];
+}
+
+
+- (void) refreshData{
+    [self.teachVC.teachListData removeObjectsInRange:NSMakeRange(1, self.teachVC.teachListData.count-1)];
+    self.teachVC.page = 0;
+    [self getData];
+    //[self.collectionView reloadData];
     
 }
+
+
+
 
 - (void) loadMoreData{
     //发起请求
@@ -81,8 +93,6 @@ static NSString * const allListViewID = @"AllListViewCell";
         [self.collectionView.mj_footer endRefreshing];
     }];
 }
-
-
 
 - (void) getData{
     
@@ -129,6 +139,7 @@ static NSString * const allListViewID = @"AllListViewCell";
     if (!self.count) {
         [MBProgressHUD hideHUD];
         [self.collectionView reloadData];
+        [self.collectionView.mj_header endRefreshing];
         // NSLog(@"3");
     }
 }

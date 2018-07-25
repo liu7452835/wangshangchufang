@@ -16,7 +16,6 @@
 
 @interface LTYTeachViewModel()
 
-@property(nonatomic,assign) NSInteger page;
 
 @end
 
