@@ -340,11 +340,11 @@ static NSString * const allListViewID = @"AllListViewCell";
                 
                 CABasicAnimation *animation = [CABasicAnimation animation];
                 animation.duration = 0.5;
-                /*  animation.keyPath = @"position.y";
+                /*animation.keyPath = @"position.y";
                  
                  animation.fromValue = @200;
                  animation.toValue = @150;
-                 */
+                */
                 animation.keyPath = @"transform.scale.y";
                 animation.toValue = @0.1;
                 
@@ -604,6 +604,11 @@ static NSString * const allListViewID = @"AllListViewCell";
         
     }
     return _collectionView;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.collectionView reloadData];
 }
 
 @end

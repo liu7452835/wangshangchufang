@@ -15,7 +15,7 @@
  *替换掉数据中与关键字冲突的键，用前者替换后者，后者是数据中实际的键，前者是模型中对应的键
  */
 + (NSDictionary *)mj_replacedKeyFromPropertyName{
-    return @{@"ID" : @"id",@"SIGNED" : @"signed"};
+    return @{@"ID" : @"id",@"SIGNED" : @"signed",@"DESCRIPTION" : @"description"};
 }
 
 @end

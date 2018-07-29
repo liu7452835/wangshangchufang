@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LTYHomeViewController : UITableViewController
+@interface LTYHomeViewController : UIViewController
 
 @end

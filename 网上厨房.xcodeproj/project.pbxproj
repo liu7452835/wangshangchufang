@@ -78,6 +78,8 @@
 		0970092B20C9869100461468 /* MJDictionaryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0970091E20C9869100461468 /* MJDictionaryCache.m */; };
 		0970092C20C9869100461468 /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0970092120C9869100461468 /* MJFoundation.m */; };
 		0970093420C9897500461468 /* BaseNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0970093320C9897500461468 /* BaseNetManager.m */; };
+		097BB63B210D994400D6A1F5 /* LTYHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 097BB63A210D994400D6A1F5 /* LTYHomeModel.m */; };
+		097BB63F210D9A9C00D6A1F5 /* LTYHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 097BB63E210D9A9C00D6A1F5 /* LTYHomeViewModel.m */; };
 		099CF53C2104BD1B00855CCC /* File.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 099CF53B2104BD1B00855CCC /* File.rtf */; };
 		099CF5612104CBC400855CCC /* LTYBannerListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 099CF5602104CBC400855CCC /* LTYBannerListModel.m */; };
 		099CF5642104CF2700855CCC /* LTYTeachBannerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 099CF5632104CF2700855CCC /* LTYTeachBannerViewModel.m */; };
@@ -104,6 +106,15 @@
 		09E975372106198600DCA986 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E975202106198600DCA986 /* MJRefreshComponent.m */; };
 		09E975382106198600DCA986 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 09E975232106198600DCA986 /* README.md */; };
 		09EA955E20E27BF70071345E /* LTYTeachNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EA955D20E27BF70071345E /* LTYTeachNetManager.m */; };
+		09EEF624210C9BAB00E5D1B1 /* LTYTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EEF623210C9BAB00E5D1B1 /* LTYTagView.m */; };
+		09EEF635210D525900E5D1B1 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 09EEF626210D525900E5D1B1 /* LICENSE */; };
+		09EEF636210D525900E5D1B1 /* WMPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EEF628210D525900E5D1B1 /* WMPageController.m */; };
+		09EEF637210D525900E5D1B1 /* WMFooldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EEF62D210D525900E5D1B1 /* WMFooldView.m */; };
+		09EEF638210D525900E5D1B1 /* WMMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EEF62F210D525900E5D1B1 /* WMMenuItem.m */; };
+		09EEF639210D525900E5D1B1 /* WMMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EEF630210D525900E5D1B1 /* WMMenuView.m */; };
+		09EEF63A210D525900E5D1B1 /* WMProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EEF632210D525900E5D1B1 /* WMProgressView.m */; };
+		09EEF63B210D525900E5D1B1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 09EEF634210D525900E5D1B1 /* README.md */; };
+		09EEF63F210D931800E5D1B1 /* LTYHomeNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EEF63E210D931800E5D1B1 /* LTYHomeNetManager.m */; };
 		09FCDD6E20FE108C007BC7F0 /* LTYFreeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FCDD6D20FE108C007BC7F0 /* LTYFreeViewCell.m */; };
 		09FCDD7320FE3660007BC7F0 /* LTYFreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FCDD7220FE3660007BC7F0 /* LTYFreeView.m */; };
 /* End PBXBuildFile section */
@@ -258,6 +269,10 @@
 		0970092F20C9870E00461468 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		0970093220C9897500461468 /* BaseNetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNetManager.h; sourceTree = "<group>"; };
 		0970093320C9897500461468 /* BaseNetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNetManager.m; sourceTree = "<group>"; };
+		097BB639210D993900D6A1F5 /* LTYHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYHomeModel.h; sourceTree = "<group>"; };
+		097BB63A210D994400D6A1F5 /* LTYHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTYHomeModel.m; sourceTree = "<group>"; };
+		097BB63D210D9A9C00D6A1F5 /* LTYHomeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYHomeViewModel.h; sourceTree = "<group>"; };
+		097BB63E210D9A9C00D6A1F5 /* LTYHomeViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYHomeViewModel.m; sourceTree = "<group>"; };
 		099CF53B2104BD1B00855CCC /* File.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = File.rtf; sourceTree = "<group>"; };
 		099CF55F2104CBC400855CCC /* LTYBannerListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYBannerListModel.h; sourceTree = "<group>"; };
 		099CF5602104CBC400855CCC /* LTYBannerListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYBannerListModel.m; sourceTree = "<group>"; };
@@ -308,6 +323,23 @@
 		09E975232106198600DCA986 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		09EA955C20E27BF70071345E /* LTYTeachNetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYTeachNetManager.h; sourceTree = "<group>"; };
 		09EA955D20E27BF70071345E /* LTYTeachNetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYTeachNetManager.m; sourceTree = "<group>"; };
+		09EEF622210C9BAB00E5D1B1 /* LTYTagView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYTagView.h; sourceTree = "<group>"; };
+		09EEF623210C9BAB00E5D1B1 /* LTYTagView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYTagView.m; sourceTree = "<group>"; };
+		09EEF626210D525900E5D1B1 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		09EEF628210D525900E5D1B1 /* WMPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPageController.m; sourceTree = "<group>"; };
+		09EEF629210D525900E5D1B1 /* WMPageConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPageConst.h; sourceTree = "<group>"; };
+		09EEF62B210D525900E5D1B1 /* WMMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMMenuItem.h; sourceTree = "<group>"; };
+		09EEF62C210D525900E5D1B1 /* WMMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMMenuView.h; sourceTree = "<group>"; };
+		09EEF62D210D525900E5D1B1 /* WMFooldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMFooldView.m; sourceTree = "<group>"; };
+		09EEF62E210D525900E5D1B1 /* WMProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMProgressView.h; sourceTree = "<group>"; };
+		09EEF62F210D525900E5D1B1 /* WMMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMMenuItem.m; sourceTree = "<group>"; };
+		09EEF630210D525900E5D1B1 /* WMMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMMenuView.m; sourceTree = "<group>"; };
+		09EEF631210D525900E5D1B1 /* WMFooldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMFooldView.h; sourceTree = "<group>"; };
+		09EEF632210D525900E5D1B1 /* WMProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMProgressView.m; sourceTree = "<group>"; };
+		09EEF633210D525900E5D1B1 /* WMPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPageController.h; sourceTree = "<group>"; };
+		09EEF634210D525900E5D1B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		09EEF63D210D931800E5D1B1 /* LTYHomeNetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYHomeNetManager.h; sourceTree = "<group>"; };
+		09EEF63E210D931800E5D1B1 /* LTYHomeNetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYHomeNetManager.m; sourceTree = "<group>"; };
 		09FCDD6C20FE108C007BC7F0 /* LTYFreeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYFreeViewCell.h; sourceTree = "<group>"; };
 		09FCDD6D20FE108C007BC7F0 /* LTYFreeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYFreeViewCell.m; sourceTree = "<group>"; };
 		09FCDD7120FE3660007BC7F0 /* LTYFreeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYFreeView.h; sourceTree = "<group>"; };
@@ -518,7 +550,11 @@
 		094073CA20C83F6400D93ECA /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				097BB63C210D995B00D6A1F5 /* Model */,
 				094073C920C83F5400D93ECA /* controller */,
+				09EEF621210C9A7600E5D1B1 /* View */,
+				09EEF640210D931D00E5D1B1 /* NetManager */,
+				097BB640210D9A9F00D6A1F5 /* ViewModel */,
 			);
 			path = "首页";
 			sourceTree = "<group>";
@@ -741,6 +777,7 @@
 		0970092D20C9869700461468 /* 第三方库 */ = {
 			isa = PBXGroup;
 			children = (
+				09EEF625210D525900E5D1B1 /* WMPageController */,
 				09E974F42106198600DCA986 /* MJRefresh */,
 				09173AB920CC0CA400246B8D /* Masonry */,
 				09173AB220CBFCBF00246B8D /* MBProgressHUD */,
@@ -766,6 +803,24 @@
 				0970090820C9864600461468 /* BaseModel.m */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		097BB63C210D995B00D6A1F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				097BB639210D993900D6A1F5 /* LTYHomeModel.h */,
+				097BB63A210D994400D6A1F5 /* LTYHomeModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		097BB640210D9A9F00D6A1F5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				097BB63D210D9A9C00D6A1F5 /* LTYHomeViewModel.h */,
+				097BB63E210D9A9C00D6A1F5 /* LTYHomeViewModel.m */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		09E974F42106198600DCA986 /* MJRefresh */ = {
@@ -879,6 +934,60 @@
 			path = NetManager;
 			sourceTree = "<group>";
 		};
+		09EEF621210C9A7600E5D1B1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09EEF622210C9BAB00E5D1B1 /* LTYTagView.h */,
+				09EEF623210C9BAB00E5D1B1 /* LTYTagView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09EEF625210D525900E5D1B1 /* WMPageController */ = {
+			isa = PBXGroup;
+			children = (
+				09EEF626210D525900E5D1B1 /* LICENSE */,
+				09EEF627210D525900E5D1B1 /* WMPageController */,
+				09EEF634210D525900E5D1B1 /* README.md */,
+			);
+			path = WMPageController;
+			sourceTree = "<group>";
+		};
+		09EEF627210D525900E5D1B1 /* WMPageController */ = {
+			isa = PBXGroup;
+			children = (
+				09EEF628210D525900E5D1B1 /* WMPageController.m */,
+				09EEF629210D525900E5D1B1 /* WMPageConst.h */,
+				09EEF62A210D525900E5D1B1 /* WMMenuView */,
+				09EEF633210D525900E5D1B1 /* WMPageController.h */,
+			);
+			path = WMPageController;
+			sourceTree = "<group>";
+		};
+		09EEF62A210D525900E5D1B1 /* WMMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				09EEF62B210D525900E5D1B1 /* WMMenuItem.h */,
+				09EEF62C210D525900E5D1B1 /* WMMenuView.h */,
+				09EEF62D210D525900E5D1B1 /* WMFooldView.m */,
+				09EEF62E210D525900E5D1B1 /* WMProgressView.h */,
+				09EEF62F210D525900E5D1B1 /* WMMenuItem.m */,
+				09EEF630210D525900E5D1B1 /* WMMenuView.m */,
+				09EEF631210D525900E5D1B1 /* WMFooldView.h */,
+				09EEF632210D525900E5D1B1 /* WMProgressView.m */,
+			);
+			path = WMMenuView;
+			sourceTree = "<group>";
+		};
+		09EEF640210D931D00E5D1B1 /* NetManager */ = {
+			isa = PBXGroup;
+			children = (
+				09EEF63D210D931800E5D1B1 /* LTYHomeNetManager.h */,
+				09EEF63E210D931800E5D1B1 /* LTYHomeNetManager.m */,
+			);
+			path = NetManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -939,10 +1048,12 @@
 			files = (
 				09136DDF20EBBC59007E3F93 /* LTYTagColumnCell.xib in Resources */,
 				09012E6020D162C700D8BE68 /* PersonalSetting.storyboard in Resources */,
+				09EEF63B210D525900E5D1B1 /* README.md in Resources */,
 				099CF53C2104BD1B00855CCC /* File.rtf in Resources */,
 				090EF22420F7995B00CB1C9D /* LTYRecommendViewCell.xib in Resources */,
 				091233F720C82205001A80D6 /* LaunchScreen.storyboard in Resources */,
 				09E975382106198600DCA986 /* README.md in Resources */,
+				09EEF635210D525900E5D1B1 /* LICENSE in Resources */,
 				09E975272106198600DCA986 /* MJRefresh.bundle in Resources */,
 				091233F420C82205001A80D6 /* Assets.xcassets in Resources */,
 			);
@@ -956,10 +1067,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0945C8AA20F8EBB000BE5318 /* LTYRecommendView.m in Sources */,
+				09EEF636210D525900E5D1B1 /* WMPageController.m in Sources */,
 				09173AB020CB9F3600246B8D /* LTYSortViewModel.m in Sources */,
 				094A9FB020CCF6B600BFC13A /* RecommendContentShow.m in Sources */,
+				097BB63B210D994400D6A1F5 /* LTYHomeModel.m in Sources */,
 				09EA955E20E27BF70071345E /* LTYTeachNetManager.m in Sources */,
 				0970092520C9869100461468 /* NSObject+MJCoding.m in Sources */,
+				09EEF63F210D931800E5D1B1 /* LTYHomeNetManager.m in Sources */,
 				09E9752C2106198600DCA986 /* MJRefreshBackNormalFooter.m in Sources */,
 				0970092620C9869100461468 /* MJExtensionConst.m in Sources */,
 				094A9FB320CD200C00BFC13A /* CommonViewCell.m in Sources */,
@@ -981,8 +1095,10 @@
 				09E9752A2106198600DCA986 /* MJRefreshBackGifFooter.m in Sources */,
 				09E9752E2106198600DCA986 /* MJRefreshAutoGifFooter.m in Sources */,
 				09E975252106198600DCA986 /* UIScrollView+MJRefresh.m in Sources */,
+				09EEF637210D525900E5D1B1 /* WMFooldView.m in Sources */,
 				094A9FB620CD208500BFC13A /* CommonContentShow.m in Sources */,
 				09E9752B2106198600DCA986 /* MJRefreshBackStateFooter.m in Sources */,
+				09EEF638210D525900E5D1B1 /* WMMenuItem.m in Sources */,
 				09173AA420CB683100246B8D /* BaseViewModel.m in Sources */,
 				09173AA820CB716800246B8D /* LTYSortModel.m in Sources */,
 				09136DE220EBBEDE007E3F93 /* LTYTagColumnCell.m in Sources */,
@@ -990,8 +1106,10 @@
 				0948505E20CAC38400492EEF /* AFHTTPRequestOperation.m in Sources */,
 				0970092820C9869100461468 /* NSObject+MJClass.m in Sources */,
 				0970092420C9869100461468 /* MJProperty.m in Sources */,
+				09EEF624210C9BAB00E5D1B1 /* LTYTagView.m in Sources */,
 				09173AB520CBFCBF00246B8D /* MBProgressHUD.m in Sources */,
 				0970092A20C9869100461468 /* MJPropertyKey.m in Sources */,
+				097BB63F210D9A9C00D6A1F5 /* LTYHomeViewModel.m in Sources */,
 				0970092920C9869100461468 /* NSString+MJExtension.m in Sources */,
 				09E975292106198600DCA986 /* UIView+MJExtension.m in Sources */,
 				0970092320C9869100461468 /* NSObject+MJKeyValue.m in Sources */,
@@ -1034,6 +1152,7 @@
 				09173ADB20CC0CA400246B8D /* MASLayoutConstraint.m in Sources */,
 				0948505320CAC38400492EEF /* AFNetworkActivityIndicatorManager.m in Sources */,
 				0948505220CAC38400492EEF /* UIRefreshControl+AFNetworking.m in Sources */,
+				09EEF63A210D525900E5D1B1 /* WMProgressView.m in Sources */,
 				09E975352106198600DCA986 /* MJRefreshBackFooter.m in Sources */,
 				09E9752D2106198600DCA986 /* MJRefreshAutoStateFooter.m in Sources */,
 				09173AB820CBFE5D00246B8D /* MBProgressHUD+LTY.m in Sources */,
@@ -1044,6 +1163,7 @@
 				0970092720C9869100461468 /* NSObject+MJProperty.m in Sources */,
 				09173ADE20CC0CA400246B8D /* MASConstraint.m in Sources */,
 				0954EEE920E2824700140DFB /* LTYTeachViewModel.m in Sources */,
+				09EEF639210D525900E5D1B1 /* WMMenuView.m in Sources */,
 				0948505020CAC38400492EEF /* UIAlertView+AFNetworking.m in Sources */,
 				09E975262106198600DCA986 /* MJRefreshConst.m in Sources */,
 			);
