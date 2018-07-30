@@ -16,4 +16,9 @@
 //获得表头视图中图片url地址
 - (NSURL *) headViewTagImageViewForIndex:(NSInteger)index;
 
+
+
+//表头视图item数量
+@property(nonatomic,assign) NSInteger tagCount;
+
 @end

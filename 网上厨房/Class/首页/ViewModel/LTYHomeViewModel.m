@@ -55,4 +55,10 @@
     return _homeModel;
 }
 
+- (NSInteger)tagCount{
+    _tagCount = self.homeModel.data.items.count;
+    return _tagCount;
+    
+}
+
 @end

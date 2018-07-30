@@ -9,12 +9,19 @@
 
 #import "LTYTagView.h"
 
+@interface LTYTagView()
+
+@property(nonatomic,strong) UIButton *button;
+
+@end
+
 @implementation LTYTagView
 
 - (instancetype)init{
     if (self = [super init]) {
         self.label.font = [UIFont systemFontOfSize:12];
         self.label.textAlignment = NSTextAlignmentCenter;
+        self.button.hidden = NO;
     }
     return self;
 }
@@ -23,10 +30,20 @@
     if (self = [super initWithFrame:frame]) {
         self.label.font = [UIFont systemFontOfSize:12];
         self.label.textAlignment = NSTextAlignmentCenter;
+        self.button.hidden = NO;
     }
     return self;
 }
 
+#pragma mark - 点击方法
+
+-(void) buttonClick{
+    if ([self.delegate respondsToSelector:@selector(tagViewDidClick:)]) {
+        [self.delegate tagViewDidClick:self.tag];
+    }
+}
+
+#pragma mark -lazeLoad
 
 - (UIImageView *)imageView{
     if (!_imageView) {
@@ -34,7 +51,7 @@
         [self addSubview:_imageView];
         [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.mas_equalTo(0);
-            make.centerY.mas_equalTo(20);
+            make.top.mas_equalTo(5);
             make.size.mas_equalTo(CGSizeMake(33, 33));
         }];
         _imageView.backgroundColor = [UIColor whiteColor];
@@ -55,5 +72,19 @@
     }
     return _label;
 }
+
+
+- (UIButton *)button{
+    if (!_button) {
+        _button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self addSubview:_button];
+        [_button mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(0);
+        }];
+        [_button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _button;
+}
+
 
 @end

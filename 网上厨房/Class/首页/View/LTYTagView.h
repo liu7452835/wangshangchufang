@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LTYTagViewClickDelegate <NSObject>
+
+-(void)tagViewDidClick:(NSInteger)tag;
+
+@end
+
 @interface LTYTagView : UIView
 
 @property(nonatomic,strong) UIImageView *imageView;
 
 @property(nonatomic,strong) UILabel *label;
 
+@property(nonatomic,weak) id<LTYTagViewClickDelegate> delegate;
 @end

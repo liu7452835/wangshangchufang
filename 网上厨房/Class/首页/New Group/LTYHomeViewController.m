@@ -13,7 +13,7 @@
 
 #define kHomeTag @"homeTagCell"
 
-@interface LTYHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface LTYHomeViewController ()<UITableViewDelegate,UITableViewDataSource,LTYTagViewClickDelegate>
 
 @property(nonatomic,strong) UITableView *tableView;
 @property(nonatomic,strong) LTYHomeViewModel *homeVC;
@@ -64,11 +64,10 @@
 
 #pragma mark - 设置表头视图
 
-static NSInteger const kTagViewCounts = 7;
-
 - (UIView *) setTableViewHeadView{
+    NSInteger tagBaseSize = (kScreenWidth - 20)/4;
     
-    UIView *headView =  [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, (kScreenWidth - 20)*4/15 + 10)];
+    UIView *headView =  [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGFLOAT_MIN, tagBaseSize)];
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     [headView addSubview:scrollView];
@@ -77,23 +76,29 @@ static NSInteger const kTagViewCounts = 7;
     }];
     scrollView.showsHorizontalScrollIndicator = NO;
     
-    NSInteger tagWidth = (kScreenWidth - 20) / 4;
-    NSInteger tagHeight = tagWidth * 2 / 3;
+    NSInteger tagWidth = tagBaseSize-10;//-10是为了让人知道这是一个滚动视图，漏出一些tag
+    NSInteger tagHeight = tagBaseSize-20;//-20是为了补偿上下各空的10个间距
     NSInteger xBase = 10;
-    for (int i = 0; i < kTagViewCounts; i++) {
-        LTYTagView *tagView = [[LTYTagView alloc] initWithFrame:CGRectMake(xBase, 10, tagWidth-5, tagHeight - 20)];
+    for (int i = 0; i < self.homeVC.tagCount; i++) {
+        LTYTagView *tagView = [[LTYTagView alloc] initWithFrame:CGRectMake(xBase, 10, tagWidth, tagHeight)];
+        tagView.delegate = self;
+        tagView.tag = i;
         [scrollView addSubview:tagView];
         
-        //[tagView.imageView setImageWithURL:[NSURL URLWithString:@"https://pic.ecook.cn/web/261119532.jpg"]];
         [tagView.label setText:[self.homeVC headViewTagLabelForIndex:i]];
-        
         [tagView.imageView setImageWithURL:[self.homeVC headViewTagImageViewForIndex:i]];
         
-        xBase  = xBase + tagWidth-5;
+        xBase  = xBase + tagWidth;
     }
     scrollView.contentSize = CGSizeMake(xBase +10, tagHeight);
     
     return headView;
+}
+
+#pragma mark - tagViewDelegate
+
+- (void)tagViewDidClick:(NSInteger)tag{
+     NSLog(@"点击%ld",tag);
 }
 
 
@@ -108,7 +113,7 @@ static NSInteger const kTagViewCounts = 7;
             make.top.mas_equalTo(20);
         }];
         _tableView.backgroundColor = [UIColor whiteColor];
-#warning 需要调整高度
+
         UIView * headView = [self setTableViewHeadView];
         _tableView.tableHeaderView = headView;
         
