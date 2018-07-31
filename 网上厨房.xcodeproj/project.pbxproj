@@ -80,7 +80,8 @@
 		0970093420C9897500461468 /* BaseNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0970093320C9897500461468 /* BaseNetManager.m */; };
 		097BB63B210D994400D6A1F5 /* LTYHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 097BB63A210D994400D6A1F5 /* LTYHomeModel.m */; };
 		097BB63F210D9A9C00D6A1F5 /* LTYHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 097BB63E210D9A9C00D6A1F5 /* LTYHomeViewModel.m */; };
-		099CF53C2104BD1B00855CCC /* File.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 099CF53B2104BD1B00855CCC /* File.rtf */; };
+		097F863A210F5FD000B7F97F /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 097F8638210F5FD000B7F97F /* iCarousel.m */; };
+		097F863D210F651300B7F97F /* FocusImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097F863C210F651300B7F97F /* FocusImageScrollView.m */; };
 		099CF5612104CBC400855CCC /* LTYBannerListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 099CF5602104CBC400855CCC /* LTYBannerListModel.m */; };
 		099CF5642104CF2700855CCC /* LTYTeachBannerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 099CF5632104CF2700855CCC /* LTYTeachBannerViewModel.m */; };
 		09E06A5620D79FDA00C21F8E /* LTYPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E06A5520D79FDA00C21F8E /* LTYPersonalViewController.m */; };
@@ -273,6 +274,10 @@
 		097BB63A210D994400D6A1F5 /* LTYHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTYHomeModel.m; sourceTree = "<group>"; };
 		097BB63D210D9A9C00D6A1F5 /* LTYHomeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYHomeViewModel.h; sourceTree = "<group>"; };
 		097BB63E210D9A9C00D6A1F5 /* LTYHomeViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYHomeViewModel.m; sourceTree = "<group>"; };
+		097F8638210F5FD000B7F97F /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		097F8639210F5FD000B7F97F /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		097F863B210F651300B7F97F /* FocusImageScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FocusImageScrollView.h; sourceTree = "<group>"; };
+		097F863C210F651300B7F97F /* FocusImageScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FocusImageScrollView.m; sourceTree = "<group>"; };
 		099CF53B2104BD1B00855CCC /* File.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = File.rtf; sourceTree = "<group>"; };
 		099CF55F2104CBC400855CCC /* LTYBannerListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYBannerListModel.h; sourceTree = "<group>"; };
 		099CF5602104CBC400855CCC /* LTYBannerListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYBannerListModel.m; sourceTree = "<group>"; };
@@ -373,6 +378,7 @@
 				0970093120C9892200461468 /* model */,
 				0948506120CACA4E00492EEF /* NetManager */,
 				09173AA520CB6AF600246B8D /* ViewModel */,
+				097F863E210F651600B7F97F /* View */,
 			);
 			path = "公有类";
 			sourceTree = "<group>";
@@ -777,6 +783,7 @@
 		0970092D20C9869700461468 /* 第三方库 */ = {
 			isa = PBXGroup;
 			children = (
+				097F8637210F5FD000B7F97F /* iCarousel */,
 				09EEF625210D525900E5D1B1 /* WMPageController */,
 				09E974F42106198600DCA986 /* MJRefresh */,
 				09173AB920CC0CA400246B8D /* Masonry */,
@@ -821,6 +828,25 @@
 				097BB63E210D9A9C00D6A1F5 /* LTYHomeViewModel.m */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		097F8637210F5FD000B7F97F /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				097F8639210F5FD000B7F97F /* iCarousel.h */,
+				097F8638210F5FD000B7F97F /* iCarousel.m */,
+			);
+			name = iCarousel;
+			path = "../../../../../../Downloads/XiMaLaYa-by-HansRove--master/喜马拉雅FM(高仿品)/Vendor/iCarousel";
+			sourceTree = "<group>";
+		};
+		097F863E210F651600B7F97F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				097F863B210F651300B7F97F /* FocusImageScrollView.h */,
+				097F863C210F651300B7F97F /* FocusImageScrollView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		09E974F42106198600DCA986 /* MJRefresh */ = {
@@ -1049,7 +1075,6 @@
 				09136DDF20EBBC59007E3F93 /* LTYTagColumnCell.xib in Resources */,
 				09012E6020D162C700D8BE68 /* PersonalSetting.storyboard in Resources */,
 				09EEF63B210D525900E5D1B1 /* README.md in Resources */,
-				099CF53C2104BD1B00855CCC /* File.rtf in Resources */,
 				090EF22420F7995B00CB1C9D /* LTYRecommendViewCell.xib in Resources */,
 				091233F720C82205001A80D6 /* LaunchScreen.storyboard in Resources */,
 				09E975382106198600DCA986 /* README.md in Resources */,
@@ -1086,6 +1111,7 @@
 				09173AD720CC0CA400246B8D /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				09E975312106198600DCA986 /* MJRefreshStateHeader.m in Sources */,
 				09173ADD20CC0CA400246B8D /* View+MASAdditions.m in Sources */,
+				097F863A210F5FD000B7F97F /* iCarousel.m in Sources */,
 				09173ADF20CC0CA400246B8D /* MASViewConstraint.m in Sources */,
 				091233EF20C82205001A80D6 /* ViewController.m in Sources */,
 				094073CD20C83FAC00D93ECA /* LTYSortViewController.m in Sources */,
@@ -1131,6 +1157,7 @@
 				09173ADC20CC0CA400246B8D /* NSArray+MASAdditions.m in Sources */,
 				09173AD920CC0CA400246B8D /* MASCompositeConstraint.m in Sources */,
 				090EF22220F7991D00CB1C9D /* LTYRecommendViewCell.m in Sources */,
+				097F863D210F651300B7F97F /* FocusImageScrollView.m in Sources */,
 				0948506020CAC38400492EEF /* AFSecurityPolicy.m in Sources */,
 				09FCDD7320FE3660007BC7F0 /* LTYFreeView.m in Sources */,
 				09E975372106198600DCA986 /* MJRefreshComponent.m in Sources */,

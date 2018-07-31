@@ -28,6 +28,30 @@
     }];
 }
 
+#pragma mark - 获取home页不同单元格对应的数据数组
+
+- (NSArray *) dataArrayOfTitle:(NSString *) title{
+    NSArray *dataArray = nil;
+    for (int i = 0; i<self.homeModel.data.interests.count; i++) {
+        if ([self.homeModel.data.interests[i].title containsString:title]) {
+            dataArray = self.homeModel.data.interests[i].list;
+            break;
+        }
+    }
+    return dataArray;
+}
+
+#pragma mark - 表的滚动视图数据
+
+//获得滚动视图中图片url地址
+- (NSURL *)scrollViewImageURLForIndex:(NSInteger)index{
+    NSArray *array = [self dataArrayOfTitle:@"家常菜"];
+    NSString *imageString = [array[index] valueForKey:@"imageid"];
+   // NSLog(@"%@",imageString);
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg",imageString]];
+    return url;
+}
+
 #pragma mark - 表的头视图数据
 //获得表头视图中标签文字
 - (NSString *)headViewTagLabelForIndex:(NSInteger)index{
@@ -59,6 +83,12 @@
     _tagCount = self.homeModel.data.items.count;
     return _tagCount;
     
+}
+
+- (NSInteger)numberOfItemsInScrollView{
+    NSArray *array = [self dataArrayOfTitle:@"家常菜"];
+    _numberOfItemsInScrollView = array.count;
+    return _numberOfItemsInScrollView;
 }
 
 @end
