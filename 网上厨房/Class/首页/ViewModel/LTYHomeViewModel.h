@@ -15,8 +15,21 @@
 //获得表头视图中图片url地址
 - (NSURL *) headViewTagImageViewForIndex:(NSInteger)index;
 
-//获得滚动视图中图片url地址
+//获得滚动视图中背景图片url地址
 - (NSURL *) scrollViewImageURLForIndex :(NSInteger)index;
+//获得滚动视图中作者图片url地址
+- (NSURL *) scrollViewUserImageURLForIndex :(NSInteger)index;
+//获得滚动视图中作者名称
+-(NSString *) nickNameForIndex :(NSInteger)index;
+//获得滚动视图中星级图片
+-(UIImage *) starImageForIndex :(NSInteger)index;
+//获得滚动视图中标题
+-(NSString *) cookTitleForIndex :(NSInteger)index;
+
+//获得早餐视图中背景图片url地址
+- (NSURL *) breakfastViewBackgroundImageURLForIndex:(NSInteger)index;
+
+
 
 
 //表头视图item数量

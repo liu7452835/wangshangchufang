@@ -23,7 +23,7 @@
             return nil;
         }
         
-        self.frame = CGRectMake(0, 0, kScreenWidth, kScreenWidth/2);
+        self.frame = CGRectMake(0, 0, kScreenWidth, kScreenWidth/2);//frame指cell中区域可以交互的区域
         
         //添加滚动栏
         _ic = [[iCarousel alloc]init];
@@ -35,6 +35,8 @@
         _ic.scrollEnabled = number !=1;
         //手动翻页时，让图片一张一张滚，默认为NO,滚一次到尾
         _ic.pagingEnabled = YES;
+        
+        _ic.type = iCarouselTypeCustom;
         
         _pageControl = [UIPageControl new];
         _pageControl.numberOfPages = number;

@@ -51,7 +51,7 @@
         [self addSubview:_imageView];
         [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.mas_equalTo(0);
-            make.top.mas_equalTo(5);
+            make.top.mas_equalTo(0);
             make.size.mas_equalTo(CGSizeMake(33, 33));
         }];
         _imageView.backgroundColor = [UIColor whiteColor];

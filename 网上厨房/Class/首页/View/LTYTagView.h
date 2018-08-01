@@ -14,6 +14,10 @@
 
 @end
 
+
+/**
+ 表头视图中单个tagview
+ */
 @interface LTYTagView : UIView
 
 @property(nonatomic,strong) UIImageView *imageView;

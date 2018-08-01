@@ -41,15 +41,56 @@
     return dataArray;
 }
 
+#pragma mark - 表的早餐视图数据
+
+//获得早餐视图中背景图片url地址
+- (NSURL *)breakfastViewBackgroundImageURLForIndex:(NSInteger)index{
+    NSArray *array = [self dataArrayOfTitle:@"早餐"];
+    NSString *imageString = [array[index] valueForKey:@"imageid"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg",imageString]];
+    return url;
+}
+
 #pragma mark - 表的滚动视图数据
 
-//获得滚动视图中图片url地址
+//获得滚动视图中背景图片url地址
 - (NSURL *)scrollViewImageURLForIndex:(NSInteger)index{
     NSArray *array = [self dataArrayOfTitle:@"家常菜"];
     NSString *imageString = [array[index] valueForKey:@"imageid"];
    // NSLog(@"%@",imageString);
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg",imageString]];
     return url;
+}
+
+//获得滚动视图中作者图片url地址
+- (NSURL *)scrollViewUserImageURLForIndex:(NSInteger)index{
+    NSArray *array = [self dataArrayOfTitle:@"家常菜"];
+    NSString *imageString = [array[index] valueForKeyPath:@"user.imageid"];
+    // NSLog(@"%@",imageString);
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",imageString]];
+    return url;
+}
+//获得滚动视图中作者名称
+- (NSString *)nickNameForIndex:(NSInteger)index{
+    NSArray *array = [self dataArrayOfTitle:@"家常菜"];
+    NSString *nickName = [array[index] valueForKeyPath:@"user.nickname"];
+    
+    return nickName;
+}
+
+//获得滚动视图中星级图片
+- (UIImage *)starImageForIndex:(NSInteger)index{
+     NSArray *starArray = @[@"white",@"talent_one_star",@"talent_two_star",@"talent_three_star",@"talent_four_star",@"talent_five_star"];
+    NSArray *array = [self dataArrayOfTitle:@"家常菜"];
+    NSNumber *starNumber = [array[index] valueForKeyPath:@"user.star"];
+    return [UIImage imageNamed:starArray[starNumber.integerValue]];
+}
+
+//获得滚动视图中标题
+- (NSString *)cookTitleForIndex:(NSInteger)index{
+    NSArray *array = [self dataArrayOfTitle:@"家常菜"];
+    NSString *cookTitle = [array[index] valueForKeyPath:@"name"];
+    return cookTitle;
 }
 
 #pragma mark - 表的头视图数据

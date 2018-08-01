@@ -36,6 +36,9 @@
 		09173ADF20CC0CA400246B8D /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 09173AD320CC0CA400246B8D /* MASViewConstraint.m */; };
 		09173AE020CC0CA400246B8D /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 09173AD420CC0CA400246B8D /* MASViewAttribute.m */; };
 		09173AE420CC168600246B8D /* SortFistViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09173AE320CC168600246B8D /* SortFistViewCell.m */; };
+		0931CCCE211068E200B6AC95 /* LTYScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0931CCCD211068E200B6AC95 /* LTYScrollView.m */; };
+		0931CCDF2111905400B6AC95 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0931CCDE2111905400B6AC95 /* BaseView.m */; };
+		0931CCE22111964F00B6AC95 /* LTYBreakfastViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0931CCE12111964F00B6AC95 /* LTYBreakfastViewCell.m */; };
 		094073C820C83F4A00D93ECA /* LTYHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 094073C720C83F4A00D93ECA /* LTYHomeViewController.m */; };
 		094073CD20C83FAC00D93ECA /* LTYSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 094073CC20C83FAC00D93ECA /* LTYSortViewController.m */; };
 		094073D220C8402700D93ECA /* LTYTeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 094073D120C8402700D93ECA /* LTYTeachViewController.m */; };
@@ -180,6 +183,12 @@
 		09173AD420CC0CA400246B8D /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
 		09173AE220CC168600246B8D /* SortFistViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortFistViewCell.h; sourceTree = "<group>"; };
 		09173AE320CC168600246B8D /* SortFistViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortFistViewCell.m; sourceTree = "<group>"; };
+		0931CCCC211068E200B6AC95 /* LTYScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYScrollView.h; sourceTree = "<group>"; };
+		0931CCCD211068E200B6AC95 /* LTYScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYScrollView.m; sourceTree = "<group>"; };
+		0931CCDD2111905400B6AC95 /* BaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
+		0931CCDE2111905400B6AC95 /* BaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
+		0931CCE02111964F00B6AC95 /* LTYBreakfastViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYBreakfastViewCell.h; sourceTree = "<group>"; };
+		0931CCE12111964F00B6AC95 /* LTYBreakfastViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYBreakfastViewCell.m; sourceTree = "<group>"; };
 		094073C620C83F4A00D93ECA /* LTYHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYHomeViewController.h; sourceTree = "<group>"; };
 		094073C720C83F4A00D93ECA /* LTYHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYHomeViewController.m; sourceTree = "<group>"; };
 		094073CB20C83FAC00D93ECA /* LTYSortViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYSortViewController.h; sourceTree = "<group>"; };
@@ -421,14 +430,14 @@
 		09136DE320EBBEE5007E3F93 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				09136DDE20EBBC59007E3F93 /* LTYTagColumnCell.xib */,
-				09136DE020EBBEDE007E3F93 /* LTYTagColumnCell.h */,
-				09136DE120EBBEDE007E3F93 /* LTYTagColumnCell.m */,
+				0945C8A820F8EBB000BE5318 /* LTYRecommendView.h */,
+				0945C8A920F8EBB000BE5318 /* LTYRecommendView.m */,
 				090EF22020F7991D00CB1C9D /* LTYRecommendViewCell.h */,
 				090EF22120F7991D00CB1C9D /* LTYRecommendViewCell.m */,
 				090EF22320F7995B00CB1C9D /* LTYRecommendViewCell.xib */,
-				0945C8A820F8EBB000BE5318 /* LTYRecommendView.h */,
-				0945C8A920F8EBB000BE5318 /* LTYRecommendView.m */,
+				09136DDE20EBBC59007E3F93 /* LTYTagColumnCell.xib */,
+				09136DE020EBBEDE007E3F93 /* LTYTagColumnCell.h */,
+				09136DE120EBBEDE007E3F93 /* LTYTagColumnCell.m */,
 				09FCDD6C20FE108C007BC7F0 /* LTYFreeViewCell.h */,
 				09FCDD6D20FE108C007BC7F0 /* LTYFreeViewCell.m */,
 				09FCDD7120FE3660007BC7F0 /* LTYFreeView.h */,
@@ -845,6 +854,8 @@
 			children = (
 				097F863B210F651300B7F97F /* FocusImageScrollView.h */,
 				097F863C210F651300B7F97F /* FocusImageScrollView.m */,
+				0931CCDD2111905400B6AC95 /* BaseView.h */,
+				0931CCDE2111905400B6AC95 /* BaseView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -965,6 +976,10 @@
 			children = (
 				09EEF622210C9BAB00E5D1B1 /* LTYTagView.h */,
 				09EEF623210C9BAB00E5D1B1 /* LTYTagView.m */,
+				0931CCCC211068E200B6AC95 /* LTYScrollView.h */,
+				0931CCCD211068E200B6AC95 /* LTYScrollView.m */,
+				0931CCE02111964F00B6AC95 /* LTYBreakfastViewCell.h */,
+				0931CCE12111964F00B6AC95 /* LTYBreakfastViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1110,6 +1125,7 @@
 				0970092B20C9869100461468 /* MJDictionaryCache.m in Sources */,
 				09173AD720CC0CA400246B8D /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				09E975312106198600DCA986 /* MJRefreshStateHeader.m in Sources */,
+				0931CCDF2111905400B6AC95 /* BaseView.m in Sources */,
 				09173ADD20CC0CA400246B8D /* View+MASAdditions.m in Sources */,
 				097F863A210F5FD000B7F97F /* iCarousel.m in Sources */,
 				09173ADF20CC0CA400246B8D /* MASViewConstraint.m in Sources */,
@@ -1124,6 +1140,7 @@
 				09EEF637210D525900E5D1B1 /* WMFooldView.m in Sources */,
 				094A9FB620CD208500BFC13A /* CommonContentShow.m in Sources */,
 				09E9752B2106198600DCA986 /* MJRefreshBackStateFooter.m in Sources */,
+				0931CCE22111964F00B6AC95 /* LTYBreakfastViewCell.m in Sources */,
 				09EEF638210D525900E5D1B1 /* WMMenuItem.m in Sources */,
 				09173AA420CB683100246B8D /* BaseViewModel.m in Sources */,
 				09173AA820CB716800246B8D /* LTYSortModel.m in Sources */,
@@ -1159,6 +1176,7 @@
 				090EF22220F7991D00CB1C9D /* LTYRecommendViewCell.m in Sources */,
 				097F863D210F651300B7F97F /* FocusImageScrollView.m in Sources */,
 				0948506020CAC38400492EEF /* AFSecurityPolicy.m in Sources */,
+				0931CCCE211068E200B6AC95 /* LTYScrollView.m in Sources */,
 				09FCDD7320FE3660007BC7F0 /* LTYFreeView.m in Sources */,
 				09E975372106198600DCA986 /* MJRefreshComponent.m in Sources */,
 				0948505120CAC38400492EEF /* UIProgressView+AFNetworking.m in Sources */,
