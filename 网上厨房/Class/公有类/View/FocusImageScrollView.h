@@ -19,6 +19,11 @@
  */
 - (instancetype) initWithFocusImgNumber:(NSInteger)number;
 
+/**
+ 通过传入需要滑动的图数量，初始化一个view（不需要自动滚动）
+ */
+//- (instancetype) initWithSlideImgNumber:(NSInteger)number;
+
 // 给外界接受它的代理
 @property(nonatomic,strong) iCarousel *ic;
 @property(nonatomic,strong) UIPageControl *pageControl;

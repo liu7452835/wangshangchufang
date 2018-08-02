@@ -16,7 +16,7 @@
 @implementation LTYHomeModelData
 
 + (NSDictionary *)mj_objectClassInArray{
-    return @{@"teachalbums" : [LTYHomeModelData_Teachalbums class],@"interests" : [LTYHomeModelData_Interests class],@"items" : [LTYHomeViewModelData_Items class],@"users" : [LTYHomeModelData_Users class],@"onlineteaches" : [LTYHomeModelData_Onlineteaches class]};
+    return @{@"teachalbums" : [LTYHomeModelData_Teachalbums class],@"interests" : [LTYHomeModelData_Interests class],@"items" : [LTYHomeViewModelData_Items class],@"users" : [LTYHomeModelData_Users class],@"onlineteaches" : [LTYHomeModelData_Onlineteaches class], @"banners" : [LTYHomeViewModelData_Banners class]};
 }
 
 @end
@@ -60,7 +60,7 @@
 @end;
 
 
-@implementation LTYHomeModelData_Banners
+@implementation LTYHomeViewModelData_Banners
 
 @end
 

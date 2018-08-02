@@ -56,7 +56,7 @@
         [_userImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(30, 30));
             make.top.mas_equalTo(self.title.mas_bottom).mas_equalTo(5);
-            make.centerX.mas_equalTo(-10);
+            make.centerX.mas_equalTo(-20);
         }];
         _userImageView.layer.cornerRadius = 15.0;
         _userImageView.layer.masksToBounds = YES;

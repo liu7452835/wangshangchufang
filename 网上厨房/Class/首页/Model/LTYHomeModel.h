@@ -8,7 +8,7 @@
 
 #import "BaseModel.h"
 
-@class LTYHomeModelData,LTYHomeModelData_Teachalbums,LTYHomeModelData_Interests,LTYHomeModelData_Interests_List,LTYHomeModelData_Interests_List_User,LTYHomeModelData_Interests_List_Infos,LTYHomeViewModelData_Items,LTYHomeViewModelData_Banner,LTYHomeModelData_Users,LTYHomeModelData_Onlineteaches,LTYHomeModelData_Onlineteaches_Teacher;
+@class LTYHomeModelData,LTYHomeModelData_Teachalbums,LTYHomeModelData_Interests,LTYHomeModelData_Interests_List,LTYHomeModelData_Interests_List_User,LTYHomeModelData_Interests_List_Infos,LTYHomeViewModelData_Items,LTYHomeViewModelData_Banners,LTYHomeModelData_Users,LTYHomeModelData_Onlineteaches,LTYHomeModelData_Onlineteaches_Teacher;
 
 @interface LTYHomeModel : BaseModel
 
@@ -29,7 +29,7 @@
 
 @property(nonatomic,strong) NSArray<LTYHomeViewModelData_Items *> *items;
 
-@property(nonatomic,strong) NSArray<LTYHomeViewModelData_Banner *> *banners;
+@property(nonatomic,strong) NSArray<LTYHomeViewModelData_Banners *> *banners;
 
 @property(nonatomic,strong) NSArray<LTYHomeModelData_Users *> *users;
 
@@ -130,7 +130,7 @@
 @end;
 
 
-@interface LTYHomeModelData_Banners : BaseModel
+@interface LTYHomeViewModelData_Banners : BaseModel
 
 @property(nonatomic,copy) NSString *image;
 

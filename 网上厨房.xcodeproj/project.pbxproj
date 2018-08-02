@@ -39,6 +39,8 @@
 		0931CCCE211068E200B6AC95 /* LTYScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0931CCCD211068E200B6AC95 /* LTYScrollView.m */; };
 		0931CCDF2111905400B6AC95 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0931CCDE2111905400B6AC95 /* BaseView.m */; };
 		0931CCE22111964F00B6AC95 /* LTYBreakfastViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0931CCE12111964F00B6AC95 /* LTYBreakfastViewCell.m */; };
+		0931CCE82111C22C00B6AC95 /* HeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0931CCE72111C22C00B6AC95 /* HeadView.m */; };
+		0931CCEB2111EAE400B6AC95 /* LTYCourseAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0931CCEA2111EAE400B6AC95 /* LTYCourseAlbumView.m */; };
 		094073C820C83F4A00D93ECA /* LTYHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 094073C720C83F4A00D93ECA /* LTYHomeViewController.m */; };
 		094073CD20C83FAC00D93ECA /* LTYSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 094073CC20C83FAC00D93ECA /* LTYSortViewController.m */; };
 		094073D220C8402700D93ECA /* LTYTeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 094073D120C8402700D93ECA /* LTYTeachViewController.m */; };
@@ -189,6 +191,10 @@
 		0931CCDE2111905400B6AC95 /* BaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 		0931CCE02111964F00B6AC95 /* LTYBreakfastViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYBreakfastViewCell.h; sourceTree = "<group>"; };
 		0931CCE12111964F00B6AC95 /* LTYBreakfastViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYBreakfastViewCell.m; sourceTree = "<group>"; };
+		0931CCE62111C22C00B6AC95 /* HeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadView.h; sourceTree = "<group>"; };
+		0931CCE72111C22C00B6AC95 /* HeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeadView.m; sourceTree = "<group>"; };
+		0931CCE92111EAE400B6AC95 /* LTYCourseAlbumView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYCourseAlbumView.h; sourceTree = "<group>"; };
+		0931CCEA2111EAE400B6AC95 /* LTYCourseAlbumView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYCourseAlbumView.m; sourceTree = "<group>"; };
 		094073C620C83F4A00D93ECA /* LTYHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYHomeViewController.h; sourceTree = "<group>"; };
 		094073C720C83F4A00D93ECA /* LTYHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYHomeViewController.m; sourceTree = "<group>"; };
 		094073CB20C83FAC00D93ECA /* LTYSortViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYSortViewController.h; sourceTree = "<group>"; };
@@ -856,6 +862,8 @@
 				097F863C210F651300B7F97F /* FocusImageScrollView.m */,
 				0931CCDD2111905400B6AC95 /* BaseView.h */,
 				0931CCDE2111905400B6AC95 /* BaseView.m */,
+				0931CCE62111C22C00B6AC95 /* HeadView.h */,
+				0931CCE72111C22C00B6AC95 /* HeadView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -980,6 +988,8 @@
 				0931CCCD211068E200B6AC95 /* LTYScrollView.m */,
 				0931CCE02111964F00B6AC95 /* LTYBreakfastViewCell.h */,
 				0931CCE12111964F00B6AC95 /* LTYBreakfastViewCell.m */,
+				0931CCE92111EAE400B6AC95 /* LTYCourseAlbumView.h */,
+				0931CCEA2111EAE400B6AC95 /* LTYCourseAlbumView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1200,6 +1210,8 @@
 				09EEF63A210D525900E5D1B1 /* WMProgressView.m in Sources */,
 				09E975352106198600DCA986 /* MJRefreshBackFooter.m in Sources */,
 				09E9752D2106198600DCA986 /* MJRefreshAutoStateFooter.m in Sources */,
+				0931CCE82111C22C00B6AC95 /* HeadView.m in Sources */,
+				0931CCEB2111EAE400B6AC95 /* LTYCourseAlbumView.m in Sources */,
 				09173AB820CBFE5D00246B8D /* MBProgressHUD+LTY.m in Sources */,
 				09173AD820CC0CA400246B8D /* ViewController+MASAdditions.m in Sources */,
 				0948505C20CAC38400492EEF /* AFHTTPRequestOperationManager.m in Sources */,
