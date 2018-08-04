@@ -121,6 +121,7 @@
 		09EEF63A210D525900E5D1B1 /* WMProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EEF632210D525900E5D1B1 /* WMProgressView.m */; };
 		09EEF63B210D525900E5D1B1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 09EEF634210D525900E5D1B1 /* README.md */; };
 		09EEF63F210D931800E5D1B1 /* LTYHomeNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EEF63E210D931800E5D1B1 /* LTYHomeNetManager.m */; };
+		09FB8D8A21157A5B003EDFF1 /* LTYLocalDelicaciesViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB8D8921157A5B003EDFF1 /* LTYLocalDelicaciesViewCell.m */; };
 		09FCDD6E20FE108C007BC7F0 /* LTYFreeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FCDD6D20FE108C007BC7F0 /* LTYFreeViewCell.m */; };
 		09FCDD7320FE3660007BC7F0 /* LTYFreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FCDD7220FE3660007BC7F0 /* LTYFreeView.m */; };
 /* End PBXBuildFile section */
@@ -360,6 +361,8 @@
 		09EEF634210D525900E5D1B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		09EEF63D210D931800E5D1B1 /* LTYHomeNetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYHomeNetManager.h; sourceTree = "<group>"; };
 		09EEF63E210D931800E5D1B1 /* LTYHomeNetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYHomeNetManager.m; sourceTree = "<group>"; };
+		09FB8D8821157A5B003EDFF1 /* LTYLocalDelicaciesViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYLocalDelicaciesViewCell.h; sourceTree = "<group>"; };
+		09FB8D8921157A5B003EDFF1 /* LTYLocalDelicaciesViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYLocalDelicaciesViewCell.m; sourceTree = "<group>"; };
 		09FCDD6C20FE108C007BC7F0 /* LTYFreeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYFreeViewCell.h; sourceTree = "<group>"; };
 		09FCDD6D20FE108C007BC7F0 /* LTYFreeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYFreeViewCell.m; sourceTree = "<group>"; };
 		09FCDD7120FE3660007BC7F0 /* LTYFreeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYFreeView.h; sourceTree = "<group>"; };
@@ -990,6 +993,8 @@
 				0931CCE12111964F00B6AC95 /* LTYBreakfastViewCell.m */,
 				0931CCE92111EAE400B6AC95 /* LTYCourseAlbumView.h */,
 				0931CCEA2111EAE400B6AC95 /* LTYCourseAlbumView.m */,
+				09FB8D8821157A5B003EDFF1 /* LTYLocalDelicaciesViewCell.h */,
+				09FB8D8921157A5B003EDFF1 /* LTYLocalDelicaciesViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1172,6 +1177,7 @@
 				09E975342106198600DCA986 /* MJRefreshHeader.m in Sources */,
 				0948505820CAC38400492EEF /* AFURLResponseSerialization.m in Sources */,
 				094A9FAD20CCF51800BFC13A /* SortSecondViewCell.m in Sources */,
+				09FB8D8A21157A5B003EDFF1 /* LTYLocalDelicaciesViewCell.m in Sources */,
 				0970093420C9897500461468 /* BaseNetManager.m in Sources */,
 				094073C820C83F4A00D93ECA /* LTYHomeViewController.m in Sources */,
 				0948505B20CAC38400492EEF /* AFURLSessionManager.m in Sources */,

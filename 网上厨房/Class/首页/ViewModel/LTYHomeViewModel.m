@@ -12,6 +12,9 @@
 
 #define kBreakfast @"早餐"
 #define khomeCook @"家常菜"
+#define kPasta @"面食"
+#define kDlicacies @"小吃"
+
 @interface LTYHomeViewModel()
 
 @property(nonatomic,strong) LTYHomeModel *homeModel;
@@ -54,6 +57,109 @@
 }
 
 */
+
+#pragma mark - 风味小吃视图中数据
+
+//获得风味小吃视图中背景图片url地址
+- (NSURL *)delicaciesViewImageURLForIndex:(NSInteger)index{
+    NSArray *array = [self dataArrayOfTitle:kDlicacies];
+    NSString *imageString = [array[index] valueForKey:@"imageid"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg",imageString]];
+    return url;
+}
+
+//获得风味小吃视图中标题
+- (NSString *)delicaciesViewTitleForIndex:(NSInteger)index{
+    NSArray *array = [self dataArrayOfTitle:kDlicacies];
+    NSString *breakfastTitle = [array[index] valueForKeyPath:@"name"];
+    return breakfastTitle;
+}
+
+//获得风味小吃视图中作者图片url地址
+- (NSURL *)delicaciesViewUserImageURLForIndex:(NSInteger)index{
+    NSArray *array = [self dataArrayOfTitle:kDlicacies];
+    NSString *imageString = [array[index] valueForKeyPath:@"user.imageid"];
+    // NSLog(@"%@",imageString);
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",imageString]];
+    return url;
+}
+
+//获得风味小吃视图中作者名称
+- (NSString *)delicaciesViewNickNameForIndex:(NSInteger)index{
+    NSArray *array = [self dataArrayOfTitle:kDlicacies];
+    NSString *nickName = [array[index] valueForKeyPath:@"user.nickname"];
+    return nickName;
+}
+
+//获得风味小吃视图中星级图片
+- (UIImage *)starImageOfDelicaciesViewForIndex:(NSInteger)index{
+    NSArray *starArray = @[@"white",@"talent_one_star",@"talent_two_star",@"talent_three_star",@"talent_four_star",@"talent_five_star"];
+    NSArray *array = [self dataArrayOfTitle:kDlicacies];
+    NSNumber *starNumber = [array[index] valueForKeyPath:@"user.star"];
+    return [UIImage imageNamed:starArray[starNumber.integerValue]];
+}
+
+#pragma mark - 面食视图中数据
+
+//获得面食视图中背景图片url地址
+- (NSURL *)pastaViewImageURLForIndex:(NSInteger)index{
+    NSArray *array = [self dataArrayOfTitle:kPasta];
+    NSString *imageString = [array[index] valueForKey:@"imageid"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg",imageString]];
+    return url;
+}
+
+//获得面食视图中标题
+- (NSString *)pastaViewTitleForIndex:(NSInteger)index{
+    NSArray *array = [self dataArrayOfTitle:kPasta];
+    NSString *breakfastTitle = [array[index] valueForKeyPath:@"name"];
+    return breakfastTitle;
+}
+
+//获得面食视图中作者图片url地址
+- (NSURL *)pastaViewUserImageURLForIndex:(NSInteger)index{
+    NSArray *array = [self dataArrayOfTitle:kPasta];
+    NSString *imageString = [array[index] valueForKeyPath:@"user.imageid"];
+    // NSLog(@"%@",imageString);
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",imageString]];
+    return url;
+}
+
+//获得面食视图中作者名称
+- (NSString *)pastaViewNickNameForIndex:(NSInteger)index{
+    NSArray *array = [self dataArrayOfTitle:kPasta];
+    NSString *nickName = [array[index] valueForKeyPath:@"user.nickname"];
+    return nickName;
+}
+
+//获得面食视图中星级图片
+- (UIImage *)starImageOfPastaViewForIndex:(NSInteger)index{
+    NSArray *starArray = @[@"white",@"talent_one_star",@"talent_two_star",@"talent_three_star",@"talent_four_star",@"talent_five_star"];
+    NSArray *array = [self dataArrayOfTitle:kPasta];
+    NSNumber *starNumber = [array[index] valueForKeyPath:@"user.star"];
+    return [UIImage imageNamed:starArray[starNumber.integerValue]];
+}
+
+#pragma mark - 课程专辑视图中数据
+
+//获得课程专辑视图中背景图片url地址
+- (NSURL *)courseAlbumViewImageURLForIndex:(NSInteger)index{
+    NSString *imageString = self.homeModel.data.teachalbums[index].vimg;
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg",imageString]];
+    return url;
+}
+
+//获得课程专辑视图中共有几节课
+- (NSString *)courseAlbumViewCourseCountsForIndex:(NSInteger)index{
+    NSString *courseCounts = self.homeModel.data.teachalbums[index].teachNum;
+    NSString *string = [NSString stringWithFormat:@"  共%@节课程  ",courseCounts];
+    return string;
+}
+
+//获得课程专辑视图中标题
+- (NSString *)courseAlbumViewTitleForIndex:(NSInteger)index{
+    return self.homeModel.data.teachalbums[index].title;
+}
 
 #pragma mark - 线性滚动视图图片
 //获得线性滚动视图中图片
@@ -189,9 +295,14 @@
     return self.homeModel.data.banners.count;
 }
 
-/*
-- (NSInteger)numberOfItemsInSlideView{
+
+- (NSInteger)numberOfItemsInCourseView{
     return self.homeModel.data.teachalbums.count;
 }
-*/
+
+- (NSInteger)numberOfItemsInPastaView{
+    NSArray *array = [self dataArrayOfTitle:kPasta];
+    _numberOfItemsInPastaView = array.count;
+    return _numberOfItemsInPastaView;
+}
 @end

@@ -19,6 +19,16 @@
     return self;
 }
 
+- (instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        self.nickName.font = [UIFont systemFontOfSize:12];
+        self.title.font = [UIFont systemFontOfSize:15];
+        self.starImageView.contentMode = UIViewContentModeLeft;
+       
+    };
+    return self;
+}
+
 - (UIImageView *)backgroundImageView{
     if (!_backgroundImageView) {
         _backgroundImageView = [UIImageView new];
@@ -28,6 +38,9 @@
             make.top.left.right.mas_equalTo(0);
             make.bottom.mas_equalTo(-65);
         }];
+        _backgroundImageView.layer.cornerRadius = 4;
+        _backgroundImageView.clipsToBounds = YES;
+        _backgroundImageView.tag = 100;
         _backgroundImageView.contentMode =UIViewContentModeScaleAspectFill;
         _backgroundImageView.clipsToBounds = YES;
     }
@@ -44,6 +57,7 @@
             make.top.mas_equalTo(self.backgroundImageView.mas_bottom).mas_equalTo(5);
             make.height.mas_equalTo(20);
         }];
+        _title.tag = 200;
         _title.textAlignment = NSTextAlignmentCenter;
         _title.textColor = [UIColor blackColor];
     }
@@ -58,6 +72,7 @@
             make.top.mas_equalTo(self.title.mas_bottom).mas_equalTo(5);
             make.centerX.mas_equalTo(-20);
         }];
+        _userImageView.tag = 300;
         _userImageView.layer.cornerRadius = 15.0;
         _userImageView.layer.masksToBounds = YES;
     }
@@ -74,6 +89,7 @@
             make.centerY.mas_equalTo(self.userImageView).mas_equalTo(-5);
             make.height.mas_equalTo(15);
         }];
+        _nickName.tag = 400;
         _nickName.textColor = [UIColor lightGrayColor];
         _nickName.textAlignment = NSTextAlignmentLeft;
     }
@@ -91,6 +107,7 @@
             make.height.mas_equalTo(8);
             
         }];
+        _starImageView.tag = 500;
         _starImageView.contentMode = UIViewContentModeScaleAspectFit;
         _starImageView.clipsToBounds =YES;
     }

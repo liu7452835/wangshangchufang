@@ -37,6 +37,35 @@
 //获得早餐视图中星级图片
 -(UIImage *) starImageOfBreakfastViewForIndex :(NSInteger)index;
 
+//获得课程专辑视图中背景图片url地址
+- (NSURL *) courseAlbumViewImageURLForIndex :(NSInteger)index;
+//获得课程专辑视图中共有几节课
+-(NSString *) courseAlbumViewCourseCountsForIndex :(NSInteger)index;
+//获得课程专辑视图中标题
+-(NSString *) courseAlbumViewTitleForIndex :(NSInteger)index;
+
+//获得面食视图中背景图片url地址
+- (NSURL *) pastaViewImageURLForIndex :(NSInteger)index;
+//获得面食视图中标题
+-(NSString *) pastaViewTitleForIndex :(NSInteger)index;
+//获得面食视图中作者图片url地址
+- (NSURL *) pastaViewUserImageURLForIndex :(NSInteger)index;
+//获得面食视图中作者名称
+-(NSString *) pastaViewNickNameForIndex :(NSInteger)index;
+//获得面食视图中星级图片
+-(UIImage *) starImageOfPastaViewForIndex :(NSInteger)index;
+
+//获得风味小吃视图中背景图片url地址
+- (NSURL *) delicaciesViewImageURLForIndex :(NSInteger)index;
+//获得风味小吃视图中标题
+-(NSString *) delicaciesViewTitleForIndex :(NSInteger)index;
+//获得风味小吃视图中作者图片url地址
+- (NSURL *) delicaciesViewUserImageURLForIndex :(NSInteger)index;
+//获得风味小吃视图中作者名称
+-(NSString *) delicaciesViewNickNameForIndex :(NSInteger)index;
+//获得风味小吃视图中星级图片
+-(UIImage *) starImageOfDelicaciesViewForIndex :(NSInteger)index;
+
 //获得线性滚动视图中图片
 - (NSURL *) linearScrollImageViewForIndex:(NSInteger) index;
 
@@ -52,7 +81,10 @@
 //线性滚动视图中滚动图片数量
 @property(nonatomic,assign) NSInteger numberOfItemsInLinerScrollView;
 
-//滑动视图中滑动图片数量
-//@property(nonatomic,assign) NSInteger numberOfItemsInSlideView;
+//课程专辑视图中图片数量
+@property(nonatomic,assign) NSInteger numberOfItemsInCourseView;
+
+//面食视图中滚动图片数量
+@property(nonatomic,assign) NSInteger numberOfItemsInPastaView;
 
 @end

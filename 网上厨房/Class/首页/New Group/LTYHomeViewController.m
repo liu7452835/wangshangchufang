@@ -13,18 +13,25 @@
 #import "LTYScrollView.h"
 #import "LTYBreakfastViewCell.h"
 #import "HeadView.h"
-
-//#import "LTYCourseAlbumView.h"
-
+#import "LTYCourseAlbumView.h"
+#import "BaseView.h"//添加面食视图
+#import "iCarousel.h"//添加面食视图
+#import "LTYLocalDelicaciesViewCell.h"
 
 #define kBreakfast @"breakfastCell"
 #define kCourseAlbum @"courseAlbumCell"
+#define kPasta @"pastaCell"//面食视图
+#define kDelicacies @"delicaciesCell"
+
 @interface LTYHomeViewController ()<UITableViewDelegate,UITableViewDataSource,LTYTagViewClickDelegate,iCarouselDelegate,iCarouselDataSource>
 
 @property(nonatomic,strong) UITableView *tableView;
 @property(nonatomic,strong) LTYHomeViewModel *homeVC;
 @property(nonatomic,strong) FocusImageScrollView *scrollView;
 @property(nonatomic,strong) FocusImageScrollView *linerScrollView;
+@property(nonatomic,strong) UIScrollView *slideScrollView;
+@property(nonatomic,strong) iCarousel *pastaView;//面食视图
+//@property(nonatomic,strong) LTYLocalDelicaciesViewCell *delicaciesView;
 @end
 
 
@@ -52,10 +59,13 @@
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel{
     if (carousel == self.scrollView.ic) {
         return self.homeVC.numberOfItemsInScrollView;
-    } else {
+    } else if(carousel == self.linerScrollView.ic){
         return self.homeVC.numberOfItemsInLinerScrollView;
+    } else{
+        return self.homeVC.numberOfItemsInPastaView;
     }
 }
+
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view{
     
@@ -86,7 +96,7 @@
         [cookTitle setText:[self.homeVC cookTitleForIndex:index]];
        
         return view;
-    } else {
+    } else if(carousel == self.linerScrollView.ic){
         UIImageView *linerScrollImageView = nil;
         
         if (!view) {
@@ -106,7 +116,35 @@
         }
         linerScrollImageView = (UIImageView *)[view viewWithTag:200];
         [linerScrollImageView setImageWithURL:[self.homeVC linearScrollImageViewForIndex:index]];
-        //[linerScrollImageView setBackgroundColor:[UIColor redColor]];
+        
+        return view;
+    }else{
+        
+        UIImageView *backgroundImageView = nil;
+        UILabel *title = nil;
+        UIImageView *userImageView = nil;
+        UILabel *nickName = nil;
+        UIImageView *starImageView = nil;
+        
+        if (!view) {
+            view = [[BaseView alloc] initWithFrame:CGRectMake(0, 0, (kScreenWidth +20)/2, (kScreenWidth-30)/2)];
+        }
+        
+        backgroundImageView = (UIImageView *)[view viewWithTag:100];
+        [backgroundImageView setImageWithURL:[self.homeVC pastaViewImageURLForIndex:index]];
+        
+        
+        title = (UILabel *) [view viewWithTag:200];
+        [title setText:[self.homeVC pastaViewTitleForIndex:index]];
+        
+        userImageView = (UIImageView *) [view viewWithTag:300];
+        [userImageView setImageWithURL:[self.homeVC pastaViewUserImageURLForIndex:index]];
+        
+        nickName = (UILabel *)[view viewWithTag:400];
+        [nickName setText:[self.homeVC pastaViewNickNameForIndex:index]];
+        
+        starImageView = (UIImageView *)[view viewWithTag:500];
+        [starImageView setImage:[self.homeVC starImageOfPastaViewForIndex:index]];
         
         return view;
     }
@@ -114,14 +152,18 @@
 
 #pragma mark -iCarouselDelegate
 
+
 - (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value{
     
-        if (option == iCarouselOptionWrap) {
-            return YES;
+    if (option == iCarouselOptionWrap) {
+        return YES;
+    }
+    if (carousel == self.pastaView) {
+        if (option == iCarouselOptionSpacing) {
+            return value*1.05;
         }
-        return value;
-    
-    
+    }
+    return value;
 }
 
 -(CATransform3D)carousel:(iCarousel *)carousel itemTransformForOffset:(CGFloat)offset baseTransform:(CATransform3D)transform{
@@ -152,17 +194,15 @@
     }
 }
 
-
-
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         return kScreenWidth/2;
-    } else if(indexPath.section == 1){
-        return (kScreenWidth-30)/2;
-    } else{
+    } else if(indexPath.section == 2 || indexPath.section ==4){
         return kScreenWidth *2/3;
+    } else{
+        return (kScreenWidth-30)/2;
     }
 }
 
@@ -171,6 +211,9 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 3) {
+        return 45;
+    }
     return 25;
 }
 
@@ -192,10 +235,16 @@
     } else if(section == 1){
         [headView.leftTitle setText:@"热门兴趣·早餐"];
         return headView;
-    } else{
+    } else if(section == 2){
         [headView.leftTitle setText:@"课程专辑"];
-        headView.rightImage.hidden = YES;
-        headView.rightTitle.hidden = YES;
+       // headView.rightImage.hidden = YES;
+        //headView.rightTitle.hidden = YES;
+        return headView;
+    } else if(section == 3){
+        [headView.leftTitle setText:@"热门兴趣·面食"];
+        return headView;
+    } else{
+        [headView.leftTitle setText:@"热门兴趣·风味小吃"];
         return headView;
     }
 }
@@ -211,15 +260,17 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0 || section == 2) {
-        return 1;
-    } else{
+    if (section == 1) {
         return 2;
+    }else if (section == 4) {
+        return 4;
+    }else{
+        return 1;
     }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -247,13 +298,40 @@
         [cell.baseView1.starImageView setImage:[self.homeVC starImageOfBreakfastViewForIndex:index1]];
         
         return cell;
-    } else{
+    } else if(indexPath.section == 2){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCourseAlbum];
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 330, 100)];
-        label.text =@"haole";
-        label.textAlignment = NSTextAlignmentLeft;
-        [cell.contentView addSubview:label];
+        [cell.contentView addSubview:self.slideScrollView];
+        [self.slideScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(0);
+        }];
+        
+        for (int i = 0; i < self.homeVC.numberOfItemsInCourseView; i++) {
+            LTYCourseAlbumView *courseAlbumView = nil;
+            courseAlbumView = (LTYCourseAlbumView *) [self.slideScrollView viewWithTag:1100 + i*100];
+            
+            [courseAlbumView.backgroundImageView setImageWithURL:[self.homeVC courseAlbumViewImageURLForIndex:i]];
+            [courseAlbumView.courseNumberLabel setText:[self.homeVC courseAlbumViewCourseCountsForIndex:i]];
+            [courseAlbumView.courseTitleLabel setText:[self.homeVC courseAlbumViewTitleForIndex:i]];
+
+        }
+        return cell;
+    } else if(indexPath.section == 3){
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPasta];
+        [cell.contentView addSubview:self.pastaView];
+        [self.pastaView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(0);
+        }];
+        
+        return cell;
+    } else{
+        LTYLocalDelicaciesViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kDelicacies];
+        
+        [cell.snackView.backgroundImageView setImageWithURL:[self.homeVC delicaciesViewImageURLForIndex:indexPath.row]];
+        [cell.snackView.title setText:[self.homeVC delicaciesViewTitleForIndex:indexPath.row]];
+        [cell.snackView.userImageView setImageWithURL:[self.homeVC delicaciesViewUserImageURLForIndex:indexPath.row]];
+        [cell.snackView.nickName setText:[self.homeVC delicaciesViewNickNameForIndex:indexPath.row]];
+        [cell.snackView.starImageView setImage:[self.homeVC starImageOfDelicaciesViewForIndex:indexPath.row]];
         
         return cell;
     }
@@ -278,7 +356,7 @@
     NSInteger tagHeight = tagBaseSize-30;//-20是为了补偿上下各空的10个间距
     NSInteger xBase = 10;
     for (int i = 0; i < self.homeVC.tagCount; i++) {
-        LTYTagView *tagView = [[LTYTagView alloc] initWithFrame:CGRectMake(xBase, 15, tagWidth, tagHeight)];
+        LTYTagView *tagView = [[LTYTagView alloc] initWithFrame:CGRectMake(xBase, 10, tagWidth, tagHeight)];
         tagView.delegate = self;
         tagView.tag = i;
         [scrollView addSubview:tagView];
@@ -323,7 +401,8 @@
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"scrollView"];
         [_tableView registerClass:[LTYBreakfastViewCell class] forCellReuseIdentifier:kBreakfast];
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCourseAlbum];
-        
+        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kPasta];
+        [_tableView registerClass:[LTYLocalDelicaciesViewCell class] forCellReuseIdentifier:kDelicacies];
         _tableView.estimatedSectionFooterHeight = 0;
         
     }
@@ -356,6 +435,42 @@
         _pageControl = _linerScrollView.pageControl;
     }
     return _linerScrollView;
+}
+
+- (UIScrollView *)slideScrollView{
+    if (!_slideScrollView) {
+        _slideScrollView = [[UIScrollView alloc] init];
+        _slideScrollView.tag = 1000;
+        NSInteger xBase = 10;
+        for (int i = 0; i < self.homeVC.numberOfItemsInCourseView; i++) {
+            LTYCourseAlbumView *courseAlbumView = [[LTYCourseAlbumView alloc] initWithFrame:CGRectMake(xBase, 10, (kScreenWidth - 50)/2, kScreenWidth *2/3-20)];
+            [_slideScrollView addSubview:courseAlbumView];
+            courseAlbumView.tag = 1100+i*100;
+            xBase = xBase+(kScreenWidth - 50)/2+10;
+        }
+        _slideScrollView.contentSize = CGSizeMake(xBase, kScreenWidth *2/3-20);
+        _slideScrollView.showsHorizontalScrollIndicator = NO;
+    }
+    return _slideScrollView;
+}
+
+- (iCarousel *)pastaView{
+    if (!_pastaView) {
+        _pastaView = [[iCarousel alloc] init];
+        _pastaView.delegate = self;
+        _pastaView.dataSource = self;
+        _pastaView.type = iCarouselTypeLinear;
+        //如果只有一张图，则不可以滚动
+        _pastaView.scrollEnabled = self.homeVC.numberOfItemsInPastaView != 1;
+        
+        //手动翻页时，让图片一张一张滚，默认为NO,滚一次到尾
+        _pastaView.pagingEnabled = YES;
+        
+        //一开始中心图偏移量
+        _pastaView.contentOffset = CGSizeMake(-kScreenWidth/2+(kScreenWidth + 20)/4+5, 0);
+        
+    }
+    return _pastaView;
 }
 
 @end

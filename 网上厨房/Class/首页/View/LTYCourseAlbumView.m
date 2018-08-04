@@ -30,7 +30,7 @@
             make.left.right.top.mas_equalTo(0);
             make.bottom.mas_equalTo(-self.bounds.size.height/5);
         }];
-        _backgroundImageView.tag = 600;
+        _backgroundImageView.tag = 100;
         _backgroundImageView.layer.cornerRadius = 5;
         _backgroundImageView.clipsToBounds = YES;
         _backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -47,7 +47,7 @@
             make.left.mas_equalTo(10);
             make.height.mas_equalTo(25);
         }];
-        _courseNumberLabel.tag = 700;
+        _courseNumberLabel.tag = 200;
         _courseNumberLabel.layer.cornerRadius = 4;
         _courseNumberLabel.clipsToBounds = YES;
         _courseNumberLabel.textColor = [UIColor whiteColor];
@@ -68,7 +68,7 @@
             make.left.right.mas_equalTo(0);
             make.top.mas_equalTo(self.backgroundImageView.mas_bottom).mas_equalTo(5);
         }];
-        _courseTitleLabel.tag = 800;
+        _courseTitleLabel.tag = 300;
         _courseTitleLabel.numberOfLines = 2;
         _courseTitleLabel.textColor = [UIColor blackColor];
     }
