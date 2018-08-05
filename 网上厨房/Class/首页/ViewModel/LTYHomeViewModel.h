@@ -15,6 +15,13 @@
 //获得表头视图中图片url地址
 - (NSURL *) headViewTagImageViewForIndex:(NSInteger)index;
 
+//获得达人推荐视图中达人图片url地址
+- (NSURL *) userInfoViewImageURLForIndex :(NSInteger)index;
+//获得达人推荐视图中达人名称
+-(NSString *)userInfoViewUserTitleForIndex :(NSInteger)index;
+//获得达人推荐视图中达人的标签
+-(NSString *) userInfoViewUserTagForIndex :(NSInteger)index;
+
 //获得滚动视图中背景图片url地址
 - (NSURL *) scrollViewImageURLForIndex :(NSInteger)index;
 //获得滚动视图中作者图片url地址
@@ -66,6 +73,17 @@
 //获得风味小吃视图中星级图片
 -(UIImage *) starImageOfDelicaciesViewForIndex :(NSInteger)index;
 
+//获得烘培视图中背景图片url地址
+- (NSURL *) bakeViewImageURLForIndex :(NSInteger)index;
+//获得烘培视图中标题
+-(NSString *) bakeViewTitleForIndex :(NSInteger)index;
+//获得烘培视图中作者图片url地址
+- (NSURL *) bakeViewUserImageURLForIndex :(NSInteger)index;
+//获得烘培视图中作者名称
+-(NSString *) bakeViewNickNameForIndex :(NSInteger)index;
+//获得烘培视图中星级图片
+-(UIImage *) starImageOfBakesViewForIndex :(NSInteger)index;
+
 //获得线性滚动视图中图片
 - (NSURL *) linearScrollImageViewForIndex:(NSInteger) index;
 
@@ -86,5 +104,11 @@
 
 //面食视图中滚动图片数量
 @property(nonatomic,assign) NSInteger numberOfItemsInPastaView;
+
+//烘培视图中图片数量
+@property(nonatomic,assign) NSInteger numberOfItemsInBakeView;
+
+//达人推荐视图中人物数量
+@property(nonatomic,assign) NSInteger numberOfUsers;
 
 @end

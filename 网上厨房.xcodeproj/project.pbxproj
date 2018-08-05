@@ -122,6 +122,8 @@
 		09EEF63B210D525900E5D1B1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 09EEF634210D525900E5D1B1 /* README.md */; };
 		09EEF63F210D931800E5D1B1 /* LTYHomeNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EEF63E210D931800E5D1B1 /* LTYHomeNetManager.m */; };
 		09FB8D8A21157A5B003EDFF1 /* LTYLocalDelicaciesViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB8D8921157A5B003EDFF1 /* LTYLocalDelicaciesViewCell.m */; };
+		09FB8D8D2115C044003EDFF1 /* LTYUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB8D8C2115C044003EDFF1 /* LTYUserInfoView.m */; };
+		09FB8D9721174060003EDFF1 /* LTYHomeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB8D9621174060003EDFF1 /* LTYHomeListModel.m */; };
 		09FCDD6E20FE108C007BC7F0 /* LTYFreeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FCDD6D20FE108C007BC7F0 /* LTYFreeViewCell.m */; };
 		09FCDD7320FE3660007BC7F0 /* LTYFreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FCDD7220FE3660007BC7F0 /* LTYFreeView.m */; };
 /* End PBXBuildFile section */
@@ -363,6 +365,10 @@
 		09EEF63E210D931800E5D1B1 /* LTYHomeNetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYHomeNetManager.m; sourceTree = "<group>"; };
 		09FB8D8821157A5B003EDFF1 /* LTYLocalDelicaciesViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYLocalDelicaciesViewCell.h; sourceTree = "<group>"; };
 		09FB8D8921157A5B003EDFF1 /* LTYLocalDelicaciesViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYLocalDelicaciesViewCell.m; sourceTree = "<group>"; };
+		09FB8D8B2115C044003EDFF1 /* LTYUserInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYUserInfoView.h; sourceTree = "<group>"; };
+		09FB8D8C2115C044003EDFF1 /* LTYUserInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYUserInfoView.m; sourceTree = "<group>"; };
+		09FB8D9521174060003EDFF1 /* LTYHomeListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYHomeListModel.h; sourceTree = "<group>"; };
+		09FB8D9621174060003EDFF1 /* LTYHomeListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYHomeListModel.m; sourceTree = "<group>"; };
 		09FCDD6C20FE108C007BC7F0 /* LTYFreeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYFreeViewCell.h; sourceTree = "<group>"; };
 		09FCDD6D20FE108C007BC7F0 /* LTYFreeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYFreeViewCell.m; sourceTree = "<group>"; };
 		09FCDD7120FE3660007BC7F0 /* LTYFreeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYFreeView.h; sourceTree = "<group>"; };
@@ -835,6 +841,8 @@
 			children = (
 				097BB639210D993900D6A1F5 /* LTYHomeModel.h */,
 				097BB63A210D994400D6A1F5 /* LTYHomeModel.m */,
+				09FB8D9521174060003EDFF1 /* LTYHomeListModel.h */,
+				09FB8D9621174060003EDFF1 /* LTYHomeListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -995,6 +1003,8 @@
 				0931CCEA2111EAE400B6AC95 /* LTYCourseAlbumView.m */,
 				09FB8D8821157A5B003EDFF1 /* LTYLocalDelicaciesViewCell.h */,
 				09FB8D8921157A5B003EDFF1 /* LTYLocalDelicaciesViewCell.m */,
+				09FB8D8B2115C044003EDFF1 /* LTYUserInfoView.h */,
+				09FB8D8C2115C044003EDFF1 /* LTYUserInfoView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1152,6 +1162,7 @@
 				09E9752A2106198600DCA986 /* MJRefreshBackGifFooter.m in Sources */,
 				09E9752E2106198600DCA986 /* MJRefreshAutoGifFooter.m in Sources */,
 				09E975252106198600DCA986 /* UIScrollView+MJRefresh.m in Sources */,
+				09FB8D8D2115C044003EDFF1 /* LTYUserInfoView.m in Sources */,
 				09EEF637210D525900E5D1B1 /* WMFooldView.m in Sources */,
 				094A9FB620CD208500BFC13A /* CommonContentShow.m in Sources */,
 				09E9752B2106198600DCA986 /* MJRefreshBackStateFooter.m in Sources */,
@@ -1216,6 +1227,7 @@
 				09EEF63A210D525900E5D1B1 /* WMProgressView.m in Sources */,
 				09E975352106198600DCA986 /* MJRefreshBackFooter.m in Sources */,
 				09E9752D2106198600DCA986 /* MJRefreshAutoStateFooter.m in Sources */,
+				09FB8D9721174060003EDFF1 /* LTYHomeListModel.m in Sources */,
 				0931CCE82111C22C00B6AC95 /* HeadView.m in Sources */,
 				0931CCEB2111EAE400B6AC95 /* LTYCourseAlbumView.m in Sources */,
 				09173AB820CBFE5D00246B8D /* MBProgressHUD+LTY.m in Sources */,

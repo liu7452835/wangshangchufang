@@ -14,6 +14,7 @@
 #define khomeCook @"家常菜"
 #define kPasta @"面食"
 #define kDlicacies @"小吃"
+#define kBake @"烘焙"
 
 @interface LTYHomeViewModel()
 
@@ -57,6 +58,69 @@
 }
 
 */
+
+#pragma mark - 达人推荐视图中数据
+//获得达人推荐视图中达人图片url地址
+- (NSURL *)userInfoViewImageURLForIndex:(NSInteger)index{
+    NSString *imageString = self.homeModel.data.users[index].imageid;
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg",imageString]];
+    return url;
+}
+
+//获得达人推荐视图中达人名称
+- (NSString *)userInfoViewUserTitleForIndex:(NSInteger)index{
+    NSString *title = self.homeModel.data.users[index].title;
+    return title;
+}
+
+//获得达人推荐视图中达人的标签
+- (NSString *)userInfoViewUserTagForIndex:(NSInteger)index{
+    NSMutableString *string = [[NSMutableString alloc] initWithString:@""];
+    for (int i = 0; i<self.homeModel.data.users[index].specialities.count; i++) {
+        [string appendFormat:@"%@ ",self.homeModel.data.users[index].specialities[i]];
+    }
+    return string;
+}
+
+#pragma mark - 烘培视图中数据
+//获得烘培视图中背景图片url地址
+- (NSURL *)bakeViewImageURLForIndex:(NSInteger)index{
+    NSArray *array = [self dataArrayOfTitle:kBake];
+    NSString *imageString = [array[index] valueForKey:@"imageid"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg",imageString]];
+    return url;
+}
+
+//获得烘培视图中标题
+- (NSString *)bakeViewTitleForIndex:(NSInteger)index{
+    NSArray *array = [self dataArrayOfTitle:kBake];
+    NSString *breakfastTitle = [array[index] valueForKeyPath:@"name"];
+    return breakfastTitle;
+}
+
+//获得烘培视图中作者图片url地址
+- (NSURL *)bakeViewUserImageURLForIndex:(NSInteger)index{
+    NSArray *array = [self dataArrayOfTitle:kBake];
+    NSString *imageString = [array[index] valueForKeyPath:@"user.imageid"];
+    // NSLog(@"%@",imageString);
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://pic.ecook.cn/web/%@.jpg!s4",imageString]];
+    return url;
+}
+
+//获得烘培视图中作者名称
+- (NSString *)bakeViewNickNameForIndex:(NSInteger)index{
+    NSArray *array = [self dataArrayOfTitle:kBake];
+    NSString *nickName = [array[index] valueForKeyPath:@"user.nickname"];
+    return nickName;
+}
+
+//获得烘培视图中星级图片
+- (UIImage *)starImageOfBakesViewForIndex:(NSInteger)index{
+    NSArray *starArray = @[@"white",@"talent_one_star",@"talent_two_star",@"talent_three_star",@"talent_four_star",@"talent_five_star"];
+    NSArray *array = [self dataArrayOfTitle:kBake];
+    NSNumber *starNumber = [array[index] valueForKeyPath:@"user.star"];
+    return [UIImage imageNamed:starArray[starNumber.integerValue]];
+}
 
 #pragma mark - 风味小吃视图中数据
 
@@ -305,4 +369,17 @@
     _numberOfItemsInPastaView = array.count;
     return _numberOfItemsInPastaView;
 }
+
+- (NSInteger)numberOfItemsInBakeView{
+    NSArray *array = [self dataArrayOfTitle:kBake];
+    _numberOfItemsInPastaView = array.count;
+    
+        NSLog(@"%ld",_numberOfItemsInBakeView);
+    return _numberOfItemsInPastaView;
+}
+
+- (NSInteger)numberOfUsers{
+    return self.homeModel.data.users.count;
+}
+
 @end

@@ -14,14 +14,19 @@
 #import "LTYBreakfastViewCell.h"
 #import "HeadView.h"
 #import "LTYCourseAlbumView.h"
-#import "BaseView.h"//添加面食视图
+#import "BaseView.h"
 #import "iCarousel.h"//添加面食视图
 #import "LTYLocalDelicaciesViewCell.h"
+#import "LTYUserInfoView.h"
+
 
 #define kBreakfast @"breakfastCell"
 #define kCourseAlbum @"courseAlbumCell"
 #define kPasta @"pastaCell"//面食视图
 #define kDelicacies @"delicaciesCell"
+#define kBake @"bakeCell"
+#define kRecommend @"recommendCell" //达人推荐
+
 
 @interface LTYHomeViewController ()<UITableViewDelegate,UITableViewDataSource,LTYTagViewClickDelegate,iCarouselDelegate,iCarouselDataSource>
 
@@ -31,7 +36,9 @@
 @property(nonatomic,strong) FocusImageScrollView *linerScrollView;
 @property(nonatomic,strong) UIScrollView *slideScrollView;
 @property(nonatomic,strong) iCarousel *pastaView;//面食视图
-//@property(nonatomic,strong) LTYLocalDelicaciesViewCell *delicaciesView;
+@property(nonatomic,strong) iCarousel *bakeView;
+@property(nonatomic,strong) UIScrollView *recommendScrollView;
+
 @end
 
 
@@ -61,8 +68,10 @@
         return self.homeVC.numberOfItemsInScrollView;
     } else if(carousel == self.linerScrollView.ic){
         return self.homeVC.numberOfItemsInLinerScrollView;
-    } else{
+    } else if(carousel == self.pastaView){
         return self.homeVC.numberOfItemsInPastaView;
+    } else{
+        return self.homeVC.numberOfItemsInBakeView;
     }
 }
 
@@ -125,26 +134,47 @@
         UIImageView *userImageView = nil;
         UILabel *nickName = nil;
         UIImageView *starImageView = nil;
-        
-        if (!view) {
-            view = [[BaseView alloc] initWithFrame:CGRectMake(0, 0, (kScreenWidth +20)/2, (kScreenWidth-30)/2)];
+        if (carousel == self.pastaView) {
+            if (!view) {
+                view = [[BaseView alloc] initWithFrame:CGRectMake(0, 0, (kScreenWidth +20)/2, (kScreenWidth-30)/2)];
+                
+            }
+            backgroundImageView = (UIImageView *)[view viewWithTag:100];
+            [backgroundImageView setImageWithURL:[self.homeVC pastaViewImageURLForIndex:index]];
+            
+            
+            title = (UILabel *) [view viewWithTag:200];
+            [title setText:[self.homeVC pastaViewTitleForIndex:index]];
+            
+            userImageView = (UIImageView *) [view viewWithTag:300];
+            [userImageView setImageWithURL:[self.homeVC pastaViewUserImageURLForIndex:index]];
+            
+            nickName = (UILabel *)[view viewWithTag:400];
+            [nickName setText:[self.homeVC pastaViewNickNameForIndex:index]];
+            
+            starImageView = (UIImageView *)[view viewWithTag:500];
+            [starImageView setImage:[self.homeVC starImageOfPastaViewForIndex:index]];
+        } else{
+            if (!view) {
+                view = [[BaseView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 80, kScreenWidth *2/3)];
+            }
+            backgroundImageView = (UIImageView *)[view viewWithTag:100];
+            [backgroundImageView setImageWithURL:[self.homeVC bakeViewImageURLForIndex:index]];
+            
+            
+            title = (UILabel *) [view viewWithTag:200];
+            [title setText:[self.homeVC bakeViewTitleForIndex:index]];
+            
+            userImageView = (UIImageView *) [view viewWithTag:300];
+            [userImageView setImageWithURL:[self.homeVC bakeViewUserImageURLForIndex:index]];
+            
+            nickName = (UILabel *)[view viewWithTag:400];
+            [nickName setText:[self.homeVC bakeViewNickNameForIndex:index]];
+            
+            starImageView = (UIImageView *)[view viewWithTag:500];
+            [starImageView setImage:[self.homeVC starImageOfBakesViewForIndex:index]];
+            
         }
-        
-        backgroundImageView = (UIImageView *)[view viewWithTag:100];
-        [backgroundImageView setImageWithURL:[self.homeVC pastaViewImageURLForIndex:index]];
-        
-        
-        title = (UILabel *) [view viewWithTag:200];
-        [title setText:[self.homeVC pastaViewTitleForIndex:index]];
-        
-        userImageView = (UIImageView *) [view viewWithTag:300];
-        [userImageView setImageWithURL:[self.homeVC pastaViewUserImageURLForIndex:index]];
-        
-        nickName = (UILabel *)[view viewWithTag:400];
-        [nickName setText:[self.homeVC pastaViewNickNameForIndex:index]];
-        
-        starImageView = (UIImageView *)[view viewWithTag:500];
-        [starImageView setImage:[self.homeVC starImageOfPastaViewForIndex:index]];
         
         return view;
     }
@@ -154,11 +184,13 @@
 
 
 - (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value{
-    
-    if (option == iCarouselOptionWrap) {
-        return YES;
+    if (carousel == self.linerScrollView.ic ||carousel == self.scrollView.ic) {
+        if (option == iCarouselOptionWrap) {
+            return YES;
+        }
     }
-    if (carousel == self.pastaView) {
+    
+    if (carousel == self.pastaView || carousel == self.bakeView) {
         if (option == iCarouselOptionSpacing) {
             return value*1.05;
         }
@@ -199,8 +231,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         return kScreenWidth/2;
-    } else if(indexPath.section == 2 || indexPath.section ==4){
+    } else if(indexPath.section == 2 || indexPath.section ==4 || indexPath.section == 5){
         return kScreenWidth *2/3;
+    } else if (indexPath.section == 6){
+        return (kScreenWidth +20)/2 +30;
     } else{
         return (kScreenWidth-30)/2;
     }
@@ -243,8 +277,16 @@
     } else if(section == 3){
         [headView.leftTitle setText:@"热门兴趣·面食"];
         return headView;
-    } else{
+    } else if(section == 4){
         [headView.leftTitle setText:@"热门兴趣·风味小吃"];
+        return headView;
+    } else if(section == 5){
+        [headView.leftTitle setText:@"热门兴趣·烘焙"];
+        return headView;
+    } else{
+        [headView.leftTitle setText:@"达人推荐"];
+        headView.rightImage.hidden = YES;
+        headView.rightTitle.hidden = YES;
         return headView;
     }
 }
@@ -270,7 +312,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 5;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -319,12 +361,13 @@
     } else if(indexPath.section == 3){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPasta];
         [cell.contentView addSubview:self.pastaView];
+        self.pastaView.contentOffset = CGSizeMake(-kScreenWidth/2+(kScreenWidth + 20)/4+5, 0);
         [self.pastaView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(0);
         }];
         
         return cell;
-    } else{
+    } else if(indexPath.section == 4){
         LTYLocalDelicaciesViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kDelicacies];
         
         [cell.snackView.backgroundImageView setImageWithURL:[self.homeVC delicaciesViewImageURLForIndex:indexPath.row]];
@@ -332,6 +375,32 @@
         [cell.snackView.userImageView setImageWithURL:[self.homeVC delicaciesViewUserImageURLForIndex:indexPath.row]];
         [cell.snackView.nickName setText:[self.homeVC delicaciesViewNickNameForIndex:indexPath.row]];
         [cell.snackView.starImageView setImage:[self.homeVC starImageOfDelicaciesViewForIndex:indexPath.row]];
+        
+        return cell;
+    } else if(indexPath.section == 5){
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBake];
+        [cell.contentView addSubview:self.bakeView];
+        self.bakeView.contentOffset = CGSizeMake(-kScreenWidth/2+(kScreenWidth - 80)/2+5, 0);
+        [self.bakeView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(0);
+        }];
+        
+        return cell;
+    } else{
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kRecommend];
+        [cell.contentView addSubview:self.recommendScrollView];
+        [self.recommendScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(0);
+        }];
+        
+        for (int i = 0; i<self.homeVC.numberOfUsers; i++) {
+            LTYUserInfoView *userInfoView = nil;
+            userInfoView = (LTYUserInfoView *) [self.recommendScrollView viewWithTag:1100 + i*100];
+            
+            [userInfoView.userImageView setImageWithURL:[self.homeVC userInfoViewImageURLForIndex:i]];
+            [userInfoView.nickName setText:[self.homeVC userInfoViewUserTitleForIndex:i]];
+            [userInfoView.tagLabel  setText:[self.homeVC userInfoViewUserTagForIndex:i]];
+        }
         
         return cell;
     }
@@ -403,6 +472,8 @@
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCourseAlbum];
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kPasta];
         [_tableView registerClass:[LTYLocalDelicaciesViewCell class] forCellReuseIdentifier:kDelicacies];
+        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kBake];
+        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kRecommend];
         _tableView.estimatedSectionFooterHeight = 0;
         
     }
@@ -440,7 +511,7 @@
 - (UIScrollView *)slideScrollView{
     if (!_slideScrollView) {
         _slideScrollView = [[UIScrollView alloc] init];
-        _slideScrollView.tag = 1000;
+        //_slideScrollView.tag = 1000;
         NSInteger xBase = 10;
         for (int i = 0; i < self.homeVC.numberOfItemsInCourseView; i++) {
             LTYCourseAlbumView *courseAlbumView = [[LTYCourseAlbumView alloc] initWithFrame:CGRectMake(xBase, 10, (kScreenWidth - 50)/2, kScreenWidth *2/3-20)];
@@ -466,11 +537,53 @@
         //手动翻页时，让图片一张一张滚，默认为NO,滚一次到尾
         _pastaView.pagingEnabled = YES;
         
+        _pastaView.bounces = NO;
         //一开始中心图偏移量
-        _pastaView.contentOffset = CGSizeMake(-kScreenWidth/2+(kScreenWidth + 20)/4+5, 0);
+       // _pastaView.contentOffset = CGSizeMake(-kScreenWidth/2+(kScreenWidth + 20)/4+5, 0);
         
     }
     return _pastaView;
+}
+
+- (iCarousel *)bakeView{
+    if (!_bakeView) {
+        _bakeView = [[iCarousel alloc] init];
+        _bakeView.delegate = self;
+        _bakeView.dataSource = self;
+        _bakeView.type = iCarouselTypeLinear;
+        //如果只有一张图，则不可以滚动
+        _bakeView.scrollEnabled = self.homeVC.numberOfItemsInPastaView != 1;
+        
+        //手动翻页时，让图片一张一张滚，默认为NO,滚一次到尾
+        _bakeView.pagingEnabled = YES;
+        
+        _bakeView.bounces = NO;
+        
+        //一开始中心图偏移量
+        // _pastaView.contentOffset = CGSizeMake(-kScreenWidth/2+(kScreenWidth + 20)/4+5, 0);
+    }
+    return _bakeView;
+}
+
+- (UIScrollView *)recommendScrollView{
+    if (!_recommendScrollView) {
+        _recommendScrollView = [[UIScrollView alloc] init];
+        
+        NSInteger xBase = 10;
+        for (int i = 0; i < self.homeVC.numberOfUsers/2; i++) {
+            LTYUserInfoView *userInfoView0 = [[LTYUserInfoView alloc] initWithFrame:CGRectMake(xBase, 10, (kScreenWidth +20)/4, (kScreenWidth +20)/4)];
+            LTYUserInfoView *userInfoView1 = [[LTYUserInfoView alloc] initWithFrame:CGRectMake(xBase, 20+(kScreenWidth +20)/4, (kScreenWidth +20)/4, (kScreenWidth +20)/4)];
+            [_recommendScrollView addSubview:userInfoView0];
+            [_recommendScrollView addSubview:userInfoView1];
+            userInfoView0.tag = 1100 +i*200;
+            userInfoView1.tag = 1100 +i*200+100;
+            xBase = xBase +(kScreenWidth +20)/4+10;
+        }
+        _recommendScrollView.contentSize = CGSizeMake(xBase, (kScreenWidth +20)/2+20);
+        _recommendScrollView.showsHorizontalScrollIndicator = NO;
+        
+    }
+    return _recommendScrollView;
 }
 
 @end
