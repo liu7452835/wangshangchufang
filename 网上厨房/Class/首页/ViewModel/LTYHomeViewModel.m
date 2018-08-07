@@ -373,8 +373,6 @@
 - (NSInteger)numberOfItemsInBakeView{
     NSArray *array = [self dataArrayOfTitle:kBake];
     _numberOfItemsInPastaView = array.count;
-    
-        NSLog(@"%ld",_numberOfItemsInBakeView);
     return _numberOfItemsInPastaView;
 }
 

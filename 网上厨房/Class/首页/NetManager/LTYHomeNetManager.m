@@ -8,10 +8,11 @@
 
 #import "LTYHomeNetManager.h"
 #import "LTYHomeModel.h"
+#import "LTYHomeListModel.h"
 
 
 #define kHomeDataURL @"https://api.ecook.cn/public/getHomeData.shtml"
-
+#define kHomeDataListURL @"https://api.ecook.cn/public/getHomeList.shtml"
 #define kterminal @"terminal" : @"3"
 #define kURLVersion @"version":@"13.9.6"
 
@@ -22,5 +23,20 @@
         completed([LTYHomeModel mj_objectWithKeyValues:responseObject],error);
     }];
 }
+
++(id)postHomeListDataWithParameter:(NSString *)parameter completionHandle:(void (^)(id, NSError *))completed{
+    if (!parameter) {
+        return [self POST:kHomeDataListURL parameters:@{kterminal,kURLVersion} completionHandle:^(id responseObject, NSError *error) {
+            completed([LTYHomeListModel mj_objectWithKeyValues:responseObject],error);
+        }];
+    } else{
+        return [self POST:kHomeDataListURL parameters:@{@"id" : parameter, kterminal,kURLVersion} completionHandle:^(id responseObject, NSError *error) {
+            completed([LTYHomeListModel mj_objectWithKeyValues:responseObject],error);
+        }];
+    }
+    
+    
+}
+
 
 @end

@@ -154,7 +154,7 @@ static NSString * const allListViewID = @"AllListViewCell";
     
     //NSString *string = @"1532160000000,";
     NSInteger timestampNumber = [timestamp integerValue];
-    NSLog(@"%ld",timestampNumber);
+    //NSLog(@"%ld",timestampNumber);
     NSTimeInterval second = timestampNumber / 1000.0;
     
     // 时间戳 -> NSDate *
@@ -305,7 +305,6 @@ static NSString * const allListViewID = @"AllListViewCell";
             
             if ([self isWaitToPlayWithIndexPath:indexPath]) {
                 [cell.freeView.timeImageView setImage:[UIImage imageNamed:@"begin"]];
-                NSLog(@"777");
                 
                 for (CAReplicatorLayer *layer in cell.freeView.timeImageView.layer.sublayers)
                 {
@@ -314,7 +313,6 @@ static NSString * const allListViewID = @"AllListViewCell";
                 
                 return cell;
             } else {
-                NSLog(@"888");
                 [cell.freeView.timeImageView setImage:[UIImage imageNamed:@"live"]];
                 
                 
@@ -351,11 +349,7 @@ static NSString * const allListViewID = @"AllListViewCell";
                 animation.autoreverses = YES;
                 animation.repeatCount = MAXFLOAT;
                 [layer addAnimation:animation forKey:nil];
-                NSLog(@"666");
-                
-                
-                
-                
+               
                 return cell;
             }
         }

@@ -14,4 +14,8 @@
 //获得主页数据
 + (id)postHomeDataCompletionHandle:(void(^)(id responseObject,NSError *error))completed;
 
+//URL    https://api.ecook.cn/public/getHomeList.shtml
+//获得主页厨房故事数据
++ (id)postHomeListDataWithParameter:(NSString *)parameter completionHandle:(void(^)(id responseObject,NSError * error)) completed;
+
 @end
