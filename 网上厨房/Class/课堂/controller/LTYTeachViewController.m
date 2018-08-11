@@ -234,7 +234,7 @@ static NSString * const allListViewID = @"AllListViewCell";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
-    return (section <3 || section>7) ? CGSizeMake(0, 0) : CGSizeMake(kScreenWidth, 100);
+    return (section <3 || section>5) ? CGSizeMake(0, 0) : CGSizeMake(kScreenWidth, 100);
 }
 
 
@@ -499,7 +499,7 @@ static NSString * const allListViewID = @"AllListViewCell";
          }
          */
     } else{
-        if (indexPath.section >=3 && indexPath.section<=7) {
+        if (indexPath.section >=3 && indexPath.section<=5) {
             UICollectionReusableView *footView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:ksectionFootId forIndexPath:indexPath];
             
             UIImageView *imageView = [[UIImageView alloc] init];

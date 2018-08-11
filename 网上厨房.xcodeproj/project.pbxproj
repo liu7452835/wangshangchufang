@@ -36,6 +36,7 @@
 		09173ADF20CC0CA400246B8D /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 09173AD320CC0CA400246B8D /* MASViewConstraint.m */; };
 		09173AE020CC0CA400246B8D /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 09173AD420CC0CA400246B8D /* MASViewAttribute.m */; };
 		09173AE420CC168600246B8D /* SortFistViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09173AE320CC168600246B8D /* SortFistViewCell.m */; };
+		09177319211E7965004C9856 /* LTYKitchenStoryQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09177318211E7965004C9856 /* LTYKitchenStoryQuestionCell.m */; };
 		0931CCCE211068E200B6AC95 /* LTYScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0931CCCD211068E200B6AC95 /* LTYScrollView.m */; };
 		0931CCDF2111905400B6AC95 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0931CCDE2111905400B6AC95 /* BaseView.m */; };
 		0931CCE22111964F00B6AC95 /* LTYBreakfastViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0931CCE12111964F00B6AC95 /* LTYBreakfastViewCell.m */; };
@@ -90,6 +91,12 @@
 		097F863D210F651300B7F97F /* FocusImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097F863C210F651300B7F97F /* FocusImageScrollView.m */; };
 		099CF5612104CBC400855CCC /* LTYBannerListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 099CF5602104CBC400855CCC /* LTYBannerListModel.m */; };
 		099CF5642104CF2700855CCC /* LTYTeachBannerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 099CF5632104CF2700855CCC /* LTYTeachBannerViewModel.m */; };
+		09D7BB42211C65DA001A0DC8 /* LTYKitchenStoryCollectionSortCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D7BB41211C65DA001A0DC8 /* LTYKitchenStoryCollectionSortCell.m */; };
+		09D7BB45211C695C001A0DC8 /* LTYKitchenStoryArticleOne.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D7BB44211C695C001A0DC8 /* LTYKitchenStoryArticleOne.m */; };
+		09D7BB4E211C740A001A0DC8 /* LTYKitchenStoryArticleTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D7BB4D211C740A001A0DC8 /* LTYKitchenStoryArticleTwo.m */; };
+		09D7BB50211C7499001A0DC8 /* LTYKitchenStoryArticleOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D7BB4F211C7499001A0DC8 /* LTYKitchenStoryArticleOneCell.m */; };
+		09D7BB56211C8648001A0DC8 /* LTYKitchenStoryArticleTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D7BB55211C8648001A0DC8 /* LTYKitchenStoryArticleTwoCell.m */; };
+		09D7BB59211C8787001A0DC8 /* LTYKitchenStoryQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D7BB58211C8787001A0DC8 /* LTYKitchenStoryQuestion.m */; };
 		09E06A5620D79FDA00C21F8E /* LTYPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E06A5520D79FDA00C21F8E /* LTYPersonalViewController.m */; };
 		09E06A5920D7BAB400C21F8E /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E06A5820D7BAB400C21F8E /* SettingViewController.m */; };
 		09E1E6402118AFB3008FD418 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 09E1E6112118AFB3008FD418 /* LICENSE */; };
@@ -113,6 +120,7 @@
 		09E1E6522118AFB3008FD418 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E1E63A2118AFB3008FD418 /* MJRefreshAutoFooter.m */; };
 		09E1E6532118AFB3008FD418 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E1E63C2118AFB3008FD418 /* MJRefreshComponent.m */; };
 		09E1E6542118AFB3008FD418 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 09E1E63F2118AFB3008FD418 /* README.md */; };
+		09E75F88211B2C75000A5F2B /* LTYKitchenStoryCollectionSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E75F87211B2C75000A5F2B /* LTYKitchenStoryCollectionSort.m */; };
 		09EA955E20E27BF70071345E /* LTYTeachNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EA955D20E27BF70071345E /* LTYTeachNetManager.m */; };
 		09EEF624210C9BAB00E5D1B1 /* LTYTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EEF623210C9BAB00E5D1B1 /* LTYTagView.m */; };
 		09EEF635210D525900E5D1B1 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 09EEF626210D525900E5D1B1 /* LICENSE */; };
@@ -190,6 +198,8 @@
 		09173AD420CC0CA400246B8D /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
 		09173AE220CC168600246B8D /* SortFistViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortFistViewCell.h; sourceTree = "<group>"; };
 		09173AE320CC168600246B8D /* SortFistViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortFistViewCell.m; sourceTree = "<group>"; };
+		09177317211E7965004C9856 /* LTYKitchenStoryQuestionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYKitchenStoryQuestionCell.h; sourceTree = "<group>"; };
+		09177318211E7965004C9856 /* LTYKitchenStoryQuestionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYKitchenStoryQuestionCell.m; sourceTree = "<group>"; };
 		0931CCCC211068E200B6AC95 /* LTYScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYScrollView.h; sourceTree = "<group>"; };
 		0931CCCD211068E200B6AC95 /* LTYScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYScrollView.m; sourceTree = "<group>"; };
 		0931CCDD2111905400B6AC95 /* BaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
@@ -303,6 +313,18 @@
 		099CF5602104CBC400855CCC /* LTYBannerListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYBannerListModel.m; sourceTree = "<group>"; };
 		099CF5622104CF2700855CCC /* LTYTeachBannerViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYTeachBannerViewModel.h; sourceTree = "<group>"; };
 		099CF5632104CF2700855CCC /* LTYTeachBannerViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYTeachBannerViewModel.m; sourceTree = "<group>"; };
+		09D7BB40211C65DA001A0DC8 /* LTYKitchenStoryCollectionSortCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYKitchenStoryCollectionSortCell.h; sourceTree = "<group>"; };
+		09D7BB41211C65DA001A0DC8 /* LTYKitchenStoryCollectionSortCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYKitchenStoryCollectionSortCell.m; sourceTree = "<group>"; };
+		09D7BB43211C695C001A0DC8 /* LTYKitchenStoryArticleOne.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYKitchenStoryArticleOne.h; sourceTree = "<group>"; };
+		09D7BB44211C695C001A0DC8 /* LTYKitchenStoryArticleOne.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYKitchenStoryArticleOne.m; sourceTree = "<group>"; };
+		09D7BB49211C727E001A0DC8 /* LTYKitchenStoryArticleOneCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYKitchenStoryArticleOneCell.h; sourceTree = "<group>"; };
+		09D7BB4C211C740A001A0DC8 /* LTYKitchenStoryArticleTwo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYKitchenStoryArticleTwo.h; sourceTree = "<group>"; };
+		09D7BB4D211C740A001A0DC8 /* LTYKitchenStoryArticleTwo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYKitchenStoryArticleTwo.m; sourceTree = "<group>"; };
+		09D7BB4F211C7499001A0DC8 /* LTYKitchenStoryArticleOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTYKitchenStoryArticleOneCell.m; sourceTree = "<group>"; };
+		09D7BB54211C8648001A0DC8 /* LTYKitchenStoryArticleTwoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYKitchenStoryArticleTwoCell.h; sourceTree = "<group>"; };
+		09D7BB55211C8648001A0DC8 /* LTYKitchenStoryArticleTwoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYKitchenStoryArticleTwoCell.m; sourceTree = "<group>"; };
+		09D7BB57211C8787001A0DC8 /* LTYKitchenStoryQuestion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYKitchenStoryQuestion.h; sourceTree = "<group>"; };
+		09D7BB58211C8787001A0DC8 /* LTYKitchenStoryQuestion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYKitchenStoryQuestion.m; sourceTree = "<group>"; };
 		09E06A5420D79FDA00C21F8E /* LTYPersonalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYPersonalViewController.h; sourceTree = "<group>"; };
 		09E06A5520D79FDA00C21F8E /* LTYPersonalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYPersonalViewController.m; sourceTree = "<group>"; };
 		09E06A5720D7BAB400C21F8E /* SettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
@@ -347,6 +369,8 @@
 		09E1E63D2118AFB3008FD418 /* MJRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooter.h; sourceTree = "<group>"; };
 		09E1E63E2118AFB3008FD418 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
 		09E1E63F2118AFB3008FD418 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		09E75F86211B2C75000A5F2B /* LTYKitchenStoryCollectionSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYKitchenStoryCollectionSort.h; sourceTree = "<group>"; };
+		09E75F87211B2C75000A5F2B /* LTYKitchenStoryCollectionSort.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYKitchenStoryCollectionSort.m; sourceTree = "<group>"; };
 		09EA955C20E27BF70071345E /* LTYTeachNetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYTeachNetManager.h; sourceTree = "<group>"; };
 		09EA955D20E27BF70071345E /* LTYTeachNetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYTeachNetManager.m; sourceTree = "<group>"; };
 		09EEF622210C9BAB00E5D1B1 /* LTYTagView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYTagView.h; sourceTree = "<group>"; };
@@ -1014,6 +1038,22 @@
 				09FB8D8921157A5B003EDFF1 /* LTYLocalDelicaciesViewCell.m */,
 				09FB8D8B2115C044003EDFF1 /* LTYUserInfoView.h */,
 				09FB8D8C2115C044003EDFF1 /* LTYUserInfoView.m */,
+				09E75F86211B2C75000A5F2B /* LTYKitchenStoryCollectionSort.h */,
+				09E75F87211B2C75000A5F2B /* LTYKitchenStoryCollectionSort.m */,
+				09D7BB40211C65DA001A0DC8 /* LTYKitchenStoryCollectionSortCell.h */,
+				09D7BB41211C65DA001A0DC8 /* LTYKitchenStoryCollectionSortCell.m */,
+				09D7BB43211C695C001A0DC8 /* LTYKitchenStoryArticleOne.h */,
+				09D7BB44211C695C001A0DC8 /* LTYKitchenStoryArticleOne.m */,
+				09D7BB49211C727E001A0DC8 /* LTYKitchenStoryArticleOneCell.h */,
+				09D7BB4F211C7499001A0DC8 /* LTYKitchenStoryArticleOneCell.m */,
+				09D7BB4C211C740A001A0DC8 /* LTYKitchenStoryArticleTwo.h */,
+				09D7BB4D211C740A001A0DC8 /* LTYKitchenStoryArticleTwo.m */,
+				09D7BB54211C8648001A0DC8 /* LTYKitchenStoryArticleTwoCell.h */,
+				09D7BB55211C8648001A0DC8 /* LTYKitchenStoryArticleTwoCell.m */,
+				09D7BB57211C8787001A0DC8 /* LTYKitchenStoryQuestion.h */,
+				09D7BB58211C8787001A0DC8 /* LTYKitchenStoryQuestion.m */,
+				09177317211E7965004C9856 /* LTYKitchenStoryQuestionCell.h */,
+				09177318211E7965004C9856 /* LTYKitchenStoryQuestionCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1089,7 +1129,7 @@
 		091233DF20C82205001A80D6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "刘天宇";
 				TargetAttributes = {
 					091233E620C82205001A80D6 = {
@@ -1153,9 +1193,11 @@
 				09EEF63F210D931800E5D1B1 /* LTYHomeNetManager.m in Sources */,
 				09E1E6522118AFB3008FD418 /* MJRefreshAutoFooter.m in Sources */,
 				0970092620C9869100461468 /* MJExtensionConst.m in Sources */,
+				09D7BB42211C65DA001A0DC8 /* LTYKitchenStoryCollectionSortCell.m in Sources */,
 				094A9FB320CD200C00BFC13A /* CommonViewCell.m in Sources */,
 				0948505720CAC38400492EEF /* UIWebView+AFNetworking.m in Sources */,
 				0948505520CAC38400492EEF /* UIButton+AFNetworking.m in Sources */,
+				09D7BB56211C8648001A0DC8 /* LTYKitchenStoryArticleTwoCell.m in Sources */,
 				0900BB3520C82F9D0034525C /* LTYTabBarViewController.m in Sources */,
 				0970092B20C9869100461468 /* MJDictionaryCache.m in Sources */,
 				09173AD720CC0CA400246B8D /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
@@ -1173,6 +1215,7 @@
 				0931CCE22111964F00B6AC95 /* LTYBreakfastViewCell.m in Sources */,
 				09EEF638210D525900E5D1B1 /* WMMenuItem.m in Sources */,
 				09173AA420CB683100246B8D /* BaseViewModel.m in Sources */,
+				09E75F88211B2C75000A5F2B /* LTYKitchenStoryCollectionSort.m in Sources */,
 				09173AA820CB716800246B8D /* LTYSortModel.m in Sources */,
 				09136DE220EBBEDE007E3F93 /* LTYTagColumnCell.m in Sources */,
 				09117D1E20D01CEA006E6E19 /* FirstViewShow.m in Sources */,
@@ -1197,6 +1240,7 @@
 				09E1E6462118AFB3008FD418 /* MJRefreshBackGifFooter.m in Sources */,
 				0970093420C9897500461468 /* BaseNetManager.m in Sources */,
 				096D9ECE2119E142001E2C38 /* LTYHomeListModel.m in Sources */,
+				09177319211E7965004C9856 /* LTYKitchenStoryQuestionCell.m in Sources */,
 				094073C820C83F4A00D93ECA /* LTYHomeViewController.m in Sources */,
 				0948505B20CAC38400492EEF /* AFURLSessionManager.m in Sources */,
 				0970092220C9869100461468 /* MJPropertyType.m in Sources */,
@@ -1233,14 +1277,18 @@
 				09173AE020CC0CA400246B8D /* MASViewAttribute.m in Sources */,
 				09E1E6492118AFB3008FD418 /* MJRefreshAutoStateFooter.m in Sources */,
 				09173ADB20CC0CA400246B8D /* MASLayoutConstraint.m in Sources */,
+				09D7BB45211C695C001A0DC8 /* LTYKitchenStoryArticleOne.m in Sources */,
 				09E1E6422118AFB3008FD418 /* MJRefreshConst.m in Sources */,
 				0948505320CAC38400492EEF /* AFNetworkActivityIndicatorManager.m in Sources */,
 				0948505220CAC38400492EEF /* UIRefreshControl+AFNetworking.m in Sources */,
 				09EEF63A210D525900E5D1B1 /* WMProgressView.m in Sources */,
 				0931CCE82111C22C00B6AC95 /* HeadView.m in Sources */,
 				0931CCEB2111EAE400B6AC95 /* LTYCourseAlbumView.m in Sources */,
+				09D7BB50211C7499001A0DC8 /* LTYKitchenStoryArticleOneCell.m in Sources */,
 				09E1E6472118AFB3008FD418 /* MJRefreshBackStateFooter.m in Sources */,
 				09E1E64E2118AFB3008FD418 /* MJRefreshGifHeader.m in Sources */,
+				09D7BB4E211C740A001A0DC8 /* LTYKitchenStoryArticleTwo.m in Sources */,
+				09D7BB59211C8787001A0DC8 /* LTYKitchenStoryQuestion.m in Sources */,
 				09173AB820CBFE5D00246B8D /* MBProgressHUD+LTY.m in Sources */,
 				09173AD820CC0CA400246B8D /* ViewController+MASAdditions.m in Sources */,
 				0948505C20CAC38400492EEF /* AFHTTPRequestOperationManager.m in Sources */,
@@ -1283,6 +1331,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1290,6 +1339,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1338,6 +1388,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1345,6 +1396,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

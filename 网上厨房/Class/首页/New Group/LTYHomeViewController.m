@@ -19,7 +19,11 @@
 #import "LTYLocalDelicaciesViewCell.h"
 #import "LTYUserInfoView.h"
 #import "LTYHomeListViewModel.h"
-
+//厨房故事cell
+#import "LTYKitchenStoryCollectionSortCell.h"
+#import "LTYKitchenStoryArticleOneCell.h"
+#import "LTYKitchenStoryArticleTwoCell.h"
+#import "LTYKitchenStoryQuestionCell.h"
 
 #define kBreakfast @"breakfastCell"
 #define kCourseAlbum @"courseAlbumCell"
@@ -27,7 +31,10 @@
 #define kDelicacies @"delicaciesCell"
 #define kBake @"bakeCell"
 #define kRecommend @"recommendCell" //达人推荐
-
+#define kCollectionSort @"collectionSortCell"//厨房故事
+#define kArticleOne @"articleOneCell"
+#define kArticleTwo @"articleTwoCell"
+#define kQuestion @"questionCell"
 
 @interface LTYHomeViewController ()<UITableViewDelegate,UITableViewDataSource,LTYTagViewClickDelegate,iCarouselDelegate,iCarouselDataSource>
 
@@ -68,14 +75,14 @@
 
 - (void)add_mj_refreshHeadAndFoot{
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshAllTalbeData)];
-    self.tableView.mj_footer = [MJRefreshBackFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshKitchenStoryData)];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshKitchenStoryData)];
 }
 
 //下拉刷新整个表
 - (void) refreshAllTalbeData{
     [self.homeVC getDataCompletionHandle:^(NSError *error) {
-        [self.tableView reloadData];
         [self.homeListVC reset];
+        [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
     }];
 }
@@ -83,6 +90,7 @@
 //上拉刷新厨房故事
 - (void) refreshKitchenStoryData{
     [self.homeListVC getMoreDateCompletionHandle:^(NSError *error) {
+        [self.tableView reloadData];
         [self.tableView.mj_footer endRefreshing];
     }];
 }
@@ -260,8 +268,20 @@
         return kScreenWidth *2/3;
     } else if (indexPath.section == 6){
         return (kScreenWidth +20)/2 +30;
-    } else{
+    } else if(indexPath.section == 1 || indexPath.section == 3){
         return (kScreenWidth-30)/2;
+    } else{
+        if (indexPath.row % 10 <=2) {
+            return kScreenWidth *2/3;
+        } else if(indexPath.row % 10 >7){
+            return 80;
+        } else{
+            if ([self.homeListVC typeSetting:indexPath] == 1) {
+                return kScreenWidth *2/3;
+            } else {
+                return kScreenWidth/3;
+            }
+        }
     }
 }
 
@@ -308,8 +328,13 @@
     } else if(section == 5){
         [headView.leftTitle setText:@"热门兴趣·烘焙"];
         return headView;
-    } else{
+    } else if(section == 6){
         [headView.leftTitle setText:@"达人推荐"];
+        headView.rightImage.hidden = YES;
+        headView.rightTitle.hidden = YES;
+        return headView;
+    } else{
+        [headView.leftTitle setText:@"厨房故事"];
         headView.rightImage.hidden = YES;
         headView.rightTitle.hidden = YES;
         return headView;
@@ -331,13 +356,19 @@
         return 2;
     }else if (section == 4) {
         return 4;
-    }else{
+    }else if(section <=6 && section != 1 && section != 4){
         return 1;
+    }else{
+        return 10 *[self.homeListVC countOfHomeListModelArray];
     }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 7;
+    if ([self.homeListVC countOfHomeListModelArray]) {
+        return 8;
+    } else{
+        return 7;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -381,7 +412,6 @@
             [courseAlbumView.backgroundImageView setImageWithURL:[self.homeVC courseAlbumViewImageURLForIndex:i]];
             [courseAlbumView.courseNumberLabel setText:[self.homeVC courseAlbumViewCourseCountsForIndex:i]];
             [courseAlbumView.courseTitleLabel setText:[self.homeVC courseAlbumViewTitleForIndex:i]];
-            courseAlbumView.courseTitleLabel.text = [self.homeVC courseAlbumViewTitleForIndex:i];
             //NSLog(@"%ld",courseAlbumView.tag);
         }
         return cell;
@@ -413,7 +443,7 @@
         }];
         
         return cell;
-    } else{
+    } else if(indexPath.section == 6){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kRecommend];
         [cell.contentView addSubview:self.recommendScrollView];
         [self.recommendScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -430,6 +460,52 @@
         }
         
         return cell;
+    } else{
+        if (indexPath.row % 10 <=2) {
+            LTYKitchenStoryCollectionSortCell *cell = [tableView dequeueReusableCellWithIdentifier:kCollectionSort];
+            
+            [cell.kitchenStoryCollectionSort.backgroundImageView setImageWithURL:[self.homeListVC collectionSortViewImageURLForIndexPath:indexPath] placeholderImage:[UIImage imageNamed:@"album_place_holder"]];
+            [cell.kitchenStoryCollectionSort.title setText:[self.homeListVC titleForIndexPath:indexPath]];
+            [cell.kitchenStoryCollectionSort.foodCount setText:[self.homeListVC recipeCountForIndexPath:indexPath]];
+            [cell.kitchenStoryCollectionSort.userImageView setImageWithURL:[self.homeListVC userViewImageURLForIndexPath:indexPath]];
+            [cell.kitchenStoryCollectionSort.nickName setText:[self.homeListVC nickNameForIndexPath:indexPath]];
+            
+            return cell;
+        } else if(indexPath.row % 10 >=8){
+            LTYKitchenStoryQuestionCell *cell = [tableView dequeueReusableCellWithIdentifier:kQuestion];
+            
+            [cell.kitchenStoryQuestion.question setText:[self.homeListVC questionForIndexPath:indexPath]];
+            [cell.kitchenStoryQuestion.userImageView setImageWithURL:[self.homeListVC userImageURLOfQuestionForIndexPath:indexPath]];
+            [cell.kitchenStoryQuestion.nickName setText:[self.homeListVC nickNameOfQuestionForIndexPath:indexPath]];
+            [cell.kitchenStoryQuestion.reward setText:[self.homeListVC rewardOfQuestionForIndexPath:indexPath]];
+            [cell.kitchenStoryQuestion.answerCount setText:[self.homeListVC answerCountOfQuestionForIndexPath:indexPath]];
+            
+            return cell;
+        } else{
+            if ([self.homeListVC typeSetting:indexPath] == 1) {
+                LTYKitchenStoryArticleTwoCell *cell = [tableView dequeueReusableCellWithIdentifier:kArticleTwo];
+                
+                [cell.kitchenStroyArticleTwo.backgroundImageView setImageWithURL:[self.homeListVC articleTwoViewImageURLForIndexPath:indexPath] placeholderImage:[UIImage imageNamed:@"album_place_holder"]];
+                [cell.kitchenStroyArticleTwo.title setText:[self.homeListVC titleOfArticleTwoForIndexPath:indexPath]];
+                [cell.kitchenStroyArticleTwo.userImageView setImageWithURL:[self.homeListVC userViewImageURLOfArticleTwoForIndexPath:indexPath]];
+                [cell.kitchenStroyArticleTwo.nickName setText:[self.homeListVC nickNameOfArticleTwoForIndexPath:indexPath]];
+                [cell.kitchenStroyArticleTwo.starImageView setImage:[self.homeListVC starImageOfArticleTwoForIndexPath:indexPath]];
+                cell.kitchenStroyArticleTwo.isHideVideo = NO;
+                
+                return cell;
+            } else {
+                LTYKitchenStoryArticleOneCell *cell = [tableView dequeueReusableCellWithIdentifier:kArticleOne];
+                
+                [cell.kitchenStoryArticleOne.backgroundImageViewOne setImageWithURL:[self.homeListVC articleOneFirstViewImageURLForIndexPath:indexPath] placeholderImage:[UIImage imageNamed:@"album_place_holder"]];
+                [cell.kitchenStoryArticleOne.backgroundImageViewTwo setImageWithURL:[self.homeListVC articleOneSecondViewImageURLForIndexPath:indexPath] placeholderImage:[UIImage imageNamed:@"album_place_holder"]];
+                [cell.kitchenStoryArticleOne.backgroundImageViewThree setImageWithURL:[self.homeListVC articleOneThreeViewImageURLForIndexPath:indexPath] placeholderImage:[UIImage imageNamed:@"album_place_holder"]];
+                [cell.kitchenStoryArticleOne.title setText:[self.homeListVC titleOfArticleTwoForIndexPath:indexPath]];
+                [cell.kitchenStoryArticleOne.userImageView setImageWithURL:[self.homeListVC userViewImageURLOfArticleTwoForIndexPath:indexPath]];
+                [cell.kitchenStoryArticleOne.nickName setText:[self.homeListVC nickNameOfArticleTwoForIndexPath:indexPath]];
+               
+                return cell;
+            }
+        }
     }
     
 }
@@ -501,6 +577,12 @@
         [_tableView registerClass:[LTYLocalDelicaciesViewCell class] forCellReuseIdentifier:kDelicacies];
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kBake];
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kRecommend];
+        
+        [_tableView registerClass:[LTYKitchenStoryCollectionSortCell class] forCellReuseIdentifier:kCollectionSort];
+        [_tableView registerClass:[LTYKitchenStoryArticleOneCell class] forCellReuseIdentifier:kArticleOne];
+        [_tableView registerClass:[LTYKitchenStoryArticleTwoCell class] forCellReuseIdentifier:kArticleTwo];
+        [_tableView registerClass:[LTYKitchenStoryQuestionCell class] forCellReuseIdentifier:kQuestion];
+        
         _tableView.estimatedSectionFooterHeight = 0;
         
     }

@@ -55,7 +55,7 @@
 @property(nonatomic,assign) BOOL hasVideo;
 @property(nonatomic,assign) NSInteger pv;
 @property(nonatomic,assign) NSInteger ID;
-@property(nonatomic,copy) NSString *typesetting;
+@property(nonatomic,assign) NSInteger typesetting;
 @property(nonatomic,copy) NSString *title;
 @property(nonatomic,copy) NSString *imageids;
 @property(nonatomic,copy) NSString *url;
