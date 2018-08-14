@@ -64,7 +64,8 @@
     [super viewWillAppear:animated];
     
     [self.tabBar setBackgroundImage:[UIImage imageNamed:@"Group"]];
-    [self.tabBar setShadowImage:[UIImage new]];
+    [self.tabBar setShadowImage:[UIImage new]];//去除标签栏上方横线
+    //NSLog(@"%f",self.tabBar.bounds.size.height);
 }
 
 

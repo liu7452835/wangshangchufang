@@ -13,6 +13,13 @@
 
 #define kScreenWidth ([UIScreen mainScreen].bounds.size.width)
 
+#define kScreenHeight ([UIScreen mainScreen].bounds.size.height)
+
 #define krecommendCount 8
+
+/****进入置顶通知****/
+#define kHomeGoTopNotification               @"Home_Go_Top"
+/****离开置顶通知****/
+#define kHomeLeaveTopNotification            @"Home_Leave_Top"
 
 #endif /* Constants_h */
