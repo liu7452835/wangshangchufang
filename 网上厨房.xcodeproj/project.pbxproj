@@ -85,6 +85,8 @@
 		094C1D5F2120335C00A4645B /* SolvedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 094C1D5E2120335C00A4645B /* SolvedViewController.m */; };
 		094C1D6621204D0A00A4645B /* ArtScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 094C1D6521204D0A00A4645B /* ArtScrollView.m */; };
 		0954EEE920E2824700140DFB /* LTYTeachViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0954EEE820E2824700140DFB /* LTYTeachViewModel.m */; };
+		095CA29E2131104A005B9963 /* LoginView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095CA29D2131104A005B9963 /* LoginView.storyboard */; };
+		095CA2A12131109E005B9963 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 095CA2A02131109E005B9963 /* LoginViewController.m */; };
 		096896EF20E134D400CF39FA /* LTYTeachTagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 096896EE20E134D400CF39FA /* LTYTeachTagModel.m */; };
 		096896F320E13A4F00CF39FA /* LTYTeachRecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 096896F220E13A4F00CF39FA /* LTYTeachRecommendModel.m */; };
 		096D9ECE2119E142001E2C38 /* LTYHomeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB8D9621174060003EDFF1 /* LTYHomeListModel.m */; };
@@ -308,6 +310,9 @@
 		094C1D6521204D0A00A4645B /* ArtScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArtScrollView.m; sourceTree = "<group>"; };
 		0954EEE720E2824700140DFB /* LTYTeachViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYTeachViewModel.h; sourceTree = "<group>"; };
 		0954EEE820E2824700140DFB /* LTYTeachViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYTeachViewModel.m; sourceTree = "<group>"; };
+		095CA29D2131104A005B9963 /* LoginView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginView.storyboard; sourceTree = "<group>"; };
+		095CA29F2131109E005B9963 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		095CA2A02131109E005B9963 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		096896ED20E134D400CF39FA /* LTYTeachTagModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYTeachTagModel.h; sourceTree = "<group>"; };
 		096896EE20E134D400CF39FA /* LTYTeachTagModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTYTeachTagModel.m; sourceTree = "<group>"; };
 		096896F120E13A4F00CF39FA /* LTYTeachRecommendModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTYTeachRecommendModel.h; sourceTree = "<group>"; };
@@ -704,6 +709,9 @@
 				094C1D5B2120334E00A4645B /* UnsolvedViewController.m */,
 				094C1D5D2120335C00A4645B /* SolvedViewController.h */,
 				094C1D5E2120335C00A4645B /* SolvedViewController.m */,
+				095CA29D2131104A005B9963 /* LoginView.storyboard */,
+				095CA29F2131109E005B9963 /* LoginViewController.h */,
+				095CA2A02131109E005B9963 /* LoginViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1213,6 +1221,7 @@
 				09012E6020D162C700D8BE68 /* PersonalSetting.storyboard in Resources */,
 				09E1E6542118AFB3008FD418 /* README.md in Resources */,
 				09E1E6402118AFB3008FD418 /* LICENSE in Resources */,
+				095CA29E2131104A005B9963 /* LoginView.storyboard in Resources */,
 				090EF22420F7995B00CB1C9D /* LTYRecommendViewCell.xib in Resources */,
 				091233F720C82205001A80D6 /* LaunchScreen.storyboard in Resources */,
 				091233F420C82205001A80D6 /* Assets.xcassets in Resources */,
@@ -1310,6 +1319,7 @@
 				09E1E6512118AFB3008FD418 /* MJRefreshBackFooter.m in Sources */,
 				097F863D210F651300B7F97F /* FocusImageScrollView.m in Sources */,
 				0948506020CAC38400492EEF /* AFSecurityPolicy.m in Sources */,
+				095CA2A12131109E005B9963 /* LoginViewController.m in Sources */,
 				0931CCCE211068E200B6AC95 /* LTYScrollView.m in Sources */,
 				09FCDD7320FE3660007BC7F0 /* LTYFreeView.m in Sources */,
 				09E1E6532118AFB3008FD418 /* MJRefreshComponent.m in Sources */,

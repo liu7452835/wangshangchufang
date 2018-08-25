@@ -7,6 +7,8 @@
 //
 
 #import "LTYDynamicViewController.h"
+#import "LoginViewController.h"
+#import "AppDelegate.h"
 
 @interface LTYDynamicViewController ()
 
@@ -18,9 +20,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(acceptMsg:) name:kHomeGoTopNotification object:nil];
+    //先判断 如果未登录，需要先登录。
+    
+   
+    
+    //[self presentViewController:loginVC animated:YES completion:nil];
+}
 
+
+- (void)viewWillAppear:(BOOL)animated{
+    //先判断 如果未登录，需要先登录。
+    
+    LoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"LoginView" bundle:nil] instantiateViewControllerWithIdentifier:@"Login"];
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    [delegate.window.rootViewController presentViewController:loginVC animated:YES completion:nil];
+    
+    //[self presentViewController:loginVC animated:YES completion:nil];
 }
 
 

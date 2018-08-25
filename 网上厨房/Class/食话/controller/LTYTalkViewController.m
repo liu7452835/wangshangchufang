@@ -37,6 +37,12 @@
 }
 
 
+- (void)viewWillAppear:(BOOL)animated{
+    self.takeViewController.selectIndex = 1;
+    [super viewWillAppear:animated];
+}
+
+
 #pragma mark - notification
 
 - (void)acceptedMsg:(NSNotification *)notification{
@@ -80,19 +86,22 @@
     if (!_takeViewController) {
         _takeViewController = [[WMPageController alloc] initWithViewControllerClasses:[self viewControllerClass] andTheirTitles:@[@"动态",@"广场",@"话题",@"问答"]];
         
-    //WMPageController的设置
-    _takeViewController.menuViewStyle = WMMenuViewStyleLine;
-    //设置背景色
-    _takeViewController.menuBGColor = [UIColor grayColor];
-    //选中时颜色
-    _takeViewController.titleColorSelected = [UIColor orangeColor];
-    //设置每个item的宽
-    _takeViewController.itemsWidths = @[@(kScreenWidth/4),@(kScreenWidth/4),@(kScreenWidth/4),@(kScreenWidth/4)];
-    //进度条高度
-    _takeViewController.progressHeight = 4;
-    //菜单栏高度
-    _takeViewController.menuHeight = 50;
-    _takeViewController.viewFrame = CGRectMake(0, 80, kScreenWidth, kScreenHeight-20);
+        //WMPageController的设置
+        _takeViewController.menuViewStyle = WMMenuViewStyleLine;
+        //设置背景色
+        _takeViewController.menuBGColor = [UIColor grayColor];
+        //选中时颜色
+        _takeViewController.titleColorSelected = [UIColor orangeColor];
+        //设置每个item的宽
+        _takeViewController.itemsWidths = @[@(kScreenWidth/4),@(kScreenWidth/4),@(kScreenWidth/4),@(kScreenWidth/4)];
+        //进度条高度
+        _takeViewController.progressHeight = 4;
+        //菜单栏高度
+        _takeViewController.menuHeight = 50;
+        _takeViewController.viewFrame = CGRectMake(0, 80, kScreenWidth, kScreenHeight-20);
+        
+        _takeViewController.selectIndex = 1;
+        
         
     }
     return _takeViewController;
