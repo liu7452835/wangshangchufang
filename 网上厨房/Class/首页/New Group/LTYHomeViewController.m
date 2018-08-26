@@ -485,14 +485,21 @@
             if ([self.homeListVC typeSetting:indexPath] == 1) {
                 LTYKitchenStoryArticleTwoCell *cell = [tableView dequeueReusableCellWithIdentifier:kArticleTwo];
                 
-                [cell.kitchenStroyArticleTwo.backgroundImageView setImageWithURL:[self.homeListVC articleTwoViewImageURLForIndexPath:indexPath] placeholderImage:[UIImage imageNamed:@"album_place_holder"]];
                 [cell.kitchenStroyArticleTwo.title setText:[self.homeListVC titleOfArticleTwoForIndexPath:indexPath]];
                 [cell.kitchenStroyArticleTwo.userImageView setImageWithURL:[self.homeListVC userViewImageURLOfArticleTwoForIndexPath:indexPath]];
                 [cell.kitchenStroyArticleTwo.nickName setText:[self.homeListVC nickNameOfArticleTwoForIndexPath:indexPath]];
                 [cell.kitchenStroyArticleTwo.starImageView setImage:[self.homeListVC starImageOfArticleTwoForIndexPath:indexPath]];
-                cell.kitchenStroyArticleTwo.isHideVideo = NO;
+                if ([self.homeListVC hasVideo:indexPath]) {
+                    
+                    [cell.kitchenStroyArticleTwo.backgroundImageView setImageWithURL:[self.homeListVC articleTwoViewImageURLForIndexPath:indexPath] placeholderImage:[UIImage imageNamed:@"album_place_holder"]];
+                    cell.kitchenStroyArticleTwo.isHideVideo = NO;
+                    return cell;
+                } else {
+                    [cell.kitchenStroyArticleTwo.backgroundImageView setImageWithURL:[self.homeListVC articleOneFirstViewImageURLForIndexPath:indexPath] placeholderImage:[UIImage imageNamed:@"album_place_holder"]];
+                    cell.kitchenStroyArticleTwo.isHideVideo = YES;
+                    return cell;
+                }
                 
-                return cell;
             } else {
                 LTYKitchenStoryArticleOneCell *cell = [tableView dequeueReusableCellWithIdentifier:kArticleOne];
                 
